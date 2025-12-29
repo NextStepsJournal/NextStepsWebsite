@@ -1,97 +1,77 @@
 import { BookOpen, Users, Lightbulb, Heart } from "lucide-react";
 
+const pillars = [
+  {
+    icon: BookOpen,
+    title: "Publish",
+    description: "Student-led journal featuring interviews with professionals across diverse fields",
+  },
+  {
+    icon: Users,
+    title: "Chapters",
+    description: "Student-led teams expanding access and impact in schools nationwide",
+  },
+  {
+    icon: Lightbulb,
+    title: "Guide",
+    description: "Structured resources and mentorship pathways for students",
+  },
+  {
+    icon: Heart,
+    title: "Prioritize",
+    description: "Educational content distributed first to under-resourced schools",
+  },
+];
+
 const About = () => {
   return (
     <section id="about" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Column - Text */}
-          <div className="space-y-8">
-            <div>
-              <span className="text-secondary font-semibold tracking-wide uppercase text-sm">
-                About NextSteps
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground mt-3 leading-tight handmade-border pb-4">
-                Guiding Students Toward Meaningful Futures
-              </h2>
-            </div>
+          <div className="space-y-6">
+            <p className="text-sm font-medium text-primary uppercase tracking-wide">
+              About NextSteps
+            </p>
+            <h2 className="text-display-md font-display font-semibold text-foreground">
+              Guiding Students Toward Meaningful Futures
+            </h2>
             
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              NextSteps was created from a simple belief: too many students are expected to 
-              make life-defining decisions without ever being shown what is truly possible.
-            </p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              For students without access to professional networks, mentors, or clear guidance, 
-              careers can feel abstract, intimidating, or out of reach. <strong className="text-foreground">NextSteps exists to change that.</strong>
-            </p>
-
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              By interviewing professionals, conducting research, and translating real-world 
-              experiences into clear, actionable pathways, we help students gain access to 
-              information that should never be limited by zip code, income, or background.
-            </p>
-
-            <div className="pt-4">
-              <blockquote className="border-l-4 border-secondary pl-6 italic text-foreground font-display text-xl">
-                "This work is not about telling students who to become—it is about giving 
-                them the clarity and confidence to decide for themselves."
-              </blockquote>
-              <p className="mt-3 text-sm text-muted-foreground font-medium">
-                — Landon Mahler, Founder & Executive Director
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Too many students make life-defining decisions without seeing what's truly possible. For those without professional networks or mentors, careers feel abstract and out of reach.
+              </p>
+              <p>
+                We translate real-world experiences into clear, actionable pathways. Access to opportunity shouldn't depend on zip code, income, or background.
               </p>
             </div>
+
+            <blockquote className="border-l-2 border-primary pl-4 py-2 mt-8">
+              <p className="text-foreground italic font-display text-lg">
+                "Not about telling students who to become—it's about giving them clarity to decide for themselves."
+              </p>
+              <footer className="mt-2 text-sm text-muted-foreground">
+                Landon Mahler, Founder
+              </footer>
+            </blockquote>
           </div>
 
           {/* Right Column - Cards */}
-          <div className="grid grid-cols-2 gap-5">
-            <div className="card-elevated p-6 hover:shadow-glow transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <BookOpen className="w-6 h-6 text-primary-foreground" />
+          <div className="grid grid-cols-2 gap-4">
+            {pillars.map((pillar, index) => (
+              <div 
+                key={pillar.title}
+                className="p-5 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors"
+              >
+                <pillar.icon className="w-5 h-5 text-primary mb-3" />
+                <h3 className="font-semibold text-foreground mb-1">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {pillar.description}
+                </p>
               </div>
-              <h3 className="font-display font-semibold text-lg text-foreground mb-2">
-                Publish Research
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Student-led career and research journal featuring interviews with professionals
-              </p>
-            </div>
-
-            <div className="card-elevated p-6 hover:shadow-glow transition-all duration-300 group mt-8">
-              <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Users className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="font-display font-semibold text-lg text-foreground mb-2">
-                Build Chapters
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Establish student-led chapters to expand access and impact nationwide
-              </p>
-            </div>
-
-            <div className="card-elevated p-6 hover:shadow-glow transition-all duration-300 group">
-              <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Lightbulb className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="font-display font-semibold text-lg text-foreground mb-2">
-                Provide Guidance
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Structured resources and mentorship pathways for students pursuing interests
-              </p>
-            </div>
-
-            <div className="card-elevated p-6 hover:shadow-glow transition-all duration-300 group mt-8">
-              <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Heart className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="font-display font-semibold text-lg text-foreground mb-2">
-                Prioritize Access
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Distribute educational content with priority to under-resourced schools
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-students.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image */}
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
+      {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
@@ -16,71 +16,59 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 py-20 text-center">
-        <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-8 animate-fade-up">
-            <Sparkles className="w-4 h-4 text-coral-light" />
-            <span className="text-sm font-medium text-primary-foreground">
-              Student-led since 2025
-            </span>
-          </div>
-
+      <div className="container relative z-10 mx-auto px-4 py-20">
+        <div className="max-w-2xl">
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-primary-foreground leading-tight mb-6 animate-fade-up delay-100">
+          <h1 className="text-display-lg font-display font-semibold text-primary-foreground mb-6">
             Helping Students Take Their{" "}
-            <span className="italic font-normal">Next Steps</span>
+            <span className="italic">Next Steps</span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up delay-200 font-light">
-            Empowering high school students to explore careers through professional 
-            interviews, research, and mentorship—prioritizing access for under-resourced communities.
+          {/* Subheadline - tighter copy */}
+          <p className="text-xl text-primary-foreground/85 mb-10 leading-relaxed max-w-xl">
+            Career exploration through professional interviews and mentorship—prioritizing under-resourced communities.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-300">
-            <Button variant="hero" size="lg" className="group">
+          {/* CTA - clear hierarchy */}
+          <div className="flex flex-wrap gap-3">
+            <Button variant="hero-primary" size="lg" className="group">
               Start a Chapter
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </Button>
-            <Button variant="hero-outline" size="lg">
+            <Button variant="hero-secondary" size="lg">
               Read the Journal
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto mt-16 pt-10 border-t border-primary-foreground/20 animate-fade-up delay-400">
+          {/* Stats - using monospace for numbers */}
+          <div className="flex gap-12 mt-16 pt-8 border-t border-primary-foreground/20">
             <div>
-              <div className="text-3xl md:text-4xl font-display font-bold text-primary-foreground">
+              <div className="text-3xl font-mono-nums font-medium text-primary-foreground">
                 50+
               </div>
-              <div className="text-sm text-primary-foreground/70 mt-1">
+              <div className="text-sm text-primary-foreground/60 mt-1">
                 Chapters
               </div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-display font-bold text-primary-foreground">
+              <div className="text-3xl font-mono-nums font-medium text-primary-foreground">
                 200+
               </div>
-              <div className="text-sm text-primary-foreground/70 mt-1">
+              <div className="text-sm text-primary-foreground/60 mt-1">
                 Interviews
               </div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-display font-bold text-primary-foreground">
-                5k+
+              <div className="text-3xl font-mono-nums font-medium text-primary-foreground">
+                5,000+
               </div>
-              <div className="text-sm text-primary-foreground/70 mt-1">
+              <div className="text-sm text-primary-foreground/60 mt-1">
                 Students
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 };

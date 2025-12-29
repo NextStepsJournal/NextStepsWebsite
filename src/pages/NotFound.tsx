@@ -7,20 +7,20 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.error("404 Error:", location.pathname);
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center gradient-bg">
+    <div className="flex min-h-screen items-center justify-center bg-primary">
       <div className="text-center px-4">
-        <h1 className="text-8xl font-display font-bold text-primary-foreground mb-4">404</h1>
-        <p className="text-2xl text-primary-foreground/80 mb-8 font-light">
-          Oops! This page doesn't exist
+        <h1 className="text-6xl font-display font-semibold text-primary-foreground mb-4">404</h1>
+        <p className="text-xl text-primary-foreground/80 mb-8">
+          Page not found
         </p>
-        <Button variant="hero-outline" size="lg" asChild>
+        <Button variant="hero-secondary" asChild>
           <a href="/" className="inline-flex items-center gap-2">
-            <Home className="w-5 h-5" />
-            Return to Home
+            <Home className="w-4 h-4" />
+            Home
           </a>
         </Button>
       </div>
