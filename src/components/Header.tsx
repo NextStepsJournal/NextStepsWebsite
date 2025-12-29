@@ -8,21 +8,21 @@ const Header = () => {
 
   const navLinks = [
     { label: "About", href: "#about" },
-    { label: "Our Mission", href: "#mission" },
+    { label: "Mission", href: "#mission" },
     { label: "Impact", href: "#impact" },
     { label: "Get Involved", href: "#involved" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border/50 shadow-soft">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 group">
+          <a href="/" className="flex items-center">
             <img 
               src={logo} 
-              alt="NextSteps Logo" 
-              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              alt="NextSteps" 
+              className="h-10 w-auto"
             />
           </a>
 
@@ -32,7 +32,7 @@ const Header = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                  className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
                 >
                   {link.label}
                 </a>
@@ -40,9 +40,9 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="secondary" size="default">
+          {/* CTA - Single primary action */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button variant="ghost" size="sm">
               Donate
             </Button>
             <Button variant="default" size="default">
@@ -56,19 +56,19 @@ const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-border animate-fade-up">
-            <ul className="flex flex-col gap-4 mb-6">
+          <div className="md:hidden py-4 border-t border-border">
+            <ul className="flex flex-col gap-2 mb-4">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="block py-2 text-muted-foreground hover:text-primary font-medium transition-colors"
+                    className="block py-2 text-muted-foreground hover:text-foreground text-sm font-medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -76,8 +76,8 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col gap-3">
-              <Button variant="secondary" className="w-full">
+            <div className="flex flex-col gap-2">
+              <Button variant="ghost" className="w-full justify-start">
                 Donate
               </Button>
               <Button variant="default" className="w-full">
