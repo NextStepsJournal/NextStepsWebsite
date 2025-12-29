@@ -7,10 +7,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Mission", href: "#mission" },
-    { label: "Impact", href: "#impact" },
-    { label: "Get Involved", href: "#involved" },
+    { label: "About", href: "/about" },
+    { label: "Mission", href: "/#mission" },
+    { label: "Impact", href: "/#impact" },
+    { label: "Get Involved", href: "/#involved" },
   ];
 
   return (
