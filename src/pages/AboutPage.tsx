@@ -60,7 +60,7 @@ const AboutPage = () => {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-20 hero-overlay text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl">
               <p className="text-sm font-medium text-primary-foreground/70 uppercase tracking-wide mb-3">
@@ -240,7 +240,7 @@ const AboutPage = () => {
         </section>
 
         {/* Founder Letter */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-20 hero-overlay text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
               <p className="text-sm font-medium text-primary-foreground/70 uppercase tracking-wide mb-6">
