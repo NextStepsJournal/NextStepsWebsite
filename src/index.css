@@ -9,16 +9,16 @@
 
 @layer base {
   :root {
-    /* Core palette - pinkish-purple from gradient */
-    --violet: 280 60% 55%;
-    --violet-muted: 280 35% 65%;
-    --violet-light: 290 50% 75%;
+    /* Core palette - original purple */
+    --violet: 262 55% 52%;
+    --violet-muted: 262 30% 65%;
+    --violet-light: 270 45% 75%;
     --coral: 20 75% 55%;
     --coral-muted: 20 50% 70%;
     
     /* Semantic system */
     --background: 30 15% 97%;
-    --foreground: 280 30% 18%;
+    --foreground: 262 35% 18%;
 
     --card: 0 0% 100%;
     --card-foreground: 262 35% 18%;
@@ -26,34 +26,34 @@
     --popover: 0 0% 100%;
     --popover-foreground: 262 35% 18%;
 
-    --primary: 280 60% 55%;
+    --primary: 262 55% 52%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 20 75% 55%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 30 10% 92%;
-    --muted-foreground: 280 15% 50%;
+    --muted-foreground: 262 15% 50%;
 
-    --accent: 280 25% 94%;
-    --accent-foreground: 280 30% 18%;
+    --accent: 262 25% 94%;
+    --accent-foreground: 262 35% 18%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 280 15% 88%;
-    --input: 280 15% 88%;
-    --ring: 280 60% 55%;
+    --border: 262 15% 88%;
+    --input: 262 15% 88%;
+    --ring: 262 55% 52%;
 
     --radius: 0.5rem;
 
     /* Single gradient - hero only */
-    --gradient-hero: linear-gradient(135deg, hsl(280 60% 48% / 0.92) 0%, hsl(20 70% 50% / 0.88) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(262 55% 45% / 0.92) 0%, hsl(20 70% 50% / 0.88) 100%);
     
     /* Shadows - soft, single-purpose */
-    --shadow-sm: 0 1px 3px hsl(280 20% 20% / 0.06);
-    --shadow-md: 0 4px 12px hsl(280 20% 20% / 0.08);
-    --shadow-lg: 0 8px 24px hsl(280 20% 20% / 0.1);
+    --shadow-sm: 0 1px 3px hsl(262 20% 20% / 0.06);
+    --shadow-md: 0 4px 12px hsl(262 20% 20% / 0.08);
+    --shadow-lg: 0 8px 24px hsl(262 20% 20% / 0.1);
     
     /* Sidebar */
     --sidebar-background: 0 0% 98%;

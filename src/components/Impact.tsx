@@ -10,7 +10,7 @@ const stats = [
 
 const Impact = () => {
   return (
-    <section id="impact" className="py-24 bg-primary text-primary-foreground">
+    <section id="impact" className="py-24 hero-overlay text-primary-foreground">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Content */}
