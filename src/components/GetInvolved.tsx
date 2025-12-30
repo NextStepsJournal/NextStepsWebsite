@@ -1,34 +1,25 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
+import { BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
 
 const opportunities = [
   {
     icon: PenTool,
     title: "Start a Chapter",
-    description: "Lead a team in your school. Publish interviews and help peers explore careers.",
-    cta: "Apply Now",
-    featured: true,
+    href: "#",
   },
   {
     icon: Mic2,
     title: "Be Interviewed",
-    description: "Share your career journey with curious students.",
-    cta: "Volunteer",
-    featured: false,
+    href: "#",
   },
   {
     icon: BookMarked,
     title: "Partner",
-    description: "Schools and organizations can bring NextSteps to students.",
-    cta: "Learn More",
-    featured: false,
+    href: "#",
   },
   {
     icon: HandHeart,
     title: "Donate",
-    description: "Help us reach more under-resourced schools.",
-    cta: "Give",
-    featured: false,
+    href: "#",
   },
 ];
 
@@ -46,38 +37,19 @@ const GetInvolved = () => {
           </h2>
         </div>
 
-        {/* Opportunities */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Opportunities - cards as buttons */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {opportunities.map((opp) => (
-            <div
+            <a
               key={opp.title}
-              className={`p-6 rounded-lg border transition-colors ${
-                opp.featured 
-                  ? "bg-primary text-primary-foreground border-primary" 
-                  : "bg-card border-border hover:border-primary/30"
-              }`}
+              href={opp.href}
+              className="p-8 rounded-lg bg-card border border-border hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group flex flex-col items-center justify-center text-center"
             >
-              <opp.icon className={`w-5 h-5 mb-4 ${opp.featured ? "text-primary-foreground" : "text-primary"}`} />
-              
-              <h3 className={`font-semibold mb-2 ${opp.featured ? "" : "text-foreground"}`}>
+              <opp.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
                 {opp.title}
               </h3>
-              
-              <p className={`text-sm mb-4 leading-relaxed ${
-                opp.featured ? "text-primary-foreground/80" : "text-muted-foreground"
-              }`}>
-                {opp.description}
-              </p>
-
-              <Button 
-                variant={opp.featured ? "hero-secondary" : "outline"}
-                size="sm"
-                className="group"
-              >
-                {opp.cta}
-                <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
-              </Button>
-            </div>
+            </a>
           ))}
         </div>
       </div>
