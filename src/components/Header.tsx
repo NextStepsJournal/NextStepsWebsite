@@ -22,7 +22,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="NextSteps" 
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </a>
 
