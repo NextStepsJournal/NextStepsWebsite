@@ -1,5 +1,5 @@
 import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2">
-            <img src={logo} alt="NextSteps" className="h-12 w-auto mb-4 brightness-110" />
+            <img src={logoWhite} alt="NextSteps" className="h-16 w-auto mb-4" />
             <p className="text-sm text-primary-foreground/60 max-w-xs mb-6">
               Career exploration through professional interviews and mentorship.
             </p>
