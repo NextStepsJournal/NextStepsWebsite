@@ -65,10 +65,20 @@ const GetInvolvedPage = () => {
               <h1 className="text-display-lg font-display font-semibold text-primary-foreground">
                 Get Involved
               </h1>
-              <p className="mt-4 text-lg text-primary">
+              <p className="mt-4 text-xl text-primary-foreground/85 leading-relaxed">
                 There are many ways to contribute to our mission. Choose how you'd like to make an impact.
               </p>
             </div>
+
+            {/* SVG gradient definition for icons */}
+            <svg width="0" height="0" className="absolute">
+              <defs>
+                <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(262, 55%, 45%)" />
+                  <stop offset="100%" stopColor="hsl(20, 70%, 50%)" />
+                </linearGradient>
+              </defs>
+            </svg>
 
             {/* Opportunities - cards as buttons with hover effects */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -83,8 +93,10 @@ const GetInvolvedPage = () => {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <opp.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
+                  <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <opp.icon className="w-12 h-12" style={{ stroke: 'url(#icon-gradient)' }} />
+                  </div>
+                  <h3 className="font-display font-semibold text-foreground text-xl group-hover:text-primary transition-colors">
                     {opp.title}
                   </h3>
                   
