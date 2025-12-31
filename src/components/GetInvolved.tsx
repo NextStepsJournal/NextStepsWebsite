@@ -1,56 +1,38 @@
-import { BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
-
-const opportunities = [
-  {
-    icon: PenTool,
-    title: "Start a Chapter",
-    href: "#",
-  },
-  {
-    icon: Mic2,
-    title: "Be Interviewed",
-    href: "#",
-  },
-  {
-    icon: BookMarked,
-    title: "Partner",
-    href: "#",
-  },
-  {
-    icon: HandHeart,
-    title: "Donate",
-    href: "#",
-  },
-];
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const GetInvolved = () => {
   return (
-    <section id="involved" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="max-w-2xl mb-12">
-          <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
+    <section id="involved" className="relative py-24 overflow-hidden">
+      {/* Gradient background - same as hero */}
+      <div className="absolute inset-0 hero-overlay" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-2xl mx-auto text-center">
+          {/* Header */}
+          <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             Join the Movement
           </p>
-          <h2 className="text-display-md font-display font-semibold text-foreground">
+          <h2 className="text-display-md font-display font-semibold text-primary-foreground mb-6">
             Get Involved
           </h2>
-        </div>
-
-        {/* Opportunities - cards as buttons */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {opportunities.map((opp) => (
-            <a
-              key={opp.title}
-              href={opp.href}
-              className="p-8 rounded-lg bg-card border border-border hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group flex flex-col items-center justify-center text-center"
-            >
-              <opp.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
-                {opp.title}
-              </h3>
-            </a>
-          ))}
+          <p className="text-lg text-primary-foreground/85 mb-10 leading-relaxed">
+            There are many ways to contribute to our mission. Choose how you'd like to make an impact.
+          </p>
+          
+          {/* Single CTA Button */}
+          <Button 
+            variant="hero-primary" 
+            size="lg" 
+            className="group"
+            asChild
+          >
+            <Link to="/get-involved">
+              Start Here
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
