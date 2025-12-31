@@ -8,7 +8,7 @@ const About = () => {
             <p className="text-sm font-medium text-primary uppercase tracking-wide">
               About NextSteps
             </p>
-            <h2 className="text-display-md font-display font-semibold text-foreground">
+            <h2 className="text-display-lg font-display font-semibold text-foreground">
               Guiding Students Toward Meaningful Futures
             </h2>
             

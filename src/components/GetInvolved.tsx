@@ -14,7 +14,7 @@ const GetInvolved = () => {
           <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             Join the Movement
           </p>
-          <h2 className="text-display-md font-display font-semibold text-primary-foreground mb-6">
+          <h2 className="text-display-lg font-display font-semibold text-primary-foreground mb-6">
             Get Involved
           </h2>
           <p className="text-lg text-primary-foreground/85 mb-10 leading-relaxed">
