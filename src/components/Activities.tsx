@@ -20,7 +20,7 @@ const activities = [
 
 const Activities = () => {
   return (
-    <section className="py-24 section-alt">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center mb-12">
           <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
