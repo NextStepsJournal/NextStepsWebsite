@@ -42,33 +42,27 @@ const GetInvolvedPage = () => {
       <Header />
       <main className="flex-1">
         <section className="relative min-h-[80vh] py-24 overflow-hidden">
-          {/* Background image with overlay */}
+          {/* Constant gradient overlay - always visible */}
+          <div className="absolute inset-0 hero-overlay z-[1]" />
+          
+          {/* Background image that fades in/out */}
           <div 
-            className="absolute inset-0 transition-opacity duration-500"
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{
               backgroundImage: currentBackground ? `url(${currentBackground})` : 'none',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              opacity: currentBackground ? 1 : 0,
+              opacity: currentBackground ? 0.3 : 0,
             }}
-          >
-            <div className="absolute inset-0 bg-background/80" />
-          </div>
-
-          {/* Default background */}
-          <div 
-            className={`absolute inset-0 bg-background transition-opacity duration-500 ${
-              currentBackground ? 'opacity-0' : 'opacity-100'
-            }`} 
           />
 
           <div className="container mx-auto px-4 relative z-10">
             {/* Header */}
             <div className="max-w-2xl mb-12">
-              <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
+              <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
                 Join the Movement
               </p>
-              <h1 className="text-display-lg font-display font-semibold text-foreground">
+              <h1 className="text-display-lg font-display font-semibold text-primary-foreground">
                 Get Involved
               </h1>
               <p className="mt-4 text-lg text-primary">
@@ -96,7 +90,7 @@ const GetInvolvedPage = () => {
                   
                   {/* Description that unfolds on hover */}
                   <div 
-                    className={`overflow-hidden transition-all duration-300 ${
+                    className={`overflow-hidden transition-all duration-700 ease-out ${
                       hoveredIndex === index ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
                     }`}
                   >
