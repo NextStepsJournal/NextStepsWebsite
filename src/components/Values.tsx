@@ -13,7 +13,7 @@ const Values = () => {
     <section id="mission" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mx-auto text-center mb-16">
           <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
             Our Foundation
           </p>
