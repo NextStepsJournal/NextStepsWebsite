@@ -48,7 +48,7 @@
     --radius: 0.5rem;
 
     /* Single gradient - hero only */
-    --gradient-hero: linear-gradient(135deg, hsl(262 55% 45% / 0.92) 0%, hsl(20 70% 50% / 0.88) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(262 55% 45% / 0.5) 0%, hsl(20 70% 50% / 0.5) 100%);
     
     /* Shadows - soft, single-purpose */
     --shadow-sm: 0 1px 3px hsl(262 20% 20% / 0.06);
