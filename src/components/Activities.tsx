@@ -29,7 +29,7 @@ const Activities = () => {
           <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             What We Do
           </p>
-          <h2 className="text-display-md font-display font-semibold text-primary-foreground">
+          <h2 className="text-display-lg font-display font-semibold text-primary-foreground">
             Our Activities
           </h2>
         </div>

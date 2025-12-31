@@ -17,7 +17,7 @@ const Values = () => {
           <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
             Our Foundation
           </p>
-          <h2 className="text-display-md font-display font-semibold text-foreground">
+          <h2 className="text-display-lg font-display font-semibold text-foreground">
             Core Values
           </h2>
         </div>
