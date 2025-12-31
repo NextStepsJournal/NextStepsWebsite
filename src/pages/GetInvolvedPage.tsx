@@ -81,7 +81,11 @@ const GetInvolvedPage = () => {
               {opportunities.map((opp, index) => (
                 <div
                   key={opp.title}
-                  className="relative p-8 rounded-lg bg-card border border-border hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group flex flex-col items-center justify-center text-center"
+                  className={`relative aspect-square p-8 rounded-lg bg-card border-2 transition-all cursor-pointer group flex flex-col items-center justify-center text-center ${
+                    hoveredIndex === index 
+                      ? 'border-primary' 
+                      : 'border-border hover:border-primary'
+                  }`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
