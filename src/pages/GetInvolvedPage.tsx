@@ -71,7 +71,7 @@ const GetInvolvedPage = () => {
               <h1 className="text-display-lg font-display font-semibold text-foreground">
                 Get Involved
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-primary">
                 There are many ways to contribute to our mission. Choose how you'd like to make an impact.
               </p>
             </div>
