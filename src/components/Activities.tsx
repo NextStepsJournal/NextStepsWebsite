@@ -20,13 +20,16 @@ const activities = [
 
 const Activities = () => {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="relative py-24 overflow-hidden">
+      {/* Gradient background - same as hero */}
+      <div className="absolute inset-0 hero-overlay" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto text-center mb-12">
-          <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
+          <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             What We Do
           </p>
-          <h2 className="text-display-md font-display font-semibold text-foreground">
+          <h2 className="text-display-md font-display font-semibold text-primary-foreground">
             Our Activities
           </h2>
         </div>
