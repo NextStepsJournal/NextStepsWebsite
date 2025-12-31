@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 
 const GetInvolved = () => {
   return (
-    <section id="involved" className="relative py-24 overflow-hidden">
+    <section
+      id="involved"
+      className="relative py-24 overflow-hidden flex items-center"
+    >
       {/* Gradient background - same as hero */}
-      <div className="absolute inset-0 hero-overlay" />
+      <div className="absolute inset-0 hero-overlay opacity-95" />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
+      <div className="container mx-auto px-4 relative z-10 flex justify-center">
+        <div className="max-w-2xl text-center">
           {/* Header */}
           <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             Join the Movement

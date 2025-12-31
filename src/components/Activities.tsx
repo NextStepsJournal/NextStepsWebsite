@@ -22,7 +22,7 @@ const Activities = () => {
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Gradient background - same as hero */}
-      <div className="absolute inset-0 hero-overlay" />
+      <div className="absolute inset-0 hero-overlay opacity-90" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto text-center mb-12">

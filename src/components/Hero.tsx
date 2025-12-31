@@ -5,18 +5,18 @@ import heroImage from "@/assets/hero-students.jpg";
 const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Background layers: gradient under a semi-opaque photo */}
+      <div className="absolute inset-0 hero-overlay z-0" />
+      <div className="absolute inset-0 z-10">
         <img
           src={heroImage}
           alt="Students collaborating"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 hero-overlay" />
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 py-20">
+      <div className="container relative z-20 mx-auto px-4 py-20">
         <div className="max-w-2xl">
           {/* Headline */}
           <h1 className="text-display-lg font-display font-semibold text-primary-foreground mb-6">
@@ -26,13 +26,13 @@ const Hero = () => {
 
           {/* Subheadline - tighter copy */}
           <p className="text-xl text-primary-foreground/85 mb-10 leading-relaxed max-w-xl">
-            Career exploration through professional interviews and mentorship—prioritizing under-resourced communities.
+            Career exploration through professional interviews and mentorship prioritizing under-resourced communities.
           </p>
 
           {/* CTA - clear hierarchy */}
           <div className="flex flex-wrap gap-3">
             <Button variant="hero-primary" size="lg" className="group">
-              Start a Chapter
+              Get Started 
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </Button>
             <Button variant="hero-secondary" size="lg">

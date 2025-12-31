@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -32,33 +32,43 @@ const opportunities = [
 
 const GetInvolvedPage = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [backgroundOpacity, setBackgroundOpacity] = useState(0);
 
   const currentBackground = hoveredIndex !== null 
     ? opportunities[hoveredIndex].image 
     : null;
 
+  useEffect(() => {
+    if (hoveredIndex !== null) {
+      setBackgroundOpacity(0);
+      setTimeout(() => setBackgroundOpacity(0.5), 10);
+    } else {
+      setBackgroundOpacity(0);
+    }
+  }, [hoveredIndex]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative min-h-[80vh] py-24 overflow-hidden">
-          {/* Constant gradient overlay - always visible */}
-          <div className="absolute inset-0 hero-overlay z-[1]" />
+        <section className="relative min-h-[80vh] py-24 overflow-hidden flex items-center">
+          {/* Gradient sits below the pictures */}
+          <div className="absolute inset-0 hero-overlay z-0 opacity-90" />
           
-          {/* Background image that fades in/out */}
+          {/* Background image that fades in/out at 50% opacity */}
           <div 
-            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            className="absolute inset-0 z-10 transition-opacity duration-1000 ease-in-out"
             style={{
-              backgroundImage: currentBackground ? `url(${currentBackground})` : 'none',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: currentBackground ? 0.3 : 0,
+              backgroundImage: currentBackground ? `url(${currentBackground})` : "none",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: backgroundOpacity,
             }}
           />
 
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container mx-auto px-4 relative z-20 flex flex-col items-center text-center">
             {/* Header */}
-            <div className="max-w-2xl mb-12">
+            <div className="max-w-2xl mb-12 text-center mx-auto">
               <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
                 Join the Movement
               </p>
@@ -74,8 +84,8 @@ const GetInvolvedPage = () => {
             <svg width="0" height="0" className="absolute">
               <defs>
                 <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(262, 55%, 45%)" />
-                  <stop offset="100%" stopColor="hsl(20, 70%, 50%)" />
+                  <stop offset="0%" stopColor="hsla(308, 35%, 9%, 1.00)" />
+                  <stop offset="100%" stopColor="hsla(291, 37%, 8%, 1.00)" />
                 </linearGradient>
               </defs>
             </svg>
