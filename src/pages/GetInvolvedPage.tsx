@@ -9,28 +9,24 @@ const opportunities = [
     title: "Start a Chapter",
     description: "Launch a NextSteps chapter at your school or community. Lead workshops, connect students with professionals, and make a lasting impact in your area.",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop",
-    colorClass: "text-primary",
   },
   {
     icon: Mic2,
     title: "Be Interviewed",
     description: "Share your career journey with students. Your story could inspire the next generation and help them see possibilities they never knew existed.",
     image: "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=1200&auto=format&fit=crop",
-    colorClass: "text-accent",
   },
   {
     icon: BookMarked,
     title: "Partner",
     description: "Collaborate with NextSteps as an organization. Whether you're a school, company, or nonprofit, together we can expand access to career guidance.",
     image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&auto=format&fit=crop",
-    colorClass: "text-primary",
   },
   {
     icon: HandHeart,
     title: "Donate",
     description: "Support our mission to provide career clarity to students everywhere. Your contribution helps us create resources, train chapter leaders, and reach more students.",
     image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&auto=format&fit=crop",
-    colorClass: "text-accent",
   },
 ];
 
@@ -103,30 +99,33 @@ const GetInvolvedPage = () => {
             </div>
 
             {/* Opportunities - cards as buttons with hover effects */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 items-start">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {opportunities.map((opp, index) => (
                 <div
                   key={opp.title}
-                  className="relative p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-start text-center min-h-[200px]"
+                  className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="w-14 h-14 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <opp.icon className={`w-14 h-14 ${opp.colorClass}`} />
+                    <opp.icon className="w-14 h-14 text-primary" />
                   </div>
-                  <h3 className={`font-sans font-semibold text-2xl transition-colors duration-300 ${opp.colorClass}`}>
+                  <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
                     {opp.title}
                   </h3>
                   
-                  {/* Description that unfolds on hover - absolute positioned */}
+                  {/* Description that unfolds on hover */}
                   <div 
-                    className={`absolute left-0 right-0 top-full mt-2 p-4 bg-card rounded-lg border-2 border-primary shadow-lg transition-all duration-500 ease-in-out z-30 ${
-                      hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
-                    }`}
+                    className="grid transition-all duration-500 ease-in-out w-full"
+                    style={{
+                      gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
+                    }}
                   >
-                    <p className="text-base text-muted-foreground leading-relaxed">
-                      {opp.description}
-                    </p>
+                    <div className="overflow-hidden">
+                      <p className="text-base text-muted-foreground leading-relaxed pt-4">
+                        {opp.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
