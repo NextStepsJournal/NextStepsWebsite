@@ -10,7 +10,6 @@ const Header = () => {
     { label: "Home", href: "/#mission" },
     { label: "Journal", href: "/#journal" },
     { label: "Leadership", href: "/#leadership" },
-    { label: "Get Involved", href: "/get-involved" },
   ];
 
   return (
@@ -45,8 +44,8 @@ const Header = () => {
             <Button variant="ghost" size="sm">
               Donate
             </Button>
-            <Button variant="default" size="default">
-              Start a Chapter
+            <Button variant="default" size="default" asChild>
+              <a href="/get-involved">Get Involved</a>
             </Button>
           </div>
 
@@ -80,8 +79,8 @@ const Header = () => {
               <Button variant="ghost" className="w-full justify-start">
                 Donate
               </Button>
-              <Button variant="default" className="w-full">
-                Start a Chapter
+              <Button variant="default" className="w-full" asChild>
+                <a href="/get-involved">Get Involved</a>
               </Button>
             </div>
           </div>
