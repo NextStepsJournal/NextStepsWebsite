@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -32,37 +32,55 @@ const opportunities = [
 
 const GetInvolvedPage = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [backgroundOpacity, setBackgroundOpacity] = useState(0);
+  const [currentImage, setCurrentImage] = useState<string | null>(null);
+  const [imageOpacity, setImageOpacity] = useState(0);
+  const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const currentBackground = hoveredIndex !== null 
-    ? opportunities[hoveredIndex].image 
-    : null;
-
-  useEffect(() => {
-    if (hoveredIndex !== null) {
-      setBackgroundOpacity(0);
-      setTimeout(() => setBackgroundOpacity(0.5), 10);
-    } else {
-      setBackgroundOpacity(0);
+  const handleMouseEnter = (index: number) => {
+    setHoveredIndex(index);
+    
+    // Clear any pending fade out
+    if (fadeTimeoutRef.current) {
+      clearTimeout(fadeTimeoutRef.current);
+      fadeTimeoutRef.current = null;
     }
-  }, [hoveredIndex]);
+    
+    // Set image and fade in
+    setCurrentImage(opportunities[index].image);
+    // Small delay to ensure image is set before fading in
+    requestAnimationFrame(() => {
+      setImageOpacity(0.5);
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+    
+    // Fade out first
+    setImageOpacity(0);
+    
+    // Clear image after fade completes
+    fadeTimeoutRef.current = setTimeout(() => {
+      setCurrentImage(null);
+    }, 600);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative min-h-[80vh] py-24 overflow-hidden flex items-center">
+        <section className="relative min-h-screen py-24 overflow-hidden flex items-center">
           {/* Gradient sits below the pictures */}
           <div className="absolute inset-0 hero-overlay z-0 opacity-90" />
           
-          {/* Background image that fades in/out at 50% opacity */}
+          {/* Background image that fades in/out smoothly */}
           <div 
-            className="absolute inset-0 z-10 transition-opacity duration-1000 ease-in-out"
+            className="absolute inset-0 z-10 transition-opacity duration-[600ms] ease-in-out"
             style={{
-              backgroundImage: currentBackground ? `url(${currentBackground})` : "none",
+              backgroundImage: currentImage ? `url(${currentImage})` : "none",
               backgroundSize: "cover",
               backgroundPosition: "center",
-              opacity: backgroundOpacity,
+              opacity: imageOpacity,
             }}
           />
 
@@ -80,45 +98,34 @@ const GetInvolvedPage = () => {
               </p>
             </div>
 
-            {/* SVG gradient definition for icons */}
-            <svg width="0" height="0" className="absolute">
-              <defs>
-                <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsla(308, 35%, 9%, 1.00)" />
-                  <stop offset="100%" stopColor="hsla(291, 37%, 8%, 1.00)" />
-                </linearGradient>
-              </defs>
-            </svg>
-
             {/* Opportunities - cards as buttons with hover effects */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {opportunities.map((opp, index) => (
                 <div
                   key={opp.title}
-                  className={`relative aspect-square p-8 rounded-lg bg-card border-2 transition-all cursor-pointer group flex flex-col items-center justify-center text-center ${
-                    hoveredIndex === index 
-                      ? 'border-primary' 
-                      : 'border-border hover:border-primary'
-                  }`}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="relative p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-start text-left"
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <opp.icon className="w-12 h-12" style={{ stroke: 'url(#icon-gradient)' }} />
+                  <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <opp.icon className="w-12 h-12 text-primary" />
                   </div>
-                  <h3 className="font-display font-semibold text-foreground text-xl group-hover:text-primary transition-colors">
+                  <h3 className="font-sans font-semibold text-foreground text-xl group-hover:text-primary transition-colors duration-300">
                     {opp.title}
                   </h3>
                   
                   {/* Description that unfolds on hover */}
                   <div 
-                    className={`overflow-hidden transition-all duration-700 ease-out ${
-                      hoveredIndex === index ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
-                    }`}
+                    className="grid transition-all duration-500 ease-in-out"
+                    style={{
+                      gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
+                    }}
                   >
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {opp.description}
-                    </p>
+                    <div className="overflow-hidden">
+                      <p className="text-sm text-muted-foreground leading-relaxed pt-4">
+                        {opp.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
