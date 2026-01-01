@@ -103,26 +103,26 @@ const GetInvolvedPage = () => {
               {opportunities.map((opp, index) => (
                 <div
                   key={opp.title}
-                  className="relative p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-start text-left"
+                  className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <opp.icon className="w-12 h-12 text-primary" />
+                  <div className="w-14 h-14 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <opp.icon className="w-14 h-14 text-primary" />
                   </div>
-                  <h3 className="font-sans font-semibold text-foreground text-xl group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
                     {opp.title}
                   </h3>
                   
                   {/* Description that unfolds on hover */}
                   <div 
-                    className="grid transition-all duration-500 ease-in-out"
+                    className="grid transition-all duration-500 ease-in-out w-full"
                     style={{
                       gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
                     }}
                   >
                     <div className="overflow-hidden">
-                      <p className="text-sm text-muted-foreground leading-relaxed pt-4">
+                      <p className="text-base text-muted-foreground leading-relaxed pt-4">
                         {opp.description}
                       </p>
                     </div>
