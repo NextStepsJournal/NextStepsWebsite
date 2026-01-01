@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 const opportunities = [
   {
     icon: PenTool,
-    title: "Start a Chapter",
-    description: "Launch a NextSteps chapter at your school or community. Lead workshops, connect students with professionals, and make a lasting impact in your area.",
+    title: "Volunteer",
+    description: "Become a chapter leader, join a local team, or contribute your skills in a volunteer role. Help us empower students to discover their career paths.",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop",
   },
   {
