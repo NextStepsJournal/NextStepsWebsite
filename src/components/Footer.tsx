@@ -13,10 +13,10 @@ const Footer = () => {
   };
 
   const socials = [
-    { icon: FaInstagram, label: "Instagram" },
-    { icon: FaTiktok, label: "TikTok" },
-    { icon: FaLinkedinIn, label: "LinkedIn" },
-    { icon: IoMail, label: "Email" },
+    { icon: FaInstagram, label: "Instagram", href: "https://instagram.com/nextstepsjournal" },
+    { icon: FaTiktok, label: "TikTok", href: "https://tiktok.com/@nextstepsjournal" },
+    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://linkedin.com/company/nextstepsjournal" },
+    { icon: IoMail, label: "Email", href: "mailto:nextstepsjournal@gmail.com" },
   ];
 
   return (
@@ -33,7 +33,9 @@ const Footer = () => {
               {socials.map((social, index) => (
                 <motion.a
                   key={social.label}
-                  href="#"
+                  href={social.href}
+                  target={social.href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   aria-label={social.label}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}

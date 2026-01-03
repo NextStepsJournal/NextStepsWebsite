@@ -4,9 +4,18 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-students.jpg";
 import ImageWithLoader from "@/components/ImageWithLoader";
 
+const partners = [
+  "Partner 1",
+  "Partner 2", 
+  "Partner 3",
+  "Partner 4",
+  "Partner 5",
+  "Partner 6",
+];
+
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pt-16">
       {/* Background layers: gradient under a semi-opaque photo */}
       <div className="absolute inset-0 hero-overlay z-0" />
       <div className="absolute inset-0 z-10">
@@ -19,7 +28,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-20 mx-auto px-4 py-20">
+      <div className="container relative z-20 mx-auto px-4 py-20 flex-1 flex items-center">
         <div className="max-w-2xl">
           {/* Headline */}
           <motion.h1 
@@ -66,9 +75,9 @@ const Hero = () => {
             className="flex gap-12 mt-16 pt-8 border-t border-primary-foreground/20"
           >
             {[
-              { value: "8+", label: "Chapters" },
-              { value: "200+", label: "Interviews" },
-              { value: "5,000+", label: "Students" },
+              { value: "8+", label: "Countries" },
+              { value: "20+", label: "Members" },
+              { value: "∞", label: "Possibilities" },
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label}
@@ -83,6 +92,44 @@ const Hero = () => {
                   {stat.label}
                 </div>
               </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Partner Conveyor Belt */}
+      <div className="relative z-20 w-full overflow-hidden py-8 border-t border-primary-foreground/10">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3 }}
+          className="text-center text-sm text-primary-foreground/50 mb-4"
+        >
+          Trusted by organizations worldwide
+        </motion.p>
+        <div className="relative flex overflow-hidden">
+          <motion.div
+            className="flex gap-16 items-center"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              },
+            }}
+          >
+            {/* Double the partners for seamless loop */}
+            {[...partners, ...partners].map((partner, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 px-8 py-3 bg-primary-foreground/5 rounded-lg border border-primary-foreground/10"
+              >
+                <span className="text-primary-foreground/40 font-medium whitespace-nowrap">
+                  {partner}
+                </span>
+              </div>
             ))}
           </motion.div>
         </div>
