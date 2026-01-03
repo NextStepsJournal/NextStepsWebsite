@@ -42,7 +42,7 @@ const Activities = () => {
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Gradient background - same as hero */}
-      <div className="absolute inset-0 hero-overlay opacity-90" />
+      <div className="absolute inset-0 hero-overlay opacity-85" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
@@ -72,10 +72,10 @@ const Activities = () => {
               key={activity.title}
               variants={itemVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="p-6 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors"
+              className="p-8 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors"
             >
-              <activity.icon className="w-6 h-6 text-primary mb-4" />
-              <h3 className="font-semibold text-foreground text-lg mb-2">
+              <activity.icon className="w-9 h-9 text-primary mb-4" />
+              <h3 className="font-display font-bold text-[hsl(262_35%_18%)] text-2xl mb-2">
                 {activity.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">

@@ -43,7 +43,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-display-lg font-display font-semibold text-primary-foreground mb-6"
+            className="text-display-lg font-display font-semibold text-primary-foreground mb-6 mt-12 md:mt-16"
           >
             Helping Students Take Their{" "}
             <span className="italic">Next Steps</span>
@@ -80,12 +80,10 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="flex gap-12 mt-16 pt-8 border-t border-primary-foreground/20"
+            className="flex gap-12 mt-16 pt-8"
           >
             {[
-              { value: "8+", label: "Countries" },
-              { value: "20+", label: "Members" },
-              { value: "∞", label: "Possibilities" },
+
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label}
@@ -124,16 +122,13 @@ const Hero = () => {
               className="flex gap-16 items-center px-8"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
+                duration: 50,
+                ease: "linear",
+                repeat: Infinity,
               }}
             >
               {/* Double the universities for seamless loop */}
-              {[...universities, ...universities].map((uni, index) => (
+              {[...universities, ...universities, ...universities, ...universities].map((uni, index) => (
                 <div
                   key={index}
                   className="flex-shrink-0 flex items-center justify-center h-20 w-40"

@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const links = {
-    Organization: ["About", "Journal", "Leadership"],
+    Organization: ["About", "Journal", "Leadership", "Partners"],
     Resources: ["Chapter Toolkit"],
     Involve: ["Start a Chapter", "Volunteer", "Partner", "Donate", "Careers"],
   };
@@ -15,8 +15,8 @@ const Footer = () => {
   const socials = [
     { icon: FaInstagram, label: "Instagram", href: "https://instagram.com/nextstepsjournal" },
     { icon: FaTiktok, label: "TikTok", href: "https://tiktok.com/@nextstepsjournal" },
-    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://linkedin.com/company/nextstepsjournal" },
-    { icon: IoMail, label: "Email", href: "mailto:nextstepsjournal@gmail.com" },
+    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://linkedin.com/company/next-steps-journal" },
+    { icon: IoMail, label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=nextstepsjournal@gmail.com" },
   ];
 
   return (

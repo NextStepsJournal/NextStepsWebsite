@@ -69,7 +69,7 @@ const Values = () => {
               >
                 <value.icon className="w-10 h-10 text-primary" />
               </motion.div>
-              <h3 className="font-semibold text-foreground text-xl mb-2">
+              <h3 className="font-display font-bold text-[hsl(262_35%_18%)] text-2xl mb-2">
                 {value.title}
               </h3>
               <p className="text-muted-foreground text-base">
