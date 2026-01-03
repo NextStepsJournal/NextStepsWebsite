@@ -3,44 +3,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { useEffect } from "react";
+import { Linkedin } from "lucide-react";
 
-const teamMembers = [
-  {
-    name: "Sarah Mitchell",
-    role: "Executive Director",
-    bio: "With over 15 years in youth development, Sarah leads our mission to empower the next generation through mentorship and guidance.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face"
-  },
-  {
-    name: "Marcus Johnson",
-    role: "Program Coordinator",
-    bio: "Marcus designs and implements our mentorship programs, ensuring every participant receives personalized support.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "Youth Outreach Specialist",
-    bio: "Elena connects with local schools and communities to bring our programs to those who need them most.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face"
-  },
-  {
-    name: "David Chen",
-    role: "Lead Mentor",
-    bio: "A former program participant, David now guides youth through their educational and career journeys.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
-  },
-  {
-    name: "Aisha Williams",
-    role: "Community Relations Manager",
-    bio: "Aisha builds partnerships with local businesses and organizations to expand our impact and resources.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face"
-  },
-  {
-    name: "James Thompson",
-    role: "Volunteer Coordinator",
-    bio: "James recruits, trains, and supports our amazing volunteer mentors who make our programs possible.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face"
-  }
+const leadershipRoles = [
+  "Founder",
+  "Associate Founder & Director of Technology",
+  "Director of Operations",
+  "Director of Outreach",
+  "Director of Marketing",
+  "Director of Finances",
+  "Director of Human Resources",
+  "Director of Editorial & Research"
 ];
 
 const containerVariants = {
@@ -83,7 +56,7 @@ const TeamPage = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Meet Our Team
+                Our Leadership
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground">
                 Dedicated professionals and mentors committed to guiding youth toward their brightest futures.
@@ -92,7 +65,7 @@ const TeamPage = () => {
           </div>
         </section>
 
-        {/* Team Grid */}
+        {/* Leadership Grid */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
@@ -100,35 +73,49 @@ const TeamPage = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
             >
-              {teamMembers.map((member) => (
+              {leadershipRoles.map((role, index) => (
                 <motion.div
-                  key={member.name}
+                  key={role}
                   variants={itemVariants}
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                   className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="aspect-square overflow-hidden">
-                    <motion.img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
-                    />
+                  {/* Placeholder Image */}
+                  <div className="aspect-[4/3] bg-muted flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-muted-foreground/20" />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-foreground mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary font-medium mb-3">
-                      {member.role}
-                    </p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {member.bio}
-                    </p>
+                  
+                  <div className="p-5">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        {/* Name Placeholder */}
+                        <div className="h-5 bg-muted-foreground/20 rounded w-32 mb-2" />
+                        {/* Role */}
+                        <p className="text-primary font-medium text-sm">
+                          {role}
+                        </p>
+                      </div>
+                      
+                      {/* LinkedIn Icon */}
+                      <motion.a
+                        href="#"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex-shrink-0 w-9 h-9 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                        aria-label="LinkedIn profile"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </motion.a>
+                    </div>
+                    
+                    {/* Bio Placeholder */}
+                    <div className="mt-3 space-y-2">
+                      <div className="h-3 bg-muted-foreground/10 rounded w-full" />
+                      <div className="h-3 bg-muted-foreground/10 rounded w-4/5" />
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -147,7 +134,7 @@ const TeamPage = () => {
               className="text-center max-w-2xl mx-auto"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Want to Join Our Team?
+                Want to Join Our Leadership?
               </h2>
               <p className="text-muted-foreground mb-8">
                 We're always looking for passionate individuals who want to make a difference in young people's lives.
