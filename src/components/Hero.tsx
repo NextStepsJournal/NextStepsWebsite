@@ -66,7 +66,7 @@ const Hero = () => {
             className="flex gap-12 mt-16 pt-8 border-t border-primary-foreground/20"
           >
             {[
-              { value: "50+", label: "Chapters" },
+              { value: "8+", label: "Chapters" },
               { value: "200+", label: "Interviews" },
               { value: "5,000+", label: "Students" },
             ].map((stat, index) => (
