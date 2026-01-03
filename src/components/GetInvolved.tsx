@@ -2,17 +2,29 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ImageWithLoader from "@/components/ImageWithLoader";
+import handsImage from "@/assets/hands-circle.jpg";
 
 const GetInvolved = () => {
   return (
     <section
       id="involved"
-      className="relative py-24 overflow-hidden flex items-center"
+      className="relative py-24 overflow-hidden flex items-center min-h-[60vh]"
     >
-      {/* Gradient background - same as hero */}
-      <div className="absolute inset-0 hero-overlay opacity-95" />
+      {/* Gradient background */}
+      <div className="absolute inset-0 hero-overlay z-0" />
       
-      <div className="container mx-auto px-4 relative z-10 flex justify-center">
+      {/* Background image with same opacity as hero */}
+      <div className="absolute inset-0 z-10">
+        <ImageWithLoader
+          src={handsImage}
+          alt="Hands coming together in unity"
+          className="w-full h-full object-cover opacity-20"
+          containerClassName="w-full h-full"
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-20 flex justify-center">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
