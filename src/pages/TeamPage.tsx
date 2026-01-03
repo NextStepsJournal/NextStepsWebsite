@@ -92,14 +92,14 @@ const TeamPage = () => {
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1 min-w-0">
                         {/* Name Placeholder */}
-                        <div className="h-4 bg-muted-foreground/20 rounded w-24 mb-2" />
+                        <p className="text-sm font-semibold text-foreground mb-1">Name</p>
                         {/* Role */}
                         <p className="text-primary font-medium text-xs leading-tight">
                           {role}
                         </p>
                       </div>
                       
-                      {/* LinkedIn Icon */}
+                      {/* LinkedIn Icon - Filled */}
                       <motion.a
                         href="#"
                         whileHover={{ scale: 1.1 }}
@@ -107,15 +107,12 @@ const TeamPage = () => {
                         className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
                         aria-label="LinkedIn profile"
                       >
-                        <Linkedin className="w-4 h-4" />
+                        <Linkedin className="w-4 h-4" fill="currentColor" strokeWidth={0} />
                       </motion.a>
                     </div>
                     
                     {/* Bio Placeholder */}
-                    <div className="mt-3 space-y-1.5">
-                      <div className="h-2.5 bg-muted-foreground/10 rounded w-full" />
-                      <div className="h-2.5 bg-muted-foreground/10 rounded w-4/5" />
-                    </div>
+                    <p className="mt-3 text-xs text-muted-foreground">Bio</p>
                   </div>
                 </motion.div>
               ))}
