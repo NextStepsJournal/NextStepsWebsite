@@ -14,9 +14,9 @@ const ImageWithLoader = ({ src, alt, className, containerClassName }: ImageWithL
 
   return (
     <div className={cn("relative overflow-hidden", containerClassName)}>
-      {/* Skeleton loader */}
+      {/* Skeleton loader - transparent for hero sections */}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-muted animate-pulse" />
+        <div className="absolute inset-0 bg-foreground/5 animate-pulse" />
       )}
       
       {/* Actual image */}
@@ -24,7 +24,7 @@ const ImageWithLoader = ({ src, alt, className, containerClassName }: ImageWithL
         src={src}
         alt={alt}
         className={cn(className, "transition-opacity duration-500")}
-        style={{ opacity: isLoaded ? 1 : 0 }}
+        style={{ opacity: isLoaded ? undefined : 0 }}
         onLoad={() => setIsLoaded(true)}
         initial={{ scale: 1.05 }}
         animate={{ scale: isLoaded ? 1 : 1.05 }}

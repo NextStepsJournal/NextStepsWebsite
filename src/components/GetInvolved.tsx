@@ -12,7 +12,7 @@ const GetInvolved = () => {
       className="relative py-24 overflow-hidden flex items-center min-h-[60vh]"
     >
       {/* Gradient background */}
-      <div className="absolute inset-0 hero-overlay z-0" />
+      <div className="absolute inset-0 hero-overlay opacity-95 z-0" />
       
       {/* Background image with same opacity as hero */}
       <div className="absolute inset-0 z-10">
