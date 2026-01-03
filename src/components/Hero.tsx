@@ -10,6 +10,7 @@ import upennLogo from "@/assets/universities/upenn.png";
 import mitLogo from "@/assets/universities/mit.png";
 import michiganLogo from "@/assets/universities/michigan.png";
 import northwesternLogo from "@/assets/universities/northwestern.png";
+import uopeopleLogo from "@/assets/universities/uopeople.png";
 
 const universities = [
   { name: "UCLA", logo: uclaLogo },
@@ -17,6 +18,7 @@ const universities = [
   { name: "MIT", logo: mitLogo },
   { name: "Michigan", logo: michiganLogo },
   { name: "Northwestern", logo: northwesternLogo },
+  { name: "University of the People", logo: uopeopleLogo },
 ];
 
 const Hero = () => {
@@ -104,42 +106,47 @@ const Hero = () => {
       </div>
 
       {/* University Conveyor Belt */}
-      <div className="relative z-20 w-full overflow-hidden py-10 bg-[hsl(270,30%,95%)]">
+      <div className="relative z-20 w-full overflow-hidden py-12">
+        {/* Title above conveyor belt */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3 }}
-          className="text-center text-sm text-foreground/70 mb-6 font-medium"
+          className="text-center text-lg text-primary-foreground font-semibold mb-8 tracking-wide"
         >
-          Backed by students accepted into
+          Backed by students accepted into:
         </motion.p>
-        <div className="relative flex overflow-hidden">
-          <motion.div
-            className="flex gap-20 items-center px-10"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
-            {/* Double the universities for seamless loop */}
-            {[...universities, ...universities].map((uni, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 flex items-center justify-center h-16 w-32"
-              >
-                <img
-                  src={uni.logo}
-                  alt={uni.name}
-                  className="max-h-14 max-w-full object-contain opacity-90 hover:opacity-100 transition-opacity"
-                />
-              </div>
-            ))}
-          </motion.div>
+        
+        {/* Light purple conveyor belt */}
+        <div className="bg-[hsl(270,30%,95%)] py-8">
+          <div className="relative flex overflow-hidden">
+            <motion.div
+              className="flex gap-16 items-center px-8"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Double the universities for seamless loop */}
+              {[...universities, ...universities].map((uni, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 flex items-center justify-center h-20 w-40"
+                >
+                  <img
+                    src={uni.logo}
+                    alt={uni.name}
+                    className="max-h-16 max-w-[140px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
