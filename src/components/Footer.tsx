@@ -7,8 +7,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const links = {
-    Organization: ["About", "Mission", "Journal", "Leadership"],
-    Resources: ["Career Guides", "Chapter Toolkit"],
+    Organization: ["About", "Journal", "Leadership"],
+    Resources: ["Chapter Toolkit"],
     Involve: ["Start a Chapter", "Volunteer", "Partner", "Donate", "Careers"],
   };
 
