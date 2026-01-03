@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { useEffect } from "react";
-import { Linkedin } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa";
 
 const leadershipRoles = [
   "Founder",
@@ -107,7 +107,7 @@ const TeamPage = () => {
                         className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
                         aria-label="LinkedIn profile"
                       >
-                        <Linkedin className="w-4 h-4" fill="currentColor" strokeWidth={0} />
+                        <FaLinkedinIn className="w-4 h-4" />
                       </motion.a>
                     </div>
                     
