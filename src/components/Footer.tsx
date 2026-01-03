@@ -1,4 +1,5 @@
 import { Instagram, Linkedin, Mail, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 import logoWhite from "@/assets/logo-white.png";
 
 const Footer = () => {
@@ -28,15 +29,20 @@ const Footer = () => {
               Career exploration through professional interviews and mentorship.
             </p>
             <div className="flex gap-3">
-              {socials.map((social) => (
-                <a
+              {socials.map((social, index) => (
+                <motion.a
                   key={social.label}
                   href="#"
                   aria-label={social.label}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
                   className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
                 >
                   <social.icon className="w-4 h-4" />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -47,9 +53,13 @@ const Footer = () => {
             <ul className="space-y-2">
               {links.Organization.map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <motion.a 
+                    href="#" 
+                    whileHover={{ x: 3 }}
+                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block"
+                  >
                     {link}
-                  </a>
+                  </motion.a>
                 </li>
               ))}
             </ul>
@@ -60,9 +70,13 @@ const Footer = () => {
             <ul className="space-y-2">
               {links.Resources.map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <motion.a 
+                    href="#" 
+                    whileHover={{ x: 3 }}
+                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block"
+                  >
                     {link}
-                  </a>
+                  </motion.a>
                 </li>
               ))}
             </ul>
@@ -73,9 +87,13 @@ const Footer = () => {
             <ul className="space-y-2">
               {links.Involve.map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <motion.a 
+                    href="#" 
+                    whileHover={{ x: 3 }}
+                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block"
+                  >
                     {link}
-                  </a>
+                  </motion.a>
                 </li>
               ))}
             </ul>

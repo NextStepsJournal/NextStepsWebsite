@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const GetInvolved = () => {
   return (
@@ -12,7 +13,13 @@ const GetInvolved = () => {
       <div className="absolute inset-0 hero-overlay opacity-95" />
       
       <div className="container mx-auto px-4 relative z-10 flex justify-center">
-        <div className="max-w-2xl text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="max-w-2xl text-center"
+        >
           {/* Header */}
           <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             Join the Movement
@@ -25,18 +32,23 @@ const GetInvolved = () => {
           </p>
           
           {/* Single CTA Button */}
-          <Button 
-            variant="hero-primary" 
-            size="lg" 
-            className="group"
-            asChild
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <Link to="/get-involved">
-              Start Here
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </Button>
-        </div>
+            <Button 
+              variant="hero-primary" 
+              size="lg" 
+              className="group"
+              asChild
+            >
+              <Link to="/get-involved">
+                Start Here
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
