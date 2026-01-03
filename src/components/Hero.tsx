@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-students.jpg";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 const Hero = () => {
   return (
@@ -9,13 +10,11 @@ const Hero = () => {
       {/* Background layers: gradient under a semi-opaque photo */}
       <div className="absolute inset-0 hero-overlay z-0" />
       <div className="absolute inset-0 z-10">
-        <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+        <ImageWithLoader
           src={heroImage}
           alt="Students collaborating"
           className="w-full h-full object-cover opacity-20"
+          containerClassName="w-full h-full"
         />
       </div>
 

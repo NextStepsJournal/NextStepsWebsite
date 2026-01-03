@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
 const opportunities = [
   {
@@ -57,6 +58,11 @@ const GetInvolvedPage = () => {
   const [imageOpacity, setImageOpacity] = useState(0);
   const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleMouseEnter = (index: number) => {
     setHoveredIndex(index);
     
@@ -87,6 +93,7 @@ const GetInvolvedPage = () => {
   };
 
   return (
+    <PageTransition>
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
@@ -172,6 +179,7 @@ const GetInvolvedPage = () => {
       </main>
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 

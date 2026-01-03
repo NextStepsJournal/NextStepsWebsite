@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import aboutImage from "@/assets/about-mentorship.jpg";
+import ImageWithLoader from "@/components/ImageWithLoader";
 
 const About = () => {
   return (
@@ -49,10 +50,11 @@ const About = () => {
             className="relative"
           >
             <div className="rounded-lg overflow-hidden aspect-square">
-              <img 
+              <ImageWithLoader
                 src={aboutImage} 
                 alt="Students in a mentorship session" 
                 className="w-full h-full object-cover"
+                containerClassName="w-full h-full"
               />
             </div>
             {/* Decorative element */}
