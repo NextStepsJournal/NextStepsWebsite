@@ -55,17 +55,17 @@ const TeamPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Our Leadership
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground">
+              <p className="text-lg md:text-xl text-primary-foreground/80">
                 Dedicated professionals and mentors committed to guiding youth toward their brightest futures.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Leadership Grid */}
+        {/* Leadership Grid - 4 columns x 2 rows */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
@@ -73,9 +73,9 @@ const TeamPage = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             >
-              {leadershipRoles.map((role, index) => (
+              {leadershipRoles.map((role) => (
                 <motion.div
                   key={role}
                   variants={itemVariants}
@@ -84,17 +84,17 @@ const TeamPage = () => {
                   className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300"
                 >
                   {/* Placeholder Image */}
-                  <div className="aspect-[4/3] bg-muted flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-muted-foreground/20" />
+                  <div className="aspect-square bg-muted flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-muted-foreground/20" />
                   </div>
                   
-                  <div className="p-5">
-                    <div className="flex items-center justify-between gap-3">
+                  <div className="p-4">
+                    <div className="flex items-start justify-between gap-2">
                       <div className="flex-1 min-w-0">
                         {/* Name Placeholder */}
-                        <div className="h-5 bg-muted-foreground/20 rounded w-32 mb-2" />
+                        <div className="h-4 bg-muted-foreground/20 rounded w-24 mb-2" />
                         {/* Role */}
-                        <p className="text-primary font-medium text-sm">
+                        <p className="text-primary font-medium text-xs leading-tight">
                           {role}
                         </p>
                       </div>
@@ -104,7 +104,7 @@ const TeamPage = () => {
                         href="#"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex-shrink-0 w-9 h-9 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                        className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
                         aria-label="LinkedIn profile"
                       >
                         <Linkedin className="w-4 h-4" />
@@ -112,9 +112,9 @@ const TeamPage = () => {
                     </div>
                     
                     {/* Bio Placeholder */}
-                    <div className="mt-3 space-y-2">
-                      <div className="h-3 bg-muted-foreground/10 rounded w-full" />
-                      <div className="h-3 bg-muted-foreground/10 rounded w-4/5" />
+                    <div className="mt-3 space-y-1.5">
+                      <div className="h-2.5 bg-muted-foreground/10 rounded w-full" />
+                      <div className="h-2.5 bg-muted-foreground/10 rounded w-4/5" />
                     </div>
                   </div>
                 </motion.div>
