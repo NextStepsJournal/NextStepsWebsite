@@ -1,10 +1,19 @@
+import { motion } from "framer-motion";
+import aboutImage from "@/assets/about-mentorship.jpg";
+
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-background">
+    <section id="about" className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Content */}
-          <div className="space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+            className="space-y-6"
+          >
             <p className="text-sm font-medium text-primary uppercase tracking-wide">
               About NextSteps
             </p>
@@ -29,12 +38,26 @@ const About = () => {
                 Landon Mahler, Founder
               </footer>
             </blockquote>
-          </div>
+          </motion.div>
 
-          {/* Right - Image Placeholder */}
-          <div className="bg-muted rounded-lg aspect-square flex items-center justify-center">
-            <span className="text-muted-foreground text-sm">Image Placeholder</span>
-          </div>
+          {/* Right - Image */}
+          <motion.div 
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="rounded-lg overflow-hidden aspect-square">
+              <img 
+                src={aboutImage} 
+                alt="Students in a mentorship session" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Decorative element */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-lg -z-10" />
+          </motion.div>
         </div>
       </div>
     </section>

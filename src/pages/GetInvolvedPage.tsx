@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { BookMarked, HandHeart, Mic2, PenTool } from "lucide-react";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -29,6 +30,26 @@ const opportunities = [
     image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&auto=format&fit=crop",
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 const GetInvolvedPage = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -86,7 +107,12 @@ const GetInvolvedPage = () => {
 
           <div className="container mx-auto px-4 relative z-20 flex flex-col items-center text-center">
             {/* Header */}
-            <div className="max-w-2xl mb-12 text-center mx-auto">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="max-w-2xl mb-12 text-center mx-auto"
+            >
               <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
                 Join the Movement
               </p>
@@ -96,20 +122,31 @@ const GetInvolvedPage = () => {
               <p className="mt-4 text-xl text-primary-foreground/85 leading-relaxed">
                 There are many ways to contribute to our mission. Choose how you'd like to make an impact.
               </p>
-            </div>
+            </motion.div>
 
             {/* Opportunities - cards as buttons with hover effects */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+            >
               {opportunities.map((opp, index) => (
-                <div
+                <motion.div
                   key={opp.title}
+                  variants={cardVariants}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
                   className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="w-14 h-14 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <motion.div 
+                    animate={hoveredIndex === index ? { scale: 1.1 } : { scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-14 h-14 mb-4 flex items-center justify-center"
+                  >
                     <opp.icon className="w-14 h-14 text-primary" />
-                  </div>
+                  </motion.div>
                   <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
                     {opp.title}
                   </h3>
@@ -127,9 +164,9 @@ const GetInvolvedPage = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
