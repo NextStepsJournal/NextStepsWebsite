@@ -4,13 +4,19 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-students.jpg";
 import ImageWithLoader from "@/components/ImageWithLoader";
 
-const partners = [
-  "Partner 1",
-  "Partner 2", 
-  "Partner 3",
-  "Partner 4",
-  "Partner 5",
-  "Partner 6",
+// University logos
+import uclaLogo from "@/assets/universities/ucla.png";
+import upennLogo from "@/assets/universities/upenn.png";
+import mitLogo from "@/assets/universities/mit.png";
+import michiganLogo from "@/assets/universities/michigan.png";
+import northwesternLogo from "@/assets/universities/northwestern.png";
+
+const universities = [
+  { name: "UCLA", logo: uclaLogo },
+  { name: "UPenn", logo: upennLogo },
+  { name: "MIT", logo: mitLogo },
+  { name: "Michigan", logo: michiganLogo },
+  { name: "Northwestern", logo: northwesternLogo },
 ];
 
 const Hero = () => {
@@ -97,38 +103,40 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Partner Conveyor Belt */}
-      <div className="relative z-20 w-full overflow-hidden py-8 border-t border-primary-foreground/10">
+      {/* University Conveyor Belt */}
+      <div className="relative z-20 w-full overflow-hidden py-10 bg-[hsl(270,30%,95%)]">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3 }}
-          className="text-center text-sm text-primary-foreground/50 mb-4"
+          className="text-center text-sm text-foreground/70 mb-6 font-medium"
         >
-          Trusted by organizations worldwide
+          Backed by students accepted into
         </motion.p>
         <div className="relative flex overflow-hidden">
           <motion.div
-            className="flex gap-16 items-center"
+            className="flex gap-20 items-center px-10"
             animate={{ x: ["0%", "-50%"] }}
             transition={{
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 20,
+                duration: 25,
                 ease: "linear",
               },
             }}
           >
-            {/* Double the partners for seamless loop */}
-            {[...partners, ...partners].map((partner, index) => (
+            {/* Double the universities for seamless loop */}
+            {[...universities, ...universities].map((uni, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 px-8 py-3 bg-primary-foreground/5 rounded-lg border border-primary-foreground/10"
+                className="flex-shrink-0 flex items-center justify-center h-16 w-32"
               >
-                <span className="text-primary-foreground/40 font-medium whitespace-nowrap">
-                  {partner}
-                </span>
+                <img
+                  src={uni.logo}
+                  alt={uni.name}
+                  className="max-h-14 max-w-full object-contain opacity-90 hover:opacity-100 transition-opacity"
+                />
               </div>
             ))}
           </motion.div>
