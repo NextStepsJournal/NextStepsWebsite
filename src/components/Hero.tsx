@@ -21,50 +21,66 @@ const universities = [
   { name: "University of the People", logo: uopeopleLogo },
 ];
 
+const stats = [
+  { value: "8+", label: "Countries" },
+  { value: "20+", label: "Members" },
+  { value: "∞", label: "Possibilities" },
+];
+
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pt-16">
-      {/* Background layers: gradient under a semi-opaque photo */}
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-18">
+      {/* Background: gradient + image */}
       <div className="absolute inset-0 hero-overlay z-0" />
       <div className="absolute inset-0 z-10">
         <ImageWithLoader
           src={heroImage}
           alt="Students collaborating"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-15"
           containerClassName="w-full h-full"
         />
       </div>
 
       {/* Content */}
-      <div className="container relative z-20 mx-auto px-4 py-20 flex-1 flex items-center">
+      <div className="container relative z-20 mx-auto px-6 py-24 flex-1 flex items-center">
         <div className="max-w-2xl">
-          {/* Headline */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-display-lg font-display font-semibold text-primary-foreground mb-6 mt-12 md:mt-16"
-          >
-            Helping Students Take Their{" "}
-            <span className="italic">Next Steps</span>
-          </motion.h1>
-
-          {/* Subheadline - tighter copy */}
+          {/* Eyebrow */}
           <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-xl text-primary-foreground/85 mb-10 leading-relaxed max-w-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-primary-foreground/70 text-sm uppercase tracking-[0.2em] mb-6"
           >
-            Career exploration through professional interviews and mentorship prioritizing under-resourced communities.
+            Student-Led Publication
           </motion.p>
 
-          {/* CTA - clear hierarchy */}
+          {/* Headline - Large, editorial serif */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-primary-foreground leading-[1.05] mb-8"
+          >
+            Helping Students Take Their{" "}
+            <em className="not-italic text-primary-foreground/90">Next Steps</em>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p 
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-xl text-primary-foreground/80 mb-12 leading-relaxed max-w-lg"
+          >
+            Career exploration through professional interviews and mentorship—prioritizing under-resourced communities.
+          </motion.p>
+
+          {/* CTAs */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="flex flex-wrap gap-3"
+            className="flex flex-wrap gap-4"
           >
             <Button variant="hero-primary" size="lg" className="group">
               Get Started 
@@ -75,28 +91,24 @@ const Hero = () => {
             </Button>
           </motion.div>
 
-          {/* Stats - using monospace for numbers */}
+          {/* Stats */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="flex gap-12 mt-16 pt-8"
+            className="flex gap-12 mt-20 pt-8 border-t border-primary-foreground/20"
           >
-          {[
-              { value: "8+", label: "Countries" },
-              { value: "20+", label: "Members" },
-              { value: "∞", label: "Possibilities" },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div 
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1 + index * 0.15 }}
+                transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
               >
-                <div className="text-3xl font-mono-nums font-medium text-primary-foreground">
+                <div className="text-3xl font-display font-medium text-primary-foreground">
                   {stat.value}
                 </div>
-                <div className="text-sm text-primary-foreground/60 mt-1">
+                <div className="text-sm text-primary-foreground/60 mt-1 tracking-wide">
                   {stat.label}
                 </div>
               </motion.div>
@@ -106,39 +118,38 @@ const Hero = () => {
       </div>
 
       {/* University Conveyor Belt */}
-      <div className="relative z-20 w-full overflow-hidden py-12">
-        {/* Title above conveyor belt */}
+      <div className="relative z-20 w-full overflow-hidden">
+        {/* Title */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.3 }}
-          className="text-center text-lg text-primary-foreground font-semibold mb-8 tracking-wide"
+          transition={{ delay: 1.2 }}
+          className="text-center text-sm text-primary-foreground/80 uppercase tracking-[0.15em] mb-6"
         >
-          Backed by students accepted into:
+          Backed by students accepted into
         </motion.p>
         
-        {/* Light purple conveyor belt */}
-        <div className="bg-background py-8">
+        {/* Conveyor */}
+        <div className="bg-background py-10">
           <div className="relative flex overflow-hidden">
             <motion.div
-              className="flex gap-16 items-center px-8"
+              className="flex gap-20 items-center px-10"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
-                duration: 50,
+                duration: 40,
                 ease: "linear",
                 repeat: Infinity,
               }}
             >
-              {/* Double the universities for seamless loop */}
               {[...universities, ...universities, ...universities, ...universities].map((uni, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 flex items-center justify-center h-20 w-40"
+                  className="flex-shrink-0 flex items-center justify-center h-16 w-36"
                 >
                   <img
                     src={uni.logo}
                     alt={uni.name}
-                    className="max-h-16 max-w-[140px] object-contain opacity-90 hover:opacity-100 transition-opacity"
+                    className="max-h-14 max-w-[130px] object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
                   />
                 </div>
               ))}

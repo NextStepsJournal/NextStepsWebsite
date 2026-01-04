@@ -8,31 +8,30 @@ const Header = () => {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Leadership", href: "/team" },
     { label: "Journal", href: "/" },
-    { label: "Partners", href: "/" },
+    { label: "Leadership", href: "/team" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-6">
+        <nav className="flex items-center justify-between h-18">
           {/* Logo */}
           <a href="/" className="flex items-center">
             <img 
               src={logo} 
               alt="NextSteps" 
-              className="h-14 w-auto"
+              className="h-12 w-auto"
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Editorial minimal style */}
+          <ul className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                  className="text-muted-foreground hover:text-foreground text-sm tracking-wide transition-colors"
                 >
                   {link.label}
                 </a>
@@ -41,10 +40,13 @@ const Header = () => {
           </ul>
 
           {/* CTA - Single primary action */}
-          <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">
+          <div className="hidden md:flex items-center gap-4">
+            <a 
+              href="#" 
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Donate
-            </Button>
+            </a>
             <Button variant="default" size="default" asChild>
               <a href="/get-involved">Get Involved</a>
             </Button>
@@ -62,13 +64,13 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <ul className="flex flex-col gap-2 mb-4">
+          <div className="md:hidden py-6 border-t border-border">
+            <ul className="flex flex-col gap-1 mb-6">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="block py-2 text-muted-foreground hover:text-foreground text-sm font-medium"
+                    className="block py-3 text-foreground text-base"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -76,10 +78,10 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-col gap-2">
-              <Button variant="ghost" className="w-full justify-start">
+            <div className="flex flex-col gap-3 pt-4 border-t border-border">
+              <a href="#" className="text-sm text-muted-foreground py-2">
                 Donate
-              </Button>
+              </a>
               <Button variant="default" className="w-full" asChild>
                 <a href="/get-involved">Get Involved</a>
               </Button>

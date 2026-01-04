@@ -9,48 +9,28 @@ const opportunities = [
   {
     icon: PenTool,
     title: "Volunteer",
-    description: "Become a chapter leader, join a local team, or contribute your skills in a volunteer role. Help us empower students to discover their career paths.",
+    description: "Become a chapter leader, join a local team, or contribute your skills in a volunteer role.",
     image: "/images/get-involved/volunteer.jpg",
   },
   {
     icon: Mic2,
     title: "Be Interviewed",
-    description: "Share your career journey with students. Your story could inspire the next generation and help them see possibilities they never knew existed.",
+    description: "Share your career journey with students. Your story could inspire the next generation.",
     image: "/images/get-involved/interview.jpg",
   },
   {
     icon: BookMarked,
     title: "Partner",
-    description: "Collaborate with NextSteps as an organization. Whether you're a school, company, or nonprofit, together we can expand access to career guidance.",
+    description: "Collaborate with NextSteps as an organization to expand access to career guidance.",
     image: "/images/get-involved/partner.jpg",
   },
   {
     icon: HandHeart,
     title: "Donate",
-    description: "Support our mission to provide career clarity to students everywhere. Your contribution helps us create resources, train chapter leaders, and reach more students.",
+    description: "Support our mission to provide career clarity to students everywhere.",
     image: "/images/get-involved/donate.jpg",
   },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
 
 const GetInvolvedPage = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -58,7 +38,6 @@ const GetInvolvedPage = () => {
   const [imageOpacity, setImageOpacity] = useState(0);
   const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -66,119 +45,105 @@ const GetInvolvedPage = () => {
   const handleMouseEnter = (index: number) => {
     setHoveredIndex(index);
     
-    // Clear any pending fade out
     if (fadeTimeoutRef.current) {
       clearTimeout(fadeTimeoutRef.current);
       fadeTimeoutRef.current = null;
     }
     
-    // Set image and fade in
     setCurrentImage(opportunities[index].image);
-    // Small delay to ensure image is set before fading in
     requestAnimationFrame(() => {
-      setImageOpacity(0.5);
+      setImageOpacity(0.4);
     });
   };
 
   const handleMouseLeave = () => {
     setHoveredIndex(null);
-    
-    // Fade out first
     setImageOpacity(0);
     
-    // Clear image after fade completes
     fadeTimeoutRef.current = setTimeout(() => {
       setCurrentImage(null);
-    }, 600);
+    }, 500);
   };
 
   return (
     <PageTransition>
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <section className="relative min-h-screen py-24 overflow-hidden flex items-center">
-          {/* Gradient sits below the pictures */}
-          <div className="absolute inset-0 hero-overlay z-0 opacity-90" />
-          
-          {/* Background image that fades in/out smoothly */}
-          <div 
-            className="absolute inset-0 z-10 transition-opacity duration-[600ms] ease-in-out"
-            style={{
-              backgroundImage: currentImage ? `url(${currentImage})` : "none",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: imageOpacity,
-            }}
-          />
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <section className="relative min-h-screen py-32 overflow-hidden flex items-center">
+            {/* Gradient background */}
+            <div className="absolute inset-0 hero-overlay z-0" />
+            
+            {/* Background image */}
+            <div 
+              className="absolute inset-0 z-10 transition-opacity duration-500 ease-out"
+              style={{
+                backgroundImage: currentImage ? `url(${currentImage})` : "none",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                opacity: imageOpacity,
+              }}
+            />
 
-          <div className="container mx-auto px-4 relative z-20 flex flex-col items-center text-center">
-            {/* Header */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="max-w-2xl mb-12 text-center mx-auto"
-            >
-              <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
-                Join the Movement
-              </p>
-              <h1 className="text-display-lg font-display font-semibold text-primary-foreground">
-                Get Involved
-              </h1>
-              <p className="mt-4 text-xl text-primary-foreground/85 leading-relaxed">
-                There are many ways to contribute to our mission. Choose how you'd like to make an impact.
-              </p>
-            </motion.div>
+            <div className="container mx-auto px-6 relative z-20 flex flex-col items-center text-center">
+              {/* Header */}
+              <motion.div 
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="max-w-xl mb-16"
+              >
+                <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-4">
+                  Join the Movement
+                </p>
+                <h1 className="font-display text-5xl md:text-6xl font-medium text-primary-foreground mb-6">
+                  Get Involved
+                </h1>
+                <p className="text-xl text-primary-foreground/80 leading-relaxed">
+                  There are many ways to contribute to our mission. Choose how you'd like to make an impact.
+                </p>
+              </motion.div>
 
-            {/* Opportunities - cards as buttons with hover effects */}
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-2 lg:grid-cols-4 gap-4"
-            >
-              {opportunities.map((opp, index) => (
-                <motion.div
-                  key={opp.title}
-                  variants={cardVariants}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <motion.div 
-                    animate={hoveredIndex === index ? { scale: 1.1 } : { scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-14 h-14 mb-4 flex items-center justify-center"
+              {/* Opportunities Grid */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl">
+                {opportunities.map((opp, index) => (
+                  <motion.div
+                    key={opp.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    className="aspect-square p-8 bg-background border border-border hover:border-primary/30 transition-all duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    <opp.icon className="w-14 h-14 text-primary" />
-                  </motion.div>
-                  <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
-                    {opp.title}
-                  </h3>
-                  
-                  {/* Description that unfolds on hover */}
-                  <div 
-                    className="grid transition-all duration-500 ease-in-out w-full"
-                    style={{
-                      gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <p className="text-base text-muted-foreground leading-relaxed pt-4">
-                        {opp.description}
-                      </p>
+                    <div className="mb-4">
+                      <opp.icon className="w-10 h-10 text-primary group-hover:text-secondary transition-colors" />
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+                    <h3 className="font-display text-xl font-medium text-foreground mb-2">
+                      {opp.title}
+                    </h3>
+                    
+                    {/* Description that unfolds on hover */}
+                    <div 
+                      className="grid transition-all duration-400 ease-out w-full"
+                      style={{
+                        gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="text-sm text-muted-foreground leading-relaxed pt-3">
+                          {opp.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
     </PageTransition>
   );
 };
