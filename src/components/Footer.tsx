@@ -13,10 +13,10 @@ const Footer = () => {
   };
 
   const socials = [
-    { icon: FaInstagram, label: "Instagram", href: "https://instagram.com/nextstepsjournal" },
-    { icon: FaTiktok, label: "TikTok", href: "https://tiktok.com/@nextstepsjournal" },
-    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://linkedin.com/company/next-steps-journal" },
-    { icon: IoMail, label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=nextstepsjournal@gmail.com" },
+    { icon: FaInstagram, label: "Instagram", href: "https://instagram.com/nextstepsjournal", external: true },
+    { icon: FaTiktok, label: "TikTok", href: "https://tiktok.com/@nextstepsjournal", external: true },
+    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://linkedin.com/company/next-steps-journal", external: true },
+    { icon: IoMail, label: "Contact", href: "/contact", external: false },
   ];
 
   return (
@@ -34,8 +34,8 @@ const Footer = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  target={social.href.startsWith("mailto") ? undefined : "_blank"}
-                  rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                  target={social.external ? "_blank" : undefined}
+                  rel={social.external ? "noopener noreferrer" : undefined}
                   aria-label={social.label}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}

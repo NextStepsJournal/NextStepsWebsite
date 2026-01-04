@@ -10,25 +10,25 @@ const opportunities = [
     icon: PenTool,
     title: "Volunteer",
     description: "Become a chapter leader, join a local team, or contribute your skills in a volunteer role. Help us empower students to discover their career paths.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop",
+    image: "/images/get-involved/volunteer.jpg",
   },
   {
     icon: Mic2,
     title: "Be Interviewed",
     description: "Share your career journey with students. Your story could inspire the next generation and help them see possibilities they never knew existed.",
-    image: "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=1200&auto=format&fit=crop",
+    image: "/images/get-involved/interview.jpg",
   },
   {
     icon: BookMarked,
     title: "Partner",
     description: "Collaborate with NextSteps as an organization. Whether you're a school, company, or nonprofit, together we can expand access to career guidance.",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&auto=format&fit=crop",
+    image: "/images/get-involved/partner.jpg",
   },
   {
     icon: HandHeart,
     title: "Donate",
     description: "Support our mission to provide career clarity to students everywhere. Your contribution helps us create resources, train chapter leaders, and reach more students.",
-    image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200&auto=format&fit=crop",
+    image: "/images/get-involved/donate.jpg",
   },
 ];
 
