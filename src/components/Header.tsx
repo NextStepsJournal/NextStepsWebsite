@@ -3,14 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Calculate progress from 0 to 1 over the first 80px of scroll
+      const progress = Math.min(window.scrollY / 80, 1);
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -23,27 +26,54 @@ const Header = () => {
     { label: "Partners", href: "/" },
   ];
 
+  // Interpolate values based on scroll progress
+  const bgOpacity = scrollProgress;
+  const isScrolled = scrollProgress > 0.5;
+
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-card/95 backdrop-blur-md border-b border-border shadow-sm" 
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        transition: 'none',
+      }}
     >
-      <div className="container mx-auto px-4">
+      {/* Background layer with progressive opacity */}
+      <div 
+        className="absolute inset-0 bg-card/95 backdrop-blur-md border-b border-border shadow-sm"
+        style={{
+          opacity: bgOpacity,
+          transition: 'opacity 0.1s ease-out',
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative">
         <nav className="flex items-center justify-between h-18">
-          {/* Logo */}
+          {/* Logo with crossfade */}
           <motion.a 
             href="/" 
-            className="flex items-center"
+            className="flex items-center relative"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
+            {/* White logo (visible when transparent) */}
+            <img 
+              src={logoWhite} 
+              alt="NextSteps Journal - Student Career Exploration" 
+              className="h-12 w-auto absolute"
+              style={{
+                opacity: 1 - scrollProgress,
+                transition: 'opacity 0.1s ease-out',
+              }}
+            />
+            {/* Colored logo (visible when scrolled) */}
             <img 
               src={logo} 
               alt="NextSteps Journal - Student Career Exploration" 
               className="h-12 w-auto"
+              style={{
+                opacity: scrollProgress,
+                transition: 'opacity 0.1s ease-out',
+              }}
             />
           </motion.a>
 
@@ -53,11 +83,15 @@ const Header = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className={`text-sm font-medium transition-colors link-underline ${
-                    isScrolled 
-                      ? "text-muted-foreground hover:text-foreground" 
-                      : "text-primary-foreground/80 hover:text-primary-foreground"
-                  }`}
+                  className="text-sm font-medium transition-colors link-underline"
+                  style={{
+                    color: `hsl(var(--muted-foreground) / ${0.8 + scrollProgress * 0.2})`,
+                    opacity: 0.8 + scrollProgress * 0.2,
+                    transition: 'color 0.1s ease-out, opacity 0.1s ease-out',
+                    ...(scrollProgress < 0.5 && {
+                      color: `hsl(var(--primary-foreground) / ${0.8 + (1 - scrollProgress) * 0.2})`,
+                    }),
+                  }}
                 >
                   {link.label}
                 </a>
@@ -71,6 +105,9 @@ const Header = () => {
               variant={isScrolled ? "ghost" : "hero-secondary"} 
               size="sm"
               className={!isScrolled ? "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" : ""}
+              style={{
+                transition: 'all 0.2s ease-out',
+              }}
             >
               Donate
             </Button>
@@ -78,6 +115,9 @@ const Header = () => {
               variant={isScrolled ? "default" : "hero-primary"} 
               size="default" 
               asChild
+              style={{
+                transition: 'all 0.2s ease-out',
+              }}
             >
               <a href="/get-involved">Get Involved</a>
             </Button>
@@ -85,13 +125,13 @@ const Header = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              isScrolled 
-                ? "text-foreground hover:bg-accent" 
-                : "text-primary-foreground hover:bg-primary-foreground/10"
-            }`}
+            className="md:hidden p-2 rounded-lg transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
+            style={{
+              color: scrollProgress < 0.5 ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
+              transition: 'color 0.2s ease-out',
+            }}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
