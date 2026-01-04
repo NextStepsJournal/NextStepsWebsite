@@ -20,17 +20,18 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.8, y: 20 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.4 },
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
 
 const Values = () => {
   return (
-    <section id="mission" className="py-24 bg-background overflow-hidden">
+    <section id="mission" className="py-28 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div 
@@ -38,43 +39,61 @@ const Values = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto text-center mb-16"
+          className="section-header"
         >
-          <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
-            Our Foundation
-          </p>
-          <h2 className="text-display-lg font-display font-semibold text-foreground">
-            Core Values
-          </h2>
+          <span className="section-label">Our Foundation</span>
+          <h2 className="section-title">Core Values</h2>
         </motion.div>
 
-        {/* Values - larger icons and text */}
+        {/* Values grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-8"
+          className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6"
         >
           {values.map((value) => (
             <motion.div 
               key={value.title} 
               variants={itemVariants}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="text-center"
+              className="group text-center"
             >
               <motion.div 
-                whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
-                className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-6"
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.3 } 
+                }}
+                className="flex flex-col items-center"
               >
-                <value.icon className="w-10 h-10 text-primary" />
+                {/* Icon circle */}
+                <motion.div 
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotate: [0, -5, 5, 0],
+                    transition: { duration: 0.4 } 
+                  }}
+                  className="relative w-20 h-20 mb-6"
+                >
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Icon container */}
+                  <div className="relative w-full h-full rounded-full bg-gradient-to-br from-accent to-muted flex items-center justify-center border border-border/50 group-hover:border-primary/30 transition-colors duration-300">
+                    <value.icon className="w-9 h-9 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </motion.div>
+                
+                {/* Title */}
+                <h3 className="font-display font-semibold text-foreground text-xl mb-2 group-hover:text-primary transition-colors duration-300">
+                  {value.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-[140px] mx-auto">
+                  {value.description}
+                </p>
               </motion.div>
-              <h3 className="font-display font-bold text-[hsl(262_35%_18%)] text-2xl mb-2">
-                {value.title}
-              </h3>
-              <p className="text-muted-foreground text-base">
-                {value.description}
-              </p>
             </motion.div>
           ))}
         </motion.div>

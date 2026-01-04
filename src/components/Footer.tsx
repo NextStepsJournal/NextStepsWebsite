@@ -1,15 +1,29 @@
 import { FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const links = {
-    Organization: ["About", "Journal", "Leadership", "Partners"],
-    Resources: ["Chapter Toolkit"],
-    Involve: ["Start a Chapter", "Volunteer", "Partner", "Donate", "Careers"],
+    Organization: [
+      { label: "About", href: "#about" },
+      { label: "Journal", href: "/" },
+      { label: "Leadership", href: "/team" },
+      { label: "Partners", href: "/" },
+    ],
+    Resources: [
+      { label: "Chapter Toolkit", href: "/" },
+    ],
+    Involve: [
+      { label: "Start a Chapter", href: "/get-involved" },
+      { label: "Volunteer", href: "/get-involved" },
+      { label: "Partner", href: "/get-involved" },
+      { label: "Donate", href: "/get-involved" },
+      { label: "Careers", href: "/" },
+    ],
   };
 
   const socials = [
@@ -19,16 +33,38 @@ const Footer = () => {
     { icon: IoMail, label: "Contact", href: "/contact", external: false },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <footer className="bg-foreground text-primary-foreground">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div className="container mx-auto px-4 py-20">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
           {/* Brand */}
           <div className="col-span-2">
-            <img src={logoWhite} alt="NextSteps" className="h-16 w-auto mb-4" />
-            <p className="text-sm text-primary-foreground/60 max-w-xs mb-6">
-              Career exploration through professional interviews and mentorship.
+            <motion.img 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              src={logoWhite} 
+              alt="NextSteps Journal" 
+              className="h-14 w-auto mb-6" 
+            />
+            <p className="text-base text-primary-foreground/70 max-w-xs mb-8 leading-relaxed">
+              Career exploration through professional interviews and mentorship, prioritizing under-resourced communities.
             </p>
+            
+            {/* Social icons */}
             <div className="flex gap-3">
               {socials.map((social, index) => (
                 <motion.a
@@ -36,13 +72,13 @@ const Footer = () => {
                   href={social.href}
                   target={social.external ? "_blank" : undefined}
                   rel={social.external ? "noopener noreferrer" : undefined}
-                  aria-label={social.label}
-                  whileHover={{ y: -3 }}
+                  aria-label={`Follow NextSteps Journal on ${social.label}`}
+                  whileHover={{ y: -4, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+                  className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center hover:bg-primary transition-colors duration-300"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
@@ -50,66 +86,48 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4">Organization</h4>
-            <ul className="space-y-2">
-              {links.Organization.map((link) => (
-                <li key={link}>
-                  <motion.a 
-                    href="#" 
-                    whileHover={{ x: 3 }}
-                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block"
-                  >
-                    {link}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-4">Resources</h4>
-            <ul className="space-y-2">
-              {links.Resources.map((link) => (
-                <li key={link}>
-                  <motion.a 
-                    href="#" 
-                    whileHover={{ x: 3 }}
-                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block"
-                  >
-                    {link}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-4">Get Involved</h4>
-            <ul className="space-y-2">
-              {links.Involve.map((link) => (
-                <li key={link}>
-                  <motion.a 
-                    href="#" 
-                    whileHover={{ x: 3 }}
-                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block"
-                  >
-                    {link}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Link columns */}
+          {Object.entries(links).map(([title, items]) => (
+            <motion.div
+              key={title}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <h4 className="font-semibold text-sm mb-5 text-primary-foreground">{title}</h4>
+              <ul className="space-y-3">
+                {items.map((link) => (
+                  <motion.li key={link.label} variants={itemVariants}>
+                    <a 
+                      href={link.href} 
+                      className="group text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-flex items-center gap-1"
+                    >
+                      {link.label}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-200" />
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
 
-      {/* Bottom */}
+      {/* Bottom bar */}
       <div className="border-t border-primary-foreground/10">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-primary-foreground/50">
-            © {currentYear} NextSteps Journal
+            © {currentYear} NextSteps Journal. All rights reserved.
           </p>
+          <div className="flex gap-6">
+            <a href="/" className="text-xs text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors">
+              Privacy Policy
+            </a>
+            <a href="/" className="text-xs text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors">
+              Terms of Service
+            </a>
+          </div>
         </div>
       </div>
     </footer>

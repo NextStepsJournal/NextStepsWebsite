@@ -14,14 +14,17 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Times New Roman"', 'Times', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         body: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
+        'display-xl': ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
         'display-lg': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
         'display-md': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
-        'display-sm': ['1.75rem', { lineHeight: '1.2' }],
+        'display-sm': ['1.875rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.75' }],
+        'body-md': ['1rem', { lineHeight: '1.7' }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -71,11 +74,15 @@ export default {
       spacing: {
         '18': '4.5rem',
         '22': '5.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
       },
       keyframes: {
         "accordion-down": {
@@ -86,10 +93,49 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "slide-in-left": {
+          "0%": { opacity: "0", transform: "translateX(-20px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "slide-in-right": {
+          "0%": { opacity: "0", transform: "translateX(20px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(262 55% 52% / 0.2)" },
+          "50%": { boxShadow: "0 0 30px hsl(262 55% 52% / 0.4)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
+        "scale-in": "scale-in 0.4s ease-out forwards",
+        "slide-in-left": "slide-in-left 0.5s ease-out forwards",
+        "slide-in-right": "slide-in-right 0.5s ease-out forwards",
+        "float": "float 3s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+      },
+      transitionTimingFunction: {
+        "bounce-in": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
