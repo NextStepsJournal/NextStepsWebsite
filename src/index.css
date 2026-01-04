@@ -1,114 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=JetBrains+Mono:wght@500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* NextSteps Journal — Editorial Design System
-   Modern editorial with academic credibility.
-   Typography-driven. Calm gradients. Generous white space. */
+/* NextSteps Design System v2 - Senior UI Refinement
+   Calm, intentional, precise. Gradients reserved for hero only. */
 
 @layer base {
   :root {
-    /* Core palette */
-    --deep-purple: 262 45% 18%;
+    /* Core palette - original purple */
     --violet: 262 55% 52%;
-    --violet-muted: 262 35% 60%;
-    --coral: 24 85% 58%;
-    --coral-muted: 24 60% 70%;
+    --violet-muted: 262 30% 65%;
+    --violet-light: 270 45% 75%;
+    --coral: 20 75% 55%;
+    --coral-muted: 20 50% 70%;
     
-    /* Semantic system - light mode */
-    --background: 0 0% 100%;
-    --foreground: 262 45% 12%;
+    /* Semantic system */
+    --background: 30 15% 97%;
+    --foreground: 262 35% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 262 45% 12%;
+    --card-foreground: 262 35% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 262 45% 12%;
+    --popover-foreground: 262 35% 18%;
 
     --primary: 262 55% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 24 85% 58%;
+    --secondary: 20 75% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 260 10% 96%;
-    --muted-foreground: 262 20% 46%;
+    --muted: 30 10% 92%;
+    --muted-foreground: 262 15% 50%;
 
-    --accent: 260 15% 95%;
-    --accent-foreground: 262 45% 12%;
+    --accent: 262 25% 94%;
+    --accent-foreground: 262 35% 18%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 260 15% 90%;
-    --input: 260 15% 90%;
+    --border: 262 15% 88%;
+    --input: 262 15% 88%;
     --ring: 262 55% 52%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
-    /* Editorial gradient - atmospheric, not flashy */
-    --gradient-editorial: linear-gradient(
-      135deg, 
-      hsl(262 55% 35%) 0%, 
-      hsl(262 45% 28%) 40%,
-      hsl(24 65% 45%) 100%
-    );
+    /* Single gradient - hero only */
+    --gradient-hero: linear-gradient(135deg, hsl(262 55% 45% / 0.5) 0%, hsl(20 70% 50% / 0.5) 100%);
     
-    /* Shadows - subtle, refined */
-    --shadow-sm: 0 1px 2px hsl(262 30% 20% / 0.04);
-    --shadow-md: 0 4px 16px hsl(262 30% 20% / 0.06);
-    --shadow-lg: 0 12px 32px hsl(262 30% 20% / 0.08);
+    /* Shadows - soft, single-purpose */
+    --shadow-sm: 0 1px 3px hsl(262 20% 20% / 0.06);
+    --shadow-md: 0 4px 12px hsl(262 20% 20% / 0.08);
+    --shadow-lg: 0 8px 24px hsl(262 20% 20% / 0.1);
     
     /* Sidebar */
-    --sidebar-background: 0 0% 99%;
-    --sidebar-foreground: 262 35% 25%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 262 25% 30%;
     --sidebar-primary: 262 55% 52%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 12% 96%;
-    --sidebar-accent-foreground: 262 45% 12%;
-    --sidebar-border: 260 15% 92%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 30 10% 94%;
+    --sidebar-accent-foreground: 262 35% 18%;
+    --sidebar-border: 262 15% 88%;
     --sidebar-ring: 262 55% 52%;
   }
 
   .dark {
-    --background: 262 40% 6%;
-    --foreground: 30 10% 95%;
+    --background: 262 30% 8%;
+    --foreground: 30 15% 92%;
 
-    --card: 262 35% 10%;
-    --card-foreground: 30 10% 95%;
+    --card: 262 25% 12%;
+    --card-foreground: 30 15% 92%;
 
-    --popover: 262 35% 10%;
-    --popover-foreground: 30 10% 95%;
+    --popover: 262 25% 12%;
+    --popover-foreground: 30 15% 92%;
 
-    --primary: 262 50% 68%;
-    --primary-foreground: 262 40% 6%;
+    --primary: 262 50% 65%;
+    --primary-foreground: 262 30% 8%;
 
-    --secondary: 24 75% 62%;
-    --secondary-foreground: 262 40% 6%;
+    --secondary: 20 65% 58%;
+    --secondary-foreground: 262 30% 8%;
 
-    --muted: 262 25% 14%;
-    --muted-foreground: 260 15% 60%;
+    --muted: 262 20% 18%;
+    --muted-foreground: 30 10% 65%;
 
-    --accent: 262 25% 16%;
-    --accent-foreground: 30 10% 95%;
+    --accent: 262 20% 18%;
+    --accent-foreground: 30 15% 92%;
 
-    --destructive: 0 55% 45%;
+    --destructive: 0 55% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 262 25% 18%;
-    --input: 262 25% 18%;
-    --ring: 262 50% 68%;
+    --border: 262 20% 20%;
+    --input: 262 20% 20%;
+    --ring: 262 50% 65%;
     
-    --sidebar-background: 262 38% 8%;
-    --sidebar-foreground: 30 10% 95%;
-    --sidebar-primary: 262 50% 68%;
+    --sidebar-background: 262 28% 10%;
+    --sidebar-foreground: 30 15% 92%;
+    --sidebar-primary: 262 50% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 262 25% 14%;
-    --sidebar-accent-foreground: 30 10% 95%;
-    --sidebar-border: 262 25% 18%;
-    --sidebar-ring: 262 50% 68%;
+    --sidebar-accent: 262 20% 16%;
+    --sidebar-accent-foreground: 30 15% 92%;
+    --sidebar-border: 262 20% 20%;
+    --sidebar-ring: 262 50% 65%;
   }
 }
 
@@ -117,121 +111,71 @@
     @apply border-border;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
   body {
     @apply bg-background text-foreground font-body antialiased;
-    font-feature-settings: "kern" 1, "liga" 1;
-    text-rendering: optimizeLegibility;
   }
   
-  /* Typography hierarchy - editorial style */
   h1, h2, h3 {
-    @apply font-display tracking-tight text-foreground;
-    text-wrap: balance;
-  }
-  
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1];
-    letter-spacing: -0.025em;
-  }
-  
-  h2 {
-    @apply text-3xl md:text-4xl font-medium leading-[1.15];
-    letter-spacing: -0.02em;
-  }
-  
-  h3 {
-    @apply text-xl md:text-2xl font-medium leading-[1.25];
-    letter-spacing: -0.01em;
+    @apply font-display tracking-tight;
   }
   
   h4, h5, h6 {
-    @apply font-body font-semibold tracking-tight;
+    @apply font-body font-semibold;
   }
 
-  p {
-    @apply leading-relaxed;
-    text-wrap: pretty;
-  }
-
-  /* Editorial link style */
-  a {
-    @apply transition-colors duration-200;
-  }
-
-  /* Refined scrollbar */
+  /* Brand-aligned scrollbars */
   * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+    scrollbar-width: auto;
+    scrollbar-color: hsl(var(--secondary)) #F8F7F6;
   }
 
   *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 14px;
+    height: 14px;
   }
 
   *::-webkit-scrollbar-track {
-    background: transparent;
+    background: #F8F7F6;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.3);
-    border-radius: 4px;
+    background: hsl(var(--secondary));
+    border-radius: 9999px;
+    border: 4px solid #F8F7F6;
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.5);
+    background: hsl(var(--secondary) / 0.9);
+  }
+
+  /* Hide native scrollbar arrows; using custom in ScrollArea component */
+  *::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }
 
+
+
 @layer components {
-  /* Editorial gradient overlay - atmospheric */
   .hero-overlay {
-    background: linear-gradient(
-      135deg, 
-      hsl(262 55% 35%) 0%, 
-      hsl(262 45% 28%) 40%,
-      hsl(24 65% 45%) 100%
-    );
+    background: linear-gradient(135deg, hsl(262 55% 45%) 0%, hsl(20 70% 50%) 100%);
   }
   
-  /* Section divider - subtle horizontal rule */
-  .section-divider {
-    @apply w-16 h-px bg-border mx-auto my-16;
-  }
-  
-  /* Editorial label/eyebrow */
-  .label-eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground;
-  }
-  
-  /* Pull quote styling */
-  .pull-quote {
-    @apply font-display text-2xl md:text-3xl italic text-foreground/90 leading-relaxed;
+  .section-alt {
+    @apply bg-accent/50;
   }
 }
+
 
 @layer utilities {
   .shadow-sm { box-shadow: var(--shadow-sm); }
   .shadow-md { box-shadow: var(--shadow-md); }
   .shadow-lg { box-shadow: var(--shadow-lg); }
   
-  /* Monospace numbers for stats */
   .font-mono-nums {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum" 1;
-  }
-  
-  /* Editorial container - generous margins */
-  .container-editorial {
-    @apply max-w-4xl mx-auto px-6 md:px-8;
-  }
-  
-  /* Vertical rhythm helper */
-  .prose-rhythm > * + * {
-    @apply mt-6;
   }
 }

@@ -7,21 +7,21 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
         "2xl": "1200px",
       },
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Times New Roman"', 'Times', 'serif'],
         body: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        'display-xl': ['4rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'display-lg': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
-        'display-md': ['2.25rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-        'display-sm': ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        'display-lg': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-md': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        'display-sm': ['1.75rem', { lineHeight: '1.2' }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -71,8 +71,6 @@ export default {
       spacing: {
         '18': '4.5rem',
         '22': '5.5rem',
-        '26': '6.5rem',
-        '30': '7.5rem',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -88,15 +86,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out forwards",
       },
     },
   },

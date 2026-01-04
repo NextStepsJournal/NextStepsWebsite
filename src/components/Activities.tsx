@@ -19,42 +19,63 @@ const activities = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
 const Activities = () => {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Gradient background */}
-      <div className="absolute inset-0 hero-overlay" />
+    <section className="relative py-24 overflow-hidden">
+      {/* Gradient background - same as hero */}
+      <div className="absolute inset-0 hero-overlay opacity-85" />
       
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="max-w-xl mx-auto text-center mb-16"
+          className="max-w-2xl mx-auto text-center mb-12"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-4">
+          <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
             What We Do
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-primary-foreground">
+          <h2 className="text-display-lg font-display font-semibold text-primary-foreground">
             Our Activities
           </h2>
         </motion.div>
 
-        {/* Activities Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {activities.map((activity, index) => (
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-3 gap-6"
+        >
+          {activities.map((activity) => (
             <motion.div 
               key={activity.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-8 bg-background border border-border hover:border-primary/20 transition-colors group"
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="p-8 rounded-lg bg-card border border-border hover:border-primary/30 transition-colors"
             >
-              <activity.icon className="w-8 h-8 text-primary mb-6 group-hover:text-secondary transition-colors" />
-              <h3 className="font-display text-2xl font-medium text-foreground mb-3">
+              <activity.icon className="w-9 h-9 text-primary mb-4" />
+              <h3 className="font-display font-bold text-[hsl(262_35%_18%)] text-2xl mb-2">
                 {activity.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -62,7 +83,7 @@ const Activities = () => {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

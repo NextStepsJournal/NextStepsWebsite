@@ -36,37 +36,32 @@ const ContactPage = () => {
     <PageTransition>
       <div className="min-h-screen flex flex-col bg-background">
         <Header />
-        <main className="flex-1 pt-32 pb-24">
-          <div className="container mx-auto px-6">
-            <div className="grid gap-16 lg:grid-cols-2 max-w-5xl mx-auto">
-              <div className="space-y-6">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
-                    Contact
-                  </p>
-                  <h1 className="font-display text-4xl md:text-5xl font-medium text-foreground">
-                    Let's talk
-                  </h1>
-                </div>
-                <p className="text-muted-foreground leading-relaxed text-lg">
-                  Share a few details and our team will follow up. Messages stay within this app and are processed without exposing email addresses in the client code.
+        <main className="flex-1 pt-24 pb-16">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-10 lg:grid-cols-2">
+              <div className="space-y-4 max-w-xl">
+                <p className="text-sm font-medium text-primary">Contact</p>
+                <h1 className="text-4xl font-display font-semibold text-foreground">Let&apos;s talk</h1>
+                <p className="text-muted-foreground leading-relaxed">
+                  Share a few details and our team will follow up. Messages stay within this app and are processed
+                  without exposing email addresses in the client code.
                 </p>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li>General questions about chapters or partnerships</li>
-                  <li>Press or speaking requests</li>
-                  <li>Accessibility or privacy concerns</li>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>• General questions about chapters or partnerships</li>
+                  <li>• Press or speaking requests</li>
+                  <li>• Accessibility or privacy concerns</li>
                 </ul>
               </div>
-              
-              <Card className="border-border">
+              <Card className="shadow-lg border-border/60">
                 <CardHeader>
-                  <CardTitle className="font-display text-xl">Send a message</CardTitle>
+                  <CardTitle>Send a message</CardTitle>
                   <CardDescription>
-                    Provide contact details and a short note.
+                    Provide contact details and a short note. Connect this form to your backend or service of choice to
+                    deliver messages securely.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-5" onSubmit={handleSubmit}>
+                  <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
                       <Input
@@ -106,8 +101,8 @@ const ContactPage = () => {
                       Send
                     </Button>
                     {submitted && (
-                      <p className="text-sm text-primary" role="status" aria-live="polite">
-                        Message received. We'll be in touch soon.
+                      <p className="text-sm text-green-600" role="status" aria-live="polite">
+                        Message received. We&apos;ll be in touch soon.
                       </p>
                     )}
                   </form>
