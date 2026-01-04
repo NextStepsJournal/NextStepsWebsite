@@ -82,8 +82,10 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.9 }}
             className="flex gap-12 mt-16 pt-8"
           >
-            {[
-
+          {[
+              { value: "8+", label: "Countries" },
+              { value: "20+", label: "Members" },
+              { value: "∞", label: "Possibilities" },
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label}
@@ -116,7 +118,7 @@ const Hero = () => {
         </motion.p>
         
         {/* Light purple conveyor belt */}
-        <div className="bg-[hsl(270,30%,95%)] py-8">
+        <div className="bg-background py-8">
           <div className="relative flex overflow-hidden">
             <motion.div
               className="flex gap-16 items-center px-8"
