@@ -9,57 +9,52 @@ const GetInvolved = () => {
   return (
     <section
       id="involved"
-      className="relative py-24 overflow-hidden flex items-center min-h-[60vh]"
+      className="relative py-24 md:py-32 overflow-hidden flex items-center min-h-[50vh]"
     >
       {/* Gradient background */}
-      <div className="absolute inset-0 hero-overlay opacity-95 z-0" />
+      <div className="absolute inset-0 hero-overlay z-0" />
       
-      {/* Background image with same opacity as hero */}
+      {/* Background image */}
       <div className="absolute inset-0 z-10">
         <ImageWithLoader
           src={handsImage}
           alt="Hands coming together in unity"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-15"
           containerClassName="w-full h-full"
         />
       </div>
       
-      <div className="container mx-auto px-4 relative z-20 flex justify-center">
+      <div className="container mx-auto px-6 relative z-20 flex justify-center">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="max-w-2xl text-center"
+          className="max-w-xl text-center"
         >
           {/* Header */}
-          <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
+          <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-4">
             Join the Movement
           </p>
-          <h2 className="text-display-lg font-display font-semibold text-primary-foreground mb-6">
+          <h2 className="font-display text-4xl md:text-5xl font-medium text-primary-foreground mb-6">
             Get Involved
           </h2>
-          <p className="text-lg text-primary-foreground/85 mb-10 leading-relaxed">
+          <p className="text-lg text-primary-foreground/80 mb-10 leading-relaxed">
             There are many ways to contribute to our mission. Choose how you'd like to make an impact.
           </p>
           
-          {/* Single CTA Button */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          {/* CTA */}
+          <Button 
+            variant="hero-primary" 
+            size="lg" 
+            className="group"
+            asChild
           >
-            <Button 
-              variant="hero-primary" 
-              size="lg" 
-              className="group"
-              asChild
-            >
-              <Link to="/get-involved">
-                Start Here
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </motion.div>
+            <Link to="/get-involved">
+              Start Here
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

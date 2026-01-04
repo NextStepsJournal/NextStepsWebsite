@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { useEffect } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
 
 const leadershipRoles = [
   "Founder",
@@ -16,25 +17,6 @@ const leadershipRoles = [
   "Director of Editorial & Research"
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const }
-  }
-};
-
 const TeamPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -46,104 +28,91 @@ const TeamPage = () => {
         <Header />
         
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 overflow-hidden">
-          <div className="absolute inset-0 hero-overlay opacity-95 z-0" />
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="relative pt-32 pb-24 overflow-hidden">
+          <div className="absolute inset-0 hero-overlay z-0" />
+          <div className="container mx-auto px-6 relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto"
+              className="text-center max-w-2xl mx-auto"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-4">
+                The Team
+              </p>
+              <h1 className="font-display text-5xl md:text-6xl font-medium text-primary-foreground mb-6">
                 Our Leadership
               </h1>
-              <p className="text-lg md:text-xl text-primary-foreground/80">
+              <p className="text-xl text-primary-foreground/80 leading-relaxed">
                 Dedicated professionals and mentors committed to guiding youth toward their brightest futures.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Leadership Grid - 4 columns x 2 rows */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {leadershipRoles.map((role) => (
+        {/* Leadership Grid */}
+        <section className="py-24">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {leadershipRoles.map((role, index) => (
                 <motion.div
                   key={role}
-                  variants={itemVariants}
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="group bg-background border border-border hover:border-primary/20 transition-colors overflow-hidden"
                 >
                   {/* Placeholder Image */}
                   <div className="aspect-square bg-muted flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-muted-foreground/20" />
+                    <div className="w-20 h-20 rounded-full bg-muted-foreground/10" />
                   </div>
                   
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-2">
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        {/* Name Placeholder */}
-                        <p className="text-sm font-semibold text-foreground mb-1">Name</p>
-                        {/* Role */}
-                        <p className="text-primary font-medium text-xs leading-tight">
+                        <p className="font-display text-lg font-medium text-foreground mb-1">Name</p>
+                        <p className="text-primary text-sm">
                           {role}
                         </p>
                       </div>
                       
-                      {/* LinkedIn Icon - Filled */}
-                      <motion.a
+                      <a
                         href="#"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                        className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
                         aria-label="LinkedIn profile"
                       >
                         <FaLinkedinIn className="w-4 h-4" />
-                      </motion.a>
+                      </a>
                     </div>
                     
-                    {/* Bio Placeholder */}
-                    <p className="mt-3 text-xs text-muted-foreground">Bio</p>
+                    <p className="mt-4 text-sm text-muted-foreground leading-relaxed">Bio</p>
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Join CTA */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
+        <section className="py-24 bg-accent">
+          <div className="container mx-auto px-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-2xl mx-auto"
+              className="text-center max-w-xl mx-auto"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="font-display text-3xl md:text-4xl font-medium text-foreground mb-4">
                 Want to Join Our Leadership?
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 leading-relaxed">
                 We're always looking for passionate individuals who want to make a difference in young people's lives.
               </p>
-              <motion.a
-                href="/get-involved"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
-              >
-                Get Involved
-              </motion.a>
+              <Button variant="default" size="lg" asChild>
+                <a href="/get-involved">Get Involved</a>
+              </Button>
             </motion.div>
           </div>
         </section>

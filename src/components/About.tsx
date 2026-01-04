@@ -4,25 +4,27 @@ import ImageWithLoader from "@/components/ImageWithLoader";
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="about" className="py-24 md:py-32 bg-background overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left - Content */}
           <motion.div 
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <p className="text-sm font-medium text-primary uppercase tracking-wide">
-              About NextSteps
-            </p>
-            <h2 className="text-display-lg font-display font-semibold text-foreground">
-              Guiding Students Toward Meaningful Futures
-            </h2>
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+                About NextSteps
+              </p>
+              <h2 className="font-display text-4xl md:text-5xl font-medium text-foreground leading-[1.1]">
+                Guiding Students Toward Meaningful Futures
+              </h2>
+            </div>
             
-            <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
+            <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
               <p>
                 Too many students make life-defining decisions without seeing what's truly possible. For those without professional networks or mentors, careers feel abstract and out of reach.
               </p>
@@ -31,25 +33,25 @@ const About = () => {
               </p>
             </div>
 
-            <blockquote className="border-l-2 border-primary pl-6 py-2 mt-8">
-              <p className="text-foreground italic font-display text-lg">
+            <blockquote className="border-l-2 border-secondary pl-8 py-4">
+              <p className="font-display text-xl md:text-2xl text-foreground italic leading-relaxed">
                 "Not about telling students who to become—it's about giving them clarity to decide for themselves."
               </p>
-              <footer className="mt-2 text-sm text-muted-foreground">
-                Landon Mahler, Founder
+              <footer className="mt-4 text-sm text-muted-foreground tracking-wide">
+                — Landon Mahler, Founder
               </footer>
             </blockquote>
           </motion.div>
 
           {/* Right - Image */}
           <motion.div 
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
             className="relative"
           >
-            <div className="rounded-lg overflow-hidden aspect-square">
+            <div className="overflow-hidden aspect-[4/5]">
               <ImageWithLoader
                 src={aboutImage} 
                 alt="Students in a mentorship session" 
@@ -57,8 +59,6 @@ const About = () => {
                 containerClassName="w-full h-full"
               />
             </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-lg -z-10" />
           </motion.div>
         </div>
       </div>
