@@ -8,65 +8,83 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-
 type ContactFormState = {
   name: string;
   email: string;
   message: string;
 };
-
 const ContactPage = () => {
-  const [formState, setFormState] = useState<ContactFormState>({ name: "", email: "", message: "" });
+  const [formState, setFormState] = useState<ContactFormState>({
+    name: "",
+    email: "",
+    message: ""
+  });
   const [submitted, setSubmitted] = useState(false);
-
-  const handleChange =
-    (field: keyof ContactFormState) =>
-    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setFormState((prev) => ({ ...prev, [field]: event.target.value }));
-      if (submitted) {
-        setSubmitted(false);
-      }
-    };
-
+  const handleChange = (field: keyof ContactFormState) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormState(prev => ({
+      ...prev,
+      [field]: event.target.value
+    }));
+    if (submitted) {
+      setSubmitted(false);
+    }
+  };
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
   };
-
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {
+      opacity: 0
+    },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: {
+        staggerChildren: 0.1
+      }
     }
   };
-
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    hidden: {
+      opacity: 0,
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
   };
-
-  return (
-    <PageTransition>
+  return <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 bg-gradient-to-br from-primary via-primary/90 to-primary/80 pt-32 pb-20">
           <div className="container mx-auto px-4">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid gap-12 lg:grid-cols-2 items-start"
-            >
-              <motion.div variants={itemVariants} className="space-y-8 max-w-xl">
-                <p className="text-xl font-medium text-primary-foreground/80 tracking-wide"></p>
-                <h1 className="text-4xl md:text-5xl font-display font-semibold text-primary-foreground leading-tight">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-12 lg:grid-cols-2 items-start">
+              <motion.div variants={itemVariants} className="space-y-6 max-w-xl">
+                <p className="text-sm font-medium text-primary-foreground/80 tracking-wide uppercase">Contact</p>
+                <h1 className="text-4xl font-display text-primary-foreground leading-tight font-bold md:text-6xl">
                   Let&apos;s talk
                 </h1>
                 <p className="text-primary-foreground/80 leading-relaxed text-lg">
-                  Share a few details and our team will follow up. Whether you have questions, feedback, or partnership ideas, we&apos;d love to hear from you.
+                  Share a few details and our team will follow up. Messages stay within this app and are processed
+                  without exposing email addresses in the client code.
                 </p>
-                <ul className="space-y-4 text-primary-foreground/90">
+                <ul className="space-y-3 text-primary-foreground/70">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
+                    General questions about chapters or partnerships
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
+                    Press or speaking requests
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
+                    Accessibility or privacy concerns
+                  </li>
                 </ul>
               </motion.div>
 
@@ -75,63 +93,36 @@ const ContactPage = () => {
                   <CardHeader>
                     <CardTitle className="font-display text-2xl">Send a message</CardTitle>
                     <CardDescription>
-                      Provide contact details and a short note. We&apos;ll get back to you as soon as we can!
+                      Provide contact details and a short note. Connect this form to your backend or service of choice to
+                      deliver messages securely.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form className="space-y-5" onSubmit={handleSubmit}>
                       <div className="space-y-2">
                         <Label htmlFor="name">Name</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          value={formState.name}
-                          onChange={handleChange("name")}
-                          required
-                          autoComplete="name"
-                          className="bg-background"
-                        />
+                        <Input id="name" name="name" value={formState.name} onChange={handleChange("name")} required autoComplete="name" className="bg-background" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formState.email}
-                          onChange={handleChange("email")}
-                          required
-                          autoComplete="email"
-                          className="bg-background"
-                        />
+                        <Input id="email" name="email" type="email" value={formState.email} onChange={handleChange("email")} required autoComplete="email" className="bg-background" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message">Message</Label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          value={formState.message}
-                          onChange={handleChange("message")}
-                          required
-                          minLength={10}
-                          rows={5}
-                          className="bg-background"
-                        />
+                        <Textarea id="message" name="message" value={formState.message} onChange={handleChange("message")} required minLength={10} rows={5} className="bg-background" />
                       </div>
                       <Button type="submit" className="w-full" size="lg">
                         Send Message
                       </Button>
-                      {submitted && (
-                        <motion.p
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-sm text-green-600 text-center"
-                          role="status"
-                          aria-live="polite"
-                        >
+                      {submitted && <motion.p initial={{
+                      opacity: 0,
+                      y: 10
+                    }} animate={{
+                      opacity: 1,
+                      y: 0
+                    }} className="text-sm text-green-600 text-center" role="status" aria-live="polite">
                           Message received. We&apos;ll be in touch soon.
-                        </motion.p>
-                      )}
+                        </motion.p>}
                     </form>
                   </CardContent>
                 </Card>
@@ -141,8 +132,6 @@ const ContactPage = () => {
         </main>
         <Footer />
       </div>
-    </PageTransition>
-  );
+    </PageTransition>;
 };
-
 export default ContactPage;
