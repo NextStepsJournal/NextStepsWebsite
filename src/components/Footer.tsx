@@ -18,6 +18,9 @@ const Footer = () => {
     }, {
       label: "Partners",
       href: "/"
+    }, {
+      label: "Contact",
+      href: "/contact"
     }],
     Resources: [{
       label: "Chapter Toolkit",
