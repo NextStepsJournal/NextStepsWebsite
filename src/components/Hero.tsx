@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-students.jpg";
 import ImageWithLoader from "@/components/ImageWithLoader";
@@ -105,8 +105,8 @@ const Hero = () => {
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button variant="hero-secondary" size="xl" className="group">
-              <Play className="w-4 h-4" />
-              Watch Our Story
+              <BookOpen className="w-4 h-4" />
+              Read The Journal
             </Button>
           </motion.div>
 
