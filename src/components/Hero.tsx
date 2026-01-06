@@ -86,7 +86,7 @@ const Hero = () => {
           duration: 0.7,
           delay: 0.25
         }} className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl">
-            Career exploration through professional interviews and mentorship—prioritizing under-resourced communities.
+            Career exploration through professional interviews and mentorship - prioritizing under-resourced communities.
           </motion.p>
 
           {/* CTAs */}
@@ -100,9 +100,11 @@ const Hero = () => {
           duration: 0.7,
           delay: 0.4
         }} className="flex flex-wrap gap-4">
-            <Button variant="hero-primary" size="xl" className="group">
-              Get Started 
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            <Button variant="hero-primary" size="xl" className="group" asChild>
+              <a href="/get-involved" className="inline-flex items-center gap-2">
+                <span>Get Started</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
             <Button variant="hero-secondary" size="xl" className="group">
               <BookOpen className="w-4 h-4" />
