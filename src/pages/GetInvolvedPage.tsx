@@ -9,9 +9,9 @@ const opportunities = [
   {
     icon: PenTool,
     title: "Volunteer",
-    description: "Become a chapter leader, join a local team, or contribute your skills in a volunteer role. Help us empower students to discover their career paths.",
+    description: "Start a chapter, join a local team, or contribute your skills in a volunteer role. Help us empower students to discover their career paths.",
     image: "/images/get-involved/volunteer.jpg",
-    link: "https://example.com/volunteer",
+    link: "https://shortyhub.com/nextstepsjournal",
   },
   {
     icon: Mic2,
@@ -32,7 +32,7 @@ const opportunities = [
     title: "Donate",
     description: "Support our mission to provide career clarity to students everywhere. Your contribution helps us create resources, train chapter leaders, and reach more students.",
     image: "/images/get-involved/donate.jpg",
-    link: "https://example.com/donate",
+    link: "https://hcb.hackclub.com/donations/start/nextsteps",
   },
 ];
 

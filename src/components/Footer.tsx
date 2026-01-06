@@ -26,18 +26,18 @@ const Footer = () => {
       label: "Chapter Toolkit",
       href: "/"
     }],
-    Involve: [{
-      label: "Start a Chapter",
-      href: "/get-involved"
-    }, {
+    Contribute: [{
       label: "Volunteer",
+      href: "https://shortyhub.com/nextstepsjournal"
+    }, {
+      label: "Be Interviewed",
       href: "/get-involved"
     }, {
       label: "Partner",
       href: "/get-involved"
     }, {
       label: "Donate",
-      href: "/get-involved"
+      href: "https://hcb.hackclub.com/donations/start/nextsteps"
     }, {
       label: "Careers",
       href: "/"

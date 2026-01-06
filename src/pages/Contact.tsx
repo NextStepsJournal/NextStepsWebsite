@@ -58,28 +58,15 @@ const ContactPage = () => {
               animate="visible"
               className="grid gap-12 lg:grid-cols-2 items-start"
             >
-              <motion.div variants={itemVariants} className="space-y-6 max-w-xl">
-                <p className="text-sm font-medium text-primary-foreground/80 tracking-wide uppercase">Contact</p>
+              <motion.div variants={itemVariants} className="space-y-8 max-w-xl">
+                <p className="text-xl font-medium text-primary-foreground/80 tracking-wide"></p>
                 <h1 className="text-4xl md:text-5xl font-display font-semibold text-primary-foreground leading-tight">
                   Let&apos;s talk
                 </h1>
                 <p className="text-primary-foreground/80 leading-relaxed text-lg">
-                  Share a few details and our team will follow up. Messages stay within this app and are processed
-                  without exposing email addresses in the client code.
+                  Share a few details and our team will follow up. Whether you have questions, feedback, or partnership ideas, we&apos;d love to hear from you.
                 </p>
-                <ul className="space-y-3 text-primary-foreground/70">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
-                    General questions about chapters or partnerships
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
-                    Press or speaking requests
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
-                    Accessibility or privacy concerns
-                  </li>
+                <ul className="space-y-4 text-primary-foreground/90">
                 </ul>
               </motion.div>
 
@@ -88,8 +75,7 @@ const ContactPage = () => {
                   <CardHeader>
                     <CardTitle className="font-display text-2xl">Send a message</CardTitle>
                     <CardDescription>
-                      Provide contact details and a short note. Connect this form to your backend or service of choice to
-                      deliver messages securely.
+                      Provide contact details and a short note. We&apos;ll get back to you as soon as we can!
                     </CardDescription>
                   </CardHeader>
                   <CardContent>

@@ -111,7 +111,13 @@ const Header = () => {
                 transition: 'color 0.2s ease-out',
               }}
             >
-              Donate
+              <a 
+                href="https://hcb.hackclub.com/donations/start/nextsteps" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                Donate
+              </a>
             </span>
             <Button 
               variant={isScrolled ? "default" : "hero-primary"} 
@@ -169,8 +175,14 @@ const Header = () => {
                   ))}
                 </ul>
                 <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                  <Button variant="outline" className="w-full justify-center">
-                    Donate
+                  <Button variant="outline" className="w-full justify-center" asChild>
+                    <a 
+                      href="https://hcb.hackclub.com/donations/start/nextsteps" 
+                      target="_blank" 
+                      rel="noreferrer"
+                    >
+                      Donate
+                    </a>
                   </Button>
                   <Button variant="default" className="w-full" asChild>
                     <a href="/get-involved">Get Involved</a>
