@@ -11,24 +11,28 @@ const opportunities = [
     title: "Volunteer",
     description: "Become a chapter leader, join a local team, or contribute your skills in a volunteer role. Help us empower students to discover their career paths.",
     image: "/images/get-involved/volunteer.jpg",
+    link: "https://example.com/volunteer",
   },
   {
     icon: Mic2,
     title: "Be Interviewed",
     description: "Share your career journey with students. Your story could inspire the next generation and help them see possibilities they never knew existed.",
     image: "/images/get-involved/interview.jpg",
+    link: "https://example.com/interview",
   },
   {
     icon: BookMarked,
     title: "Partner",
     description: "Collaborate with NextSteps as an organization. Whether you're a school, company, or nonprofit, together we can expand access to career guidance.",
     image: "/images/get-involved/partner.jpg",
+    link: "https://example.com/partner",
   },
   {
     icon: HandHeart,
     title: "Donate",
     description: "Support our mission to provide career clarity to students everywhere. Your contribution helps us create resources, train chapter leaders, and reach more students.",
     image: "/images/get-involved/donate.jpg",
+    link: "https://example.com/donate",
   },
 ];
 
@@ -139,39 +143,45 @@ const GetInvolvedPage = () => {
               className="grid grid-cols-2 lg:grid-cols-4 gap-4"
             >
               {opportunities.map((opp, index) => (
-                <motion.div
+                <a
                   key={opp.title}
-                  variants={cardVariants}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
+                  href={opp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <motion.div 
-                    animate={hoveredIndex === index ? { scale: 1.1 } : { scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-14 h-14 mb-4 flex items-center justify-center"
+                  <motion.div
+                    variants={cardVariants}
+                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                    className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    <opp.icon className="w-14 h-14 text-primary" />
-                  </motion.div>
-                  <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
-                    {opp.title}
-                  </h3>
-                  
-                  {/* Description that unfolds on hover */}
-                  <div 
-                    className="grid transition-all duration-500 ease-in-out w-full"
-                    style={{
-                      gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <p className="text-base text-muted-foreground leading-relaxed pt-4">
-                        {opp.description}
-                      </p>
+                    <motion.div 
+                      animate={hoveredIndex === index ? { scale: 1.1 } : { scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-14 h-14 mb-4 flex items-center justify-center"
+                    >
+                      <opp.icon className="w-14 h-14 text-primary" />
+                    </motion.div>
+                    <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
+                      {opp.title}
+                    </h3>
+                    
+                    {/* Description that unfolds on hover */}
+                    <div 
+                      className="grid transition-all duration-500 ease-in-out w-full"
+                      style={{
+                        gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="text-base text-muted-foreground leading-relaxed pt-4">
+                          {opp.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </a>
               ))}
             </motion.div>
           </div>
