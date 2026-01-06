@@ -1,4 +1,4 @@
-import { BookOpen, Users, Lightbulb, ArrowUpRight } from "lucide-react";
+import { BookOpen, Users, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 const activities = [{
   icon: BookOpen,
@@ -75,27 +75,18 @@ const Activities = () => {
         once: true,
         margin: "-100px"
       }} className="grid md:grid-cols-3 gap-8">
-          {activities.map(activity => <motion.div key={activity.title} variants={itemVariants} whileHover={{
-          y: -8,
-          transition: {
-            duration: 0.3
-          }
-        }} className="group relative p-8 rounded-2xl bg-card border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-              
+          {activities.map(activity => <motion.div key={activity.title} variants={itemVariants} className="relative p-8 rounded-2xl bg-card border border-border/50 shadow-lg">
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="icon-container mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="icon-container mb-6">
                   <activity.icon className="w-7 h-7 text-primary" />
                 </div>
                 
-                {/* Title with arrow */}
-                <div className="flex items-center gap-2 mb-4">
+                {/* Title */}
+                <div className="mb-4">
                   <h3 className="font-display text-foreground text-2xl font-bold">
                     {activity.title}
                   </h3>
-                  <ArrowUpRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
                 
                 {/* Description */}
@@ -103,9 +94,6 @@ const Activities = () => {
                   {activity.description}
                 </p>
               </div>
-              
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </motion.div>)}
         </motion.div>
       </div>
