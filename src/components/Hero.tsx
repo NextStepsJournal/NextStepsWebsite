@@ -56,18 +56,7 @@ const Hero = () => {
       <div className="container relative z-20 mx-auto px-4 py-24 flex-1 flex items-center">
         <div className="max-w-3xl">
           {/* Badge */}
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.5
-        }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-foreground/20 backdrop-blur-sm mb-8 bg-primary-foreground">
-            
-            <span className="text-sm font-bold text-primary">Student-Led Initiative</span>
-          </motion.div>
+          
 
           {/* Headline */}
           <motion.h1 initial={{
