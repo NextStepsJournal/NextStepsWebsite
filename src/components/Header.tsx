@@ -101,16 +101,18 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button 
-              variant={isScrolled ? "ghost" : "hero-secondary"} 
-              size="sm"
-              className={!isScrolled ? "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" : ""}
+            <span
+              className="text-sm font-medium px-4 py-2 cursor-pointer"
               style={{
-                transition: 'all 0.2s ease-out',
+                color: scrollProgress < 0.5 
+                  ? 'hsl(var(--primary-foreground))' 
+                  : 'hsl(var(--foreground))',
+                opacity: 0.9,
+                transition: 'color 0.2s ease-out',
               }}
             >
               Donate
-            </Button>
+            </span>
             <Button 
               variant={isScrolled ? "default" : "hero-primary"} 
               size="default" 
