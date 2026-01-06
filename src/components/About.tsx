@@ -22,7 +22,7 @@ const About = () => {
               
               <h2 className="text-display-lg font-display font-semibold text-foreground leading-tight">
                 Guiding Students Toward{" "}
-                <span className="text-gradient font-bold text-secondary">Meaningful Futures</span>
+                <span className="text-gradient font-bold text-[sidebar-primary-foreground] text-accent-foreground">Meaningful Futures</span>
               </h2>
             </div>
             
