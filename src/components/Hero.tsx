@@ -164,7 +164,7 @@ const Hero = () => {
             repeat: Infinity
           }}>
               {[...universities, ...universities, ...universities, ...universities].map((uni, index) => <div key={index} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
-                  <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-80 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0" />
+                  <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 </div>)}
             </motion.div>
           </div>
