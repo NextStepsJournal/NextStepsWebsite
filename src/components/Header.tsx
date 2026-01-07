@@ -22,8 +22,8 @@ const Header = () => {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Leadership", href: "/team" },
-    { label: "Journal", href: "/" },
-    { label: "Partners", href: "/" },
+    { label: "Journal", href: "/journal" },
+    { label: "Partners", href: "/partners" },
   ];
 
   // Interpolate values based on scroll progress
