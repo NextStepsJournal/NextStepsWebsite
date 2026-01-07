@@ -20,7 +20,7 @@ const activities = [
   {
     icon: Users,
     title: "Chapters",
-    description: "Student-led teams expanding access and creating impact in schools and communities nationwide.",
+    description: "Student-led teams expanding access and creating impact in schools and communities worldwide.",
   },
   {
     icon: Lightbulb,
