@@ -15,7 +15,7 @@ const activities = [
   {
     icon: Calendar,
     title: "Workshops",
-    description: "Online and in-person workshops and activities to help students develop skills and explore career options.",
+    description: "Online and in-person workshops and activities to help students develop skills, network and explore career options.",
   },
   {
     icon: Users,
