@@ -11,13 +11,13 @@ const Footer = () => {
       href: "#about"
     }, {
       label: "Journal",
-      href: "/"
+      href: "/journal"
     }, {
       label: "Leadership",
       href: "/team"
     }, {
       label: "Partners",
-      href: "/"
+      href: "/partners"
     }, {
       label: "Contact",
       href: "/contact"

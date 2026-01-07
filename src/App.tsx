@@ -7,6 +7,8 @@ import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import GetInvolvedPage from "./pages/GetInvolvedPage";
 import TeamPage from "./pages/TeamPage";
+import JournalPage from "./pages/JournalPage";
+import PartnersPage from "./pages/PartnersPage";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -21,6 +23,8 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Index />} />
         <Route path="/get-involved" element={<GetInvolvedPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/journal" element={<JournalPage />} />
+        <Route path="/partners" element={<PartnersPage />} />
         <Route path="/contact" element={<ContactPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
