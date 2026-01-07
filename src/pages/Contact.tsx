@@ -14,12 +14,37 @@ type ContactFormState = {
   message: string;
 };
 const ContactPage = () => {
+  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
   const [formState, setFormState] = useState<ContactFormState>({
     name: "",
     email: "",
     message: ""
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const submitContactForm = async () => {
+    if (!supabaseAnonKey) {
+      throw new Error("Missing VITE_SUPABASE_ANON_KEY for function authorization.");
+    }
+    const res = await fetch("https://agyctztnurqndhewqzjc.supabase.co/functions/v1/resend-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${supabaseAnonKey}`,
+        apikey: supabaseAnonKey
+      },
+      body: JSON.stringify({
+        name: formState.name.trim(),
+        email: formState.email.trim(),
+        message: formState.message.trim()
+      })
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || "Unable to send your message.");
+    }
+  };
   const handleChange = (field: keyof ContactFormState) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState(prev => ({
       ...prev,
@@ -28,10 +53,28 @@ const ContactPage = () => {
     if (submitted) {
       setSubmitted(false);
     }
+    if (submitError) {
+      setSubmitError(null);
+    }
   };
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitError(null);
+    setSubmitted(false);
+    setIsSubmitting(true);
+    try {
+      await submitContactForm();
+      setSubmitted(true);
+      setFormState({
+        name: "",
+        email: "",
+        message: ""
+      });
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Unable to send your message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const containerVariants = {
     hidden: {
@@ -111,9 +154,18 @@ const ContactPage = () => {
                         <Label htmlFor="message">Message</Label>
                         <Textarea id="message" name="message" value={formState.message} onChange={handleChange("message")} required minLength={10} rows={5} className="bg-background" />
                       </div>
-                      <Button type="submit" className="w-full" size="lg">
-                        Send Message
+                      <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                        {isSubmitting ? "Sending..." : "Send Message"}
                       </Button>
+                      {submitError && <motion.p initial={{
+                      opacity: 0,
+                      y: 10
+                    }} animate={{
+                      opacity: 1,
+                      y: 0
+                    }} className="text-sm text-red-600 text-center" role="alert">
+                          {submitError}
+                        </motion.p>}
                       {submitted && <motion.p initial={{
                       opacity: 0,
                       y: 10
