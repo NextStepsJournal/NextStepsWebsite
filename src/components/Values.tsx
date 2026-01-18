@@ -1,13 +1,9 @@
-import { Compass, Eye, Shield, Star, Users } from "lucide-react";
+import { Compass, Shield, Star, Users } from "lucide-react";
 import { motion } from "framer-motion";
 const values = [{
   icon: Compass,
   title: "Access",
   description: "Opportunity independent of background"
-}, {
-  icon: Eye,
-  title: "Curiosity",
-  description: "Asking questions drives discovery"
 }, {
   icon: Shield,
   title: "Clarity",
@@ -64,7 +60,7 @@ const Values = () => {
       }} transition={{
         duration: 0.6
       }} className="section-header">
-          <span className="section-label text-primary">Our Foundation</span>
+          <span className="section-label text-primary font-bold">Our Foundation</span>
           <h2 className="section-title">Core Values</h2>
         </motion.div>
 
@@ -72,7 +68,7 @@ const Values = () => {
         <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
         once: true,
         margin: "-100px"
-      }} className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6">
+      }} className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
           {values.map(value => <motion.div key={value.title} variants={itemVariants} className="group text-center">
               <motion.div whileHover={{
             y: -8,
@@ -98,12 +94,12 @@ const Values = () => {
                 </motion.div>
                 
                 {/* Title */}
-                <h3 className="font-display text-foreground text-xl mb-2 group-hover:text-primary transition-colors duration-300 font-extrabold">
+                <h3 className="font-display text-foreground text-3xl mb-4 group-hover:text-primary transition-colors duration-300 font-extrabold">
                   {value.title}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-[140px] mx-auto">
+                <p className="text-muted-foreground text-md leading-relaxed max-w-[140px] mx-auto">
                   {value.description}
                 </p>
               </motion.div>

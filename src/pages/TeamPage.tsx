@@ -51,8 +51,8 @@ const TeamPage = () => {
           }} transition={{
             duration: 0.6
           }} className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Our Team</h1>
-              <p className="text-lg md:text-xl text-primary-foreground/80">Dedicated directors and staff committed to guiding youth toward their brightest futures.</p>
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground mb-6">Our Team</h1>
+              <p className="text-lg md:text-2xl text-primary-foreground/80">Dedicated directors and staff committed to guiding youth toward their brightest futures.</p>
             </motion.div>
           </div>
         </section>

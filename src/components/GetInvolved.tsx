@@ -39,7 +39,7 @@ const GetInvolved = () => {
             Get Involved
           </h2>
           
-          <p className="text-xl text-primary-foreground/80 mb-12 leading-relaxed max-w-lg mx-auto">
+          <p className="text-xl text-primary-foreground/100 mb-12 leading-relaxed max-w-lg mx-auto">
             There are many ways to contribute to our mission. Choose how you'd like to make an impact.
           </p>
           
@@ -66,9 +66,9 @@ const GetInvolved = () => {
           once: true
         }} transition={{
           delay: 0.5
-        }} className="mt-12 pt-8 border-t border-primary-foreground/20">
-            <p className="text-sm text-primary-foreground/60">
-              Join 20+ members across 8+ countries making a difference
+        }} className="mt-12 pt-0 border-t border-primary-foreground/0">
+            <p className="text-l text-primary-foreground/100">
+              Join 30+ members across 10+ countries making a difference
             </p>
           </motion.div>
         </motion.div>

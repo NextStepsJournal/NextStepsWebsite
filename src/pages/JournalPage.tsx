@@ -61,7 +61,7 @@ const JournalPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-display-xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-8"
+                className="text-display-xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-6"
               >
                 The NextSteps
                 <br />
@@ -101,7 +101,7 @@ const JournalPage = () => {
                       <Button
                         type="submit"
                         size="lg"
-                        className="bg-white text-primary hover:bg-white/90 rounded-xl px-8 font-semibold shadow-lg shadow-black/20"
+                        className="bg-white text-primary hover:bg-white/90 rounded-xl px-4 font-semibold shadow-lg shadow-black/20"
                       >
                         <Bell className="w-4 h-4 mr-2" />
                         Notify Me
@@ -117,7 +117,7 @@ const JournalPage = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center"
                   >
-                    <CheckCircle className="w-12 h-12 text-white mx-auto mb-4" />
+                    <CheckCircle className="w-12 h-12 text-white mx-auto mb-0" />
                     <h3 className="text-xl font-semibold text-white mb-2">You're on the list!</h3>
                     <p className="text-white/70">We'll notify you when the Journal launches.</p>
                   </motion.div>
@@ -129,7 +129,7 @@ const JournalPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.7 }}
-                className="mt-20 grid md:grid-cols-3 gap-6"
+                className="mt-20 grid md:grid-cols-3 gap-4"
               >
                 {[
                   {
@@ -159,8 +159,8 @@ const JournalPage = () => {
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                       <feature.icon className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <h3 className="text-2xl font-semibold text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-lg text-muted-foreground">{feature.description}</p>
                   </motion.div>
                 ))}
               </motion.div>

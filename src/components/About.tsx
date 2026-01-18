@@ -74,10 +74,6 @@ const About = () => {
               <ImageWithLoader src={aboutImage} alt="Students engaged in a mentorship session discussing career paths" className="w-full h-full object-cover aspect-[4/5]" containerClassName="w-full h-full" />
             </div>
             
-            {/* Decorative elements */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl -z-10" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl -z-10" />
-            
             {/* Floating stat card */}
             
           </motion.div>
