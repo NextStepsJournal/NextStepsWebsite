@@ -27,7 +27,7 @@ const JournalPage = () => {
       <Header />
       <main className="min-h-screen hero-overlay">
         {/* Hero Waitlist Section */}
-        <section className="min-h-screen flex items-center justify-center pt-16 md:pt-20 pb-12 md:pb-16 px-4 relative overflow-hidden">
+        <section className="min-h-screen flex items-center justify-center pt-24 md:pt-32 pb-12 md:pb-16 px-4 relative overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
