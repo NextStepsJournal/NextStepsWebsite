@@ -77,6 +77,9 @@ const ActivityCard = ({ activity, isActive }: ActivityCardProps) => {
         transition={{ duration: 0.5, ease: "easeOut" }}
       />
 
+      {/* Purple tint overlay */}
+      <div className="absolute inset-0 bg-primary/25 mix-blend-overlay" />
+
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 group-hover:from-black/90 group-hover:via-black/50 transition-all duration-300" />
 
