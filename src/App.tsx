@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
@@ -16,6 +17,21 @@ const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    const defaultTitle = "NextSteps | Career Exploration & Mentorship for Students";
+    const titleMap: Record<string, string> = {
+      "/": defaultTitle,
+      "/team": "Leadership | NextSteps",
+      "/journal": "Journal | NextSteps",
+      "/partners": "Partners | NextSteps",
+      "/get-involved": "Get Involved | NextSteps",
+      "/contact": "Contact | NextSteps",
+    };
+
+    const normalizedPath = location.pathname.replace(/\/+$/, "") || "/";
+    document.title = titleMap[normalizedPath] ?? defaultTitle;
+  }, [location.pathname]);
   
   return (
     <AnimatePresence mode="wait">
