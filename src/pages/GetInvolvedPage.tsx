@@ -101,7 +101,7 @@ const GetInvolvedPage = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative min-h-screen py-24 overflow-hidden flex items-center">
+        <section className="relative min-h-screen py-16 md:py-24 overflow-hidden flex items-center">
           {/* Gradient sits below the pictures */}
           <div className="absolute inset-0 hero-overlay z-0 opacity-90" />
           
@@ -122,15 +122,15 @@ const GetInvolvedPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="max-w-2xl mb-12 text-center mx-auto"
+              className="max-w-2xl mb-8 md:mb-12 text-center mx-auto"
             >
-              <p className="text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-3">
+              <p className="text-xs md:text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-2 md:mb-3">
                 Join the Movement
               </p>
-              <h1 className="text-display-lg font-display font-semibold text-primary-foreground">
+              <h1 className="text-3xl sm:text-4xl md:text-display-lg font-display font-semibold text-primary-foreground">
                 Get Involved
               </h1>
-              <p className="mt-4 text-xl text-primary-foreground/85 leading-relaxed">
+              <p className="mt-3 md:mt-4 text-base md:text-xl text-primary-foreground/85 leading-relaxed">
                 There are many ways to contribute to our mission. Choose how you'd like to make an impact.
               </p>
             </motion.div>
@@ -140,7 +140,7 @@ const GetInvolvedPage = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 w-full max-w-5xl"
             >
               {opportunities.map((opp, index) => (
                 <a
@@ -152,30 +152,30 @@ const GetInvolvedPage = () => {
                   <motion.div
                     variants={cardVariants}
                     whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                    className="relative aspect-square p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
+                    className="relative aspect-square p-4 md:p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
                     <motion.div 
                       animate={hoveredIndex === index ? { scale: 1.1 } : { scale: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="w-14 h-14 mb-4 flex items-center justify-center"
+                      className="w-10 h-10 md:w-14 md:h-14 mb-2 md:mb-4 flex items-center justify-center"
                     >
-                      <opp.icon className="w-14 h-14 text-primary" />
+                      <opp.icon className="w-10 h-10 md:w-14 md:h-14 text-primary" />
                     </motion.div>
-                    <h3 className="font-sans font-semibold text-primary text-2xl group-hover:text-primary transition-colors duration-300">
+                    <h3 className="font-sans font-semibold text-primary text-lg md:text-2xl group-hover:text-primary transition-colors duration-300">
                       {opp.title}
                     </h3>
                     
                     {/* Description that unfolds on hover */}
                     <div 
-                      className="grid transition-all duration-500 ease-in-out w-full"
+                      className="hidden md:grid transition-all duration-500 ease-in-out w-full"
                       style={{
                         gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
                       }}
                     >
                       <div className="overflow-hidden">
-                        <p className="text-base text-muted-foreground leading-relaxed pt-4">
+                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-3 md:pt-4">
                           {opp.description}
                         </p>
                       </div>

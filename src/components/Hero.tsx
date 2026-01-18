@@ -53,8 +53,8 @@ const Hero = () => {
       <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl z-10" />
 
       {/* Main Content */}
-      <div className="container relative z-20 mx-auto px-4 py-24 flex-1 flex items-center">
-        <div className="max-w-3xl">
+      <div className="container relative z-20 mx-auto px-4 py-12 md:py-24 flex-1 flex items-center">
+        <div className="max-w-4xl">
           {/* Badge */}
           
 
@@ -68,10 +68,9 @@ const Hero = () => {
         }} transition={{
           duration: 0.7,
           delay: 0.1
-        }} className="text-display-xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-8">
-            Helping Students{" "}
-            <br className="hidden md:block" />
-            Take Their{" "}
+        }} className="text-4xl sm:text-5xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-6 md:mb-8">
+            Helping Students Take Their{" "}
+            <br className="hidden sm:block" />
             <span className="italic text-primary-foreground/90 font-serif font-bold">Next Steps</span>
           </motion.h1>
 
@@ -85,7 +84,7 @@ const Hero = () => {
         }} transition={{
           duration: 0.7,
           delay: 0.25
-        }} className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl">
+        }} className="text-base sm:text-xl md:text-2xl text-primary-foreground/80 mb-8 md:mb-12 leading-relaxed max-w-2xl">
             Career exploration through professional interviews and mentorship - prioritizing under-resourced communities.
           </motion.p>
 
@@ -120,7 +119,7 @@ const Hero = () => {
         }} transition={{
           duration: 0.7,
           delay: 0.7
-        }} className="flex gap-12 mt-20 pt-10 border-t border-primary-foreground/20">
+        }} className="flex gap-6 sm:gap-12 mt-12 md:mt-20 pt-6 md:pt-10 border-t border-primary-foreground/20">
             {stats.map((stat, index) => <motion.div key={stat.label} initial={{
             opacity: 0,
             y: 20
@@ -131,10 +130,10 @@ const Hero = () => {
             duration: 0.5,
             delay: 0.8 + index * 0.1
           }}>
-                <div className="text-4xl md:text-5xl font-mono-nums font-semibold text-primary-foreground">
+                <div className="text-2xl sm:text-4xl md:text-5xl font-mono-nums font-semibold text-primary-foreground">
                   {stat.value}
                 </div>
-                <div className="text-sm text-primary-foreground/60 mt-2 font-medium uppercase tracking-wide">
+                <div className="text-xs sm:text-sm text-primary-foreground/60 mt-1 sm:mt-2 font-medium uppercase tracking-wide">
                   {stat.label}
                 </div>
               </motion.div>)}
