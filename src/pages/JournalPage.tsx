@@ -55,49 +55,25 @@ const JournalPage = () => {
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-3xl mx-auto"
-            >
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white mb-8"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span className="text-sm font-medium">Coming Soon</span>
-              </motion.div>
-
-              {/* Main heading */}
+            <div className="text-center max-w-3xl mx-auto">
+              {/* Main heading - same animation as home hero */}
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="text-display-xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-8"
               >
                 The NextSteps
                 <br />
-                <span className="relative">
-                  Journal
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
-                    className="absolute -bottom-2 left-0 right-0 h-1 bg-white/40 rounded-full origin-left"
-                  />
-                </span>
+                <span className="italic text-primary-foreground/90 font-serif font-bold">Journal</span>
               </motion.h1>
 
               {/* Description */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed"
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl mx-auto"
               >
                 In-depth career research, professional interviews, and actionable insights 
                 to help you navigate your future. Be the first to access our comprehensive 
@@ -106,9 +82,9 @@ const JournalPage = () => {
 
               {/* Waitlist Form */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
                 className="max-w-md mx-auto"
               >
                 {!isSubmitted ? (
@@ -132,7 +108,7 @@ const JournalPage = () => {
                       </Button>
                     </div>
                     <p className="text-sm text-white/60">
-                      Join 1,000+ students waiting for launch. No spam, ever.
+                      Join the waitlist — no spam, ever.
                     </p>
                   </form>
                 ) : (
@@ -150,9 +126,9 @@ const JournalPage = () => {
 
               {/* Features preview */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.7 }}
                 className="mt-20 grid md:grid-cols-3 gap-6"
               >
                 {[
@@ -176,7 +152,7 @@ const JournalPage = () => {
                     key={feature.title}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                     whileHover={{ y: -4, scale: 1.02 }}
                     className="bg-card/95 backdrop-blur-sm rounded-2xl p-6 text-left border border-border shadow-xl"
                   >
@@ -188,7 +164,7 @@ const JournalPage = () => {
                   </motion.div>
                 ))}
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </main>

@@ -83,11 +83,11 @@ const Header = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="text-sm font-medium transition-colors link-underline"
+                  className="text-sm font-medium transition-all duration-200 hover:scale-110"
                   style={{
                     color: `hsl(var(--muted-foreground) / ${0.8 + scrollProgress * 0.2})`,
                     opacity: 0.8 + scrollProgress * 0.2,
-                    transition: 'color 0.1s ease-out, opacity 0.1s ease-out',
+                    transition: 'color 0.1s ease-out, opacity 0.1s ease-out, transform 0.2s ease-out',
                     ...(scrollProgress < 0.5 && {
                       color: `hsl(var(--primary-foreground) / ${0.8 + (1 - scrollProgress) * 0.2})`,
                     }),
