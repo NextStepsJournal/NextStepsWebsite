@@ -52,7 +52,7 @@ const PartnersPage = () => {
       <Header />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-accent/10 to-background">
+        <section className="pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-b from-accent/10 to-background">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -60,14 +60,14 @@ const PartnersPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent-foreground mb-6">
-                <Handshake className="w-4 h-4" />
-                <span className="text-sm font-medium">Our Partners</span>
+              <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/20 text-accent-foreground mb-4 md:mb-6">
+                <Handshake className="w-3 h-3 md:w-4 md:h-4" />
+                <span className="text-xs md:text-sm font-medium">Our Partners</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
                 Building the Future Together
               </h1>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
                 We partner with organizations that share our commitment to empowering students from all backgrounds with career resources and opportunities.
               </p>
               <Button size="lg" asChild>
@@ -78,21 +78,21 @@ const PartnersPage = () => {
         </section>
 
         {/* Partner Types */}
-        <section className="py-20">
+        <section className="py-12 md:py-20">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 md:mb-12"
             >
-              <h2 className="text-3xl font-bold text-foreground mb-4">Partnership Opportunities</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4">Partnership Opportunities</h2>
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
                 Whether you're a corporation, educational institution, or nonprofit, there's a way to make an impact with NextSteps.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
               {partnerTypes.map((type, index) => (
                 <motion.div
                   key={type.title}
@@ -115,21 +115,21 @@ const PartnersPage = () => {
         </section>
 
         {/* Current Partners */}
-        <section className="py-20 bg-muted/30">
+        <section className="py-12 md:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 md:mb-12"
             >
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Partners</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4">Our Partners</h2>
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
                 These organizations are helping us create a more equitable future for students everywhere.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-6">
               {currentPartners.map((partner, index) => (
                 <motion.div
                   key={partner.name}
@@ -149,16 +149,16 @@ const PartnersPage = () => {
         </section>
 
         {/* Benefits */}
-        <section className="py-20">
+        <section className="py-12 md:py-20">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-foreground mb-4">Why Partner With Us?</h2>
-                <p className="text-muted-foreground mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4">Why Partner With Us?</h2>
+                <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8">
                   Partnering with NextSteps means joining a movement to democratize career exploration and make professional opportunities accessible to all students.
                 </p>
                 <ul className="space-y-4">
@@ -204,9 +204,9 @@ const PartnersPage = () => {
         </section>
 
         {/* Stats */}
-        <section className="py-20 bg-foreground text-primary-foreground">
+        <section className="py-12 md:py-20 bg-foreground text-primary-foreground">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
               {[
                 { value: "50+", label: "Partner Organizations" },
                 { value: "10K+", label: "Students Reached" },
@@ -220,8 +220,8 @@ const PartnersPage = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
-                  <div className="text-primary-foreground/70">{stat.label}</div>
+                  <div className="text-2xl sm:text-4xl md:text-5xl font-bold mb-1 md:mb-2">{stat.value}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-primary-foreground/70">{stat.label}</div>
                 </motion.div>
               ))}
             </div>

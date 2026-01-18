@@ -27,7 +27,7 @@ const JournalPage = () => {
       <Header />
       <main className="min-h-screen hero-overlay">
         {/* Hero Waitlist Section */}
-        <section className="min-h-screen flex items-center justify-center pt-20 pb-16 relative overflow-hidden">
+        <section className="min-h-screen flex items-center justify-center pt-16 md:pt-20 pb-12 md:pb-16 px-4 relative overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
@@ -54,14 +54,14 @@ const JournalPage = () => {
             />
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container mx-auto relative z-10">
             <div className="text-center max-w-3xl mx-auto">
               {/* Main heading - same animation as home hero */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-display-xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-6"
+                className="text-4xl sm:text-5xl md:text-[5.5rem] font-display font-semibold text-primary-foreground leading-[1.05] mb-4 md:mb-6"
               >
                 The NextSteps
                 <br />
@@ -73,7 +73,7 @@ const JournalPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
-                className="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl mx-auto"
+                className="text-base sm:text-xl md:text-2xl text-primary-foreground/80 mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto"
               >
                 In-depth career research, professional interviews, and actionable insights 
                 to help you navigate your future. Be the first to access our comprehensive 
@@ -129,7 +129,7 @@ const JournalPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.7 }}
-                className="mt-20 grid md:grid-cols-3 gap-4"
+                className="mt-12 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4"
               >
                 {[
                   {
@@ -154,13 +154,13 @@ const JournalPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-card/95 backdrop-blur-sm rounded-2xl p-6 text-left border border-border shadow-xl"
+                    className="bg-card/95 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-left border border-border shadow-xl"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                      <feature.icon className="w-6 h-6 text-primary" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 md:mb-4">
+                      <feature.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-semibold text-foreground mb-2">{feature.title}</h3>
-                    <p className="text-lg text-muted-foreground">{feature.description}</p>
+                    <h3 className="text-lg md:text-2xl font-semibold text-foreground mb-1 md:mb-2">{feature.title}</h3>
+                    <p className="text-sm md:text-lg text-muted-foreground">{feature.description}</p>
                   </motion.div>
                 ))}
               </motion.div>
