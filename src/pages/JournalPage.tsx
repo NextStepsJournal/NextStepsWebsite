@@ -135,7 +135,7 @@ const JournalPage = () => {
                   {
                     icon: BookOpen,
                     title: "Research Articles",
-                    description: "In-depth career research written by student volunteers"
+                    description: "Career research written by students"
                   },
                   {
                     icon: Sparkles,
