@@ -57,14 +57,11 @@ const PartnersPage = () => {
           }} transition={{
             duration: 0.6
           }} className="text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/20 text-accent-foreground mb-4 md:mb-6">
-                <Handshake className="w-3 h-3 md:w-4 md:h-4" />
-                <span className="text-xs md:text-sm font-medium">Our Partners</span>
-              </div>
+              
               <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 md:mb-6 md:text-7xl">
                 Building the Future Together
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
+              <p className="text-base text-muted-foreground mb-6 md:mb-8 md:text-2xl">
                 We partner with organizations that share our commitment to empowering students from all backgrounds with career resources and opportunities.
               </p>
               <Button size="lg" asChild>
