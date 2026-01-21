@@ -83,48 +83,48 @@ const ContactPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.15
       }
     }
   };
   const itemVariants = {
     hidden: {
       opacity: 0,
-      y: 20
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
+        duration: 0.7
       }
     }
   };
   return <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 bg-gradient-to-br from-primary via-primary/90 to-primary/80 pt-24 md:pt-32 pb-12 md:pb-20">
+        <main className="flex-1 hero-overlay pt-24 md:pt-32 pb-12 md:pb-20">
           <div className="container mx-auto px-4">
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-8 md:gap-12 lg:grid-cols-2 items-start">
               <motion.div variants={itemVariants} className="space-y-4 md:space-y-6 max-w-xl">
-                
-                <h1 className="text-3xl sm:text-4xl font-display text-primary-foreground leading-tight font-bold md:text-7xl py-0">
+                <p className="text-xs md:text-sm font-medium text-primary-foreground/80 tracking-wide uppercase">Contact</p>
+                <h1 className="text-3xl sm:text-4xl font-display text-primary-foreground leading-tight font-bold md:text-6xl">
                   Let&apos;s talk
                 </h1>
-                <p className="text-primary-foreground/80 leading-relaxed text-base md:text-2xl">
+                <p className="text-primary-foreground/80 leading-relaxed text-base md:text-lg">
                   Share a few details and our team will follow up. Messages stay within this app and are processed
                   without exposing email addresses in the client code.
                 </p>
                 <ul className="space-y-3 text-primary-foreground/70">
-                  <li className="flex items-center gap-2 text-xl">
+                  <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
                     General questions about chapters or partnerships
                   </li>
-                  <li className="flex items-center gap-2 text-xl">
+                  <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
                     Press or speaking requests
                   </li>
-                  <li className="flex items-center gap-2 text-xl">
+                  <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary-foreground/60" />
                     Accessibility or privacy concerns
                   </li>
@@ -163,7 +163,7 @@ const ContactPage = () => {
                     }} animate={{
                       opacity: 1,
                       y: 0
-                    }} className="text-sm text-red-600 text-center" role="alert">
+                    }} className="text-sm text-destructive text-center" role="alert">
                           {submitError}
                         </motion.p>}
                       {submitted && <motion.p initial={{
@@ -172,7 +172,7 @@ const ContactPage = () => {
                     }} animate={{
                       opacity: 1,
                       y: 0
-                    }} className="text-sm text-green-600 text-center" role="status" aria-live="polite">
+                    }} className="text-sm text-primary text-center" role="status" aria-live="polite">
                           Message received. We&apos;ll be in touch soon.
                         </motion.p>}
                     </form>
