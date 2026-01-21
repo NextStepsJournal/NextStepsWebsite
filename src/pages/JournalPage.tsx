@@ -84,39 +84,6 @@ const JournalPage = () => {
                 <span className="italic text-primary-foreground/90 font-serif font-bold">Journal</span>
               </motion.h1>
 
-              {/* Text Conveyor Belt */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden my-6 md:my-8"
-              >
-                <div className="relative flex overflow-hidden">
-                  <motion.div
-                    className="flex gap-8 items-center whitespace-nowrap"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                      duration: 20,
-                      ease: "linear",
-                      repeat: Infinity
-                    }}
-                  >
-                    {[...Array(8)].map((_, index) => (
-                      <div key={index} className="flex items-center gap-8 text-3xl md:text-4xl font-semibold text-primary-foreground">
-                        <span>Research Articles</span>
-                        <span className="text-primary-foreground/50">•</span>
-                        <span>Professional Interviews</span>
-                        <span className="text-primary-foreground/50">•</span>
-                        <span>Student Stories</span>
-                        <span className="text-primary-foreground/50">•</span>
-                        <span>Career Guides</span>
-                        <span className="text-primary-foreground/50">•</span>
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-              </motion.div>
-
               {/* Description */}
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -173,8 +140,38 @@ const JournalPage = () => {
                 )}
               </motion.div>
 
-              {/* Features preview */}
-              {/* Features section removed - conveyor belt now displays categories */}
+              {/* Text Conveyor Belt - below waitlist */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-12 md:mt-16"
+              >
+                <div className="relative flex overflow-hidden">
+                  <motion.div
+                    className="flex gap-8 items-center whitespace-nowrap"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{
+                      duration: 40,
+                      ease: "linear",
+                      repeat: Infinity
+                    }}
+                  >
+                    {[...Array(8)].map((_, index) => (
+                      <div key={index} className="flex items-center gap-8 text-3xl md:text-4xl font-semibold text-primary-foreground">
+                        <span>Research Articles</span>
+                        <span className="text-primary-foreground/50">•</span>
+                        <span>Professional Interviews</span>
+                        <span className="text-primary-foreground/50">•</span>
+                        <span>Student Stories</span>
+                        <span className="text-primary-foreground/50">•</span>
+                        <span>Career Guides</span>
+                        <span className="text-primary-foreground/50">•</span>
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
