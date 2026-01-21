@@ -83,27 +83,27 @@ const ContactPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.15
       }
     }
   };
   const itemVariants = {
     hidden: {
       opacity: 0,
-      y: 20
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
+        duration: 0.7
       }
     }
   };
   return <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 bg-gradient-to-br from-primary via-primary/90 to-primary/80 pt-24 md:pt-32 pb-12 md:pb-20">
+        <main className="flex-1 hero-overlay pt-24 md:pt-32 pb-12 md:pb-20">
           <div className="container mx-auto px-4">
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-8 md:gap-12 lg:grid-cols-2 items-start">
               <motion.div variants={itemVariants} className="space-y-4 md:space-y-6 max-w-xl">
@@ -163,7 +163,7 @@ const ContactPage = () => {
                     }} animate={{
                       opacity: 1,
                       y: 0
-                    }} className="text-sm text-red-600 text-center" role="alert">
+                    }} className="text-sm text-destructive text-center" role="alert">
                           {submitError}
                         </motion.p>}
                       {submitted && <motion.p initial={{
@@ -172,7 +172,7 @@ const ContactPage = () => {
                     }} animate={{
                       opacity: 1,
                       y: 0
-                    }} className="text-sm text-green-600 text-center" role="status" aria-live="polite">
+                    }} className="text-sm text-primary text-center" role="status" aria-live="polite">
                           Message received. We&apos;ll be in touch soon.
                         </motion.p>}
                     </form>

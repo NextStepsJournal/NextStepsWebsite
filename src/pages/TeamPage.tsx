@@ -25,7 +25,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.7,
       ease: "easeOut" as const
     }
   }
@@ -44,12 +44,13 @@ const TeamPage = () => {
           <div className="container mx-auto px-4 relative z-10">
             <motion.div initial={{
             opacity: 0,
-            y: 20
+            y: 30
           }} animate={{
             opacity: 1,
             y: 0
           }} transition={{
-            duration: 0.6
+            duration: 0.7,
+            delay: 0.1
           }} className="text-center max-w-3xl mx-auto">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground mb-4 md:mb-6">Our Team</h1>
               <p className="text-base md:text-lg lg:text-2xl text-primary-foreground/80">Dedicated directors and staff committed to guiding youth toward their brightest futures.</p>
@@ -65,7 +66,8 @@ const TeamPage = () => {
             margin: "-100px"
           }} className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
               {leadershipRoles.map(role => <motion.div key={role} variants={itemVariants} whileHover={{
-              y: -4
+              y: -8,
+              scale: 1.02
             }} transition={{
               duration: 0.3
             }} className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300">
@@ -108,14 +110,15 @@ const TeamPage = () => {
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
-            y: 20
+            y: 30
           }} whileInView={{
             opacity: 1,
             y: 0
           }} viewport={{
-            once: true
+            once: true,
+            margin: "-100px"
           }} transition={{
-            duration: 0.6
+            duration: 0.7
           }} className="text-center max-w-2xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4 md:text-display-lg">Want to Join Our Team?</h2>
               <p className="text-sm text-muted-foreground mb-6 md:mb-8 md:text-xl">
