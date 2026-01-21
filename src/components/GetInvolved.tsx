@@ -68,7 +68,7 @@ const GetInvolved = () => {
           delay: 0.5
         }} className="mt-12 pt-0 border-t border-primary-foreground/0">
             <p className="text-l text-primary-foreground/100">
-              Join 30+ members across 10+ countries making a difference
+              Join 100+ members across 10+ countries making a difference
             </p>
           </motion.div>
         </motion.div>
