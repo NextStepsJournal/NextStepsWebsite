@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Bell, Sparkles, CheckCircle } from "lucide-react";
+import { Bell, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
@@ -31,24 +31,40 @@ const JournalPage = () => {
           {/* Decorative elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: 360,
-                scale: [1, 1.1, 1],
+                scale: [1, 1.1, 1]
               }}
-              transition={{ 
-                rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+              transition={{
+                rotate: {
+                  duration: 60,
+                  repeat: Infinity,
+                  ease: "linear"
+                },
+                scale: {
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
               }}
               className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-white/5 blur-3xl"
             />
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: -360,
-                scale: [1, 1.2, 1],
+                scale: [1, 1.2, 1]
               }}
-              transition={{ 
-                rotate: { duration: 80, repeat: Infinity, ease: "linear" },
-                scale: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+              transition={{
+                rotate: {
+                  duration: 80,
+                  repeat: Infinity,
+                  ease: "linear"
+                },
+                scale: {
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
               }}
               className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl"
             />
@@ -75,8 +91,8 @@ const JournalPage = () => {
                 transition={{ duration: 0.7, delay: 0.25 }}
                 className="mt-4 md:mt-6 text-base sm:text-xl md:text-2xl text-primary-foreground/80 mb-8 md:mb-12 leading-relaxed max-w-2xl mx-auto"
               >
-                In-depth career research, professional interviews, and actionable insights 
-                to help you navigate your future. Completely free. Be the first to access our comprehensive 
+                In-depth career research, professional interviews, and actionable insights
+                to help you navigate your future. Completely free. Be the first to access our comprehensive
                 career exploration platform.
               </motion.p>
 
@@ -124,45 +140,37 @@ const JournalPage = () => {
                 )}
               </motion.div>
 
-              {/* Features preview */}
+              {/* Text Conveyor Belt - below waitlist */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.7 }}
-                className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-3"
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-12 md:mt-16"
               >
-                {[
-                  {
-                    icon: BookOpen,
-                    title: "Research Articles",
-                    description: "In-depth career research written by student volunteers"
-                  },
-                  {
-                    icon: Sparkles,
-                    title: "Pro Interviews",
-                    description: "Insights from professionals across diverse industries"
-                  },
-                  {
-                    icon: Bell,
-                    title: "Career Guides",
-                    description: "Step-by-step guidance for your career journey"
-                  }
-                ].map((feature, index) => (
+                <div className="relative flex overflow-hidden">
                   <motion.div
-                    key={feature.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-card/90 backdrop-blur-sm rounded-xl p-3 md:p-4 text-left border border-border shadow-lg"
+                    className="flex gap-8 items-center whitespace-nowrap"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{
+                      duration: 40,
+                      ease: "linear",
+                      repeat: Infinity
+                    }}
                   >
-                    <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-2 md:mb-3">
-                      <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-1">{feature.title}</h3>
-                    <p className="text-md text-muted-foreground line-clamp-2">{feature.description}</p>
+                    {[...Array(8)].map((_, index) => (
+                      <div key={index} className="flex items-center gap-8 text-3xl md:text-4xl font-semibold text-primary-foreground">
+                        <span>Research Articles</span>
+                        <span className="text-primary-foreground/50">•</span>
+                        <span>Professional Interviews</span>
+                        <span className="text-primary-foreground/50">•</span>
+                        <span>Student Stories</span>
+                        <span className="text-primary-foreground/50">•</span>
+                        <span>Career Guides</span>
+                        <span className="text-primary-foreground/50">•</span>
+                      </div>
+                    ))}
                   </motion.div>
-                ))}
+                </div>
               </motion.div>
             </div>
           </div>
