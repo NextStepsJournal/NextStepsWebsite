@@ -106,7 +106,7 @@ const TeamPage = () => {
         </section>
 
         {/* Join CTA */}
-        <section className="py-12 md:py-20 bg-muted/30">
+        <section className="py-12 md:py-20 bg-primary">
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
@@ -120,15 +120,15 @@ const TeamPage = () => {
           }} transition={{
             duration: 0.7
           }} className="text-center max-w-2xl mx-auto">
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4 md:text-display-lg">Want to Join Our Team?</h2>
-              <p className="text-sm text-muted-foreground mb-6 md:mb-8 md:text-xl">
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary-foreground mb-3 md:mb-4 md:text-display-lg">Want to Join Our Team?</h2>
+              <p className="text-sm text-primary-foreground/80 mb-6 md:mb-8 md:text-xl">
                 We're always looking for passionate individuals who want to make a difference in young people's lives.
               </p>
               <motion.a href="/get-involved" whileHover={{
               scale: 1.05
             }} whileTap={{
               scale: 0.95
-            }} className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors">Take a look at our Careers</motion.a>
+            }} className="inline-flex items-center justify-center px-8 py-3 bg-primary-foreground text-primary rounded-full font-medium hover:bg-primary-foreground/90 transition-colors">Take a look at our Careers</motion.a>
             </motion.div>
           </div>
         </section>
