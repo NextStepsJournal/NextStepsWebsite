@@ -18,14 +18,14 @@ const opportunities = [
     title: "Be Interviewed",
     description: "Share your career journey with students. Your story could inspire the next generation and help them see possibilities they never knew existed.",
     image: "/images/get-involved/interview.jpg",
-    link: "https://example.com/interview",
+    link: "https://forms.gle/YQunVLcxtyZA9TdE8",
   },
   {
     icon: BookMarked,
     title: "Partner",
     description: "Collaborate with NextSteps as an organization. Whether you're a school, company, or nonprofit, together we can expand access to career guidance.",
     image: "/images/get-involved/partner.jpg",
-    link: "https://example.com/partner",
+    link: "https://forms.gle/YQunVLcxtyZA9TdE8",
   },
   {
     icon: HandHeart,
@@ -125,9 +125,9 @@ const GetInvolvedPage = () => {
               className="max-w-2xl mb-8 md:mb-12 text-center mx-auto"
             >
               <p className="text-xs md:text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-2 md:mb-3">
-                Join the Movement
+                Join Us in Making a Difference
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-display-lg font-display font-semibold text-primary-foreground">
+              <h1 className="text-3xl sm:text-xl md:text-display-xl font-display font-bold text-primary-foreground">
                 Get Involved
               </h1>
               <p className="mt-3 md:mt-4 text-base md:text-xl text-primary-foreground/85 leading-relaxed">

@@ -53,7 +53,7 @@ const partnershipTypes = [
   },
   {
     title: "Interviewees",
-    description: "Individuals participating in NextSteps interviews, sharing experiences to support our journaling, career guidance, and mentoring work."
+    description: "Individuals participating in NextSteps interviews, sharing experiences to support our journal."
   }
 ];
 
@@ -113,7 +113,7 @@ const PartnersPage = () => {
         </section>
 
         {/* Partnership Types */}
-        <section className="py-12 md:py-20">
+        <section className="pt-12 pb-8 md:pt-20 md:pb-2">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -136,7 +136,7 @@ const PartnersPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="flex items-start gap-3 py-3 border-b border-border/50"
+                  className="flex items-start gap-3 py-3"
                 >
                   <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
                   <div>
@@ -152,12 +152,13 @@ const PartnersPage = () => {
         {/* Current Partners - Conveyor Belt */}
         <section className="py-12 md:py-20 bg-background">
           <div className="container mx-auto px-4">
+            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-primary" />
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
-              className="text-center mb-8 md:mb-12"
+              className="text-center mb-8 md:mb-10"
             >
               <h2 className="text-display-lg font-bold text-foreground mb-3 md:mb-4">Our Partners</h2>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -203,7 +204,7 @@ const PartnersPage = () => {
               >
                 <h2 className="text-display-lg font-bold text-primary-foreground mb-3 md:mb-4">Why Partner With Us?</h2>
                 <p className="text-lg md:text-xl text-primary-foreground/80 mb-6 md:mb-8">
-                  Partnering with NextSteps means joining a movement to democratize career exploration and make professional opportunities accessible to all students.
+                  
                 </p>
                 <ul className="space-y-4">
                   {benefits.map((benefit, index) => (
@@ -253,10 +254,10 @@ const PartnersPage = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
               {[
-                { value: "50+", label: "Partner Organizations" },
-                { value: "10K+", label: "Students Reached" },
-                { value: "25+", label: "States Covered" },
-                { value: "100+", label: "Workshops Hosted" }
+                { value: "5+", label: "Partner Organizations" },
+                { value: "33K+", label: "Students Reached" },
+                { value: "25+", label: "Countries Covered" },
+                { value: "50+", label: "Team Members" }
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -269,6 +270,14 @@ const PartnersPage = () => {
                   <div className="text-xs sm:text-sm md:text-base text-primary-foreground/70">{stat.label}</div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Partner CTA Strip */}
+        <section className="py-6 md:py-4 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-0 rounded-2xl border border-border/0 bg-background px-5 py-0 md:px-8">
             </div>
           </div>
         </section>

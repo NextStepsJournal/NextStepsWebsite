@@ -72,6 +72,38 @@ const JournalPage = () => {
 
           <div className="container mx-auto relative z-10">
             <div className="text-center max-w-3xl mx-auto">
+              {/* Text Conveyor Belt - above title */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.8 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mb-12 md:mb-16"
+              >
+                <div className="relative flex overflow-hidden">
+                  <motion.div
+                    className="flex gap-8 items-center whitespace-nowrap"
+                    animate={{ x: ["-30%", "0%"] }}
+                    transition={{
+                      duration: 40,
+                      ease: "linear",
+                      repeat: Infinity
+                    }}
+                  >
+                    {[...Array(8)].map((_, index) => (
+                      <div key={index} className="flex items-center gap-8 text-3xl md:text-4xl font-semibold text-primary-foreground">
+                        <span>Research Articles</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
+                        <span>Professional Interviews</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
+                        <span>Student Stories</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
+                        <span>Career Guides</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+              </motion.div>
               {/* Main heading - same animation as home hero */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -124,7 +156,7 @@ const JournalPage = () => {
                       </Button>
                     </div>
                     <p className="text-sm text-white/60">
-                      Join the waitlist — no spam, ever.
+                      Join the waitlist - no spam, ever.
                     </p>
                   </form>
                 ) : (
@@ -143,14 +175,14 @@ const JournalPage = () => {
               {/* Text Conveyor Belt - below waitlist */}
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ opacity: 0.8 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
                 className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-12 md:mt-16"
               >
                 <div className="relative flex overflow-hidden">
                   <motion.div
                     className="flex gap-8 items-center whitespace-nowrap"
-                    animate={{ x: ["0%", "-50%"] }}
+                    animate={{ x: ["0%", "-30%"] }}
                     transition={{
                       duration: 40,
                       ease: "linear",
@@ -160,13 +192,13 @@ const JournalPage = () => {
                     {[...Array(8)].map((_, index) => (
                       <div key={index} className="flex items-center gap-8 text-3xl md:text-4xl font-semibold text-primary-foreground">
                         <span>Research Articles</span>
-                        <span className="text-primary-foreground/50">•</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
                         <span>Professional Interviews</span>
-                        <span className="text-primary-foreground/50">•</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
                         <span>Student Stories</span>
-                        <span className="text-primary-foreground/50">•</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
                         <span>Career Guides</span>
-                        <span className="text-primary-foreground/50">•</span>
+                        <span className="text-primary-foreground/50">&bull;</span>
                       </div>
                     ))}
                   </motion.div>
