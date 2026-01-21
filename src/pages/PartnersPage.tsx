@@ -46,8 +46,13 @@ const PartnersPage = () => {
       <Header />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-b from-accent/10 to-background">
-          <div className="container mx-auto px-4">
+        <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
+          {/* Background layers */}
+          <div className="absolute inset-0 hero-overlay z-0" />
+          <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary-foreground/5 rounded-full blur-3xl z-10" />
+          <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl z-10" />
+          
+          <div className="container relative z-20 mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
             y: 20
@@ -58,13 +63,13 @@ const PartnersPage = () => {
             duration: 0.6
           }} className="text-center max-w-3xl mx-auto">
               
-              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 md:mb-6 md:text-7xl">
+              <h1 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4 md:mb-6 md:text-7xl">
                 Building the Future Together
               </h1>
-              <p className="text-base text-muted-foreground mb-6 md:mb-8 md:text-2xl">
+              <p className="text-base text-primary-foreground/80 mb-6 md:mb-8 md:text-2xl">
                 We partner with organizations that share our commitment to empowering students from all backgrounds with career resources and opportunities.
               </p>
-              <Button size="lg" asChild>
+              <Button size="lg" variant="hero-primary" asChild>
                 <a href="/get-involved">Become a Partner <ArrowRight className="w-4 h-4 ml-2" /></a>
               </Button>
             </motion.div>
