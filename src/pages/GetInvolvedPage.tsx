@@ -42,17 +42,17 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.3,
+      delayChildren: 0.4,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.7 },
   },
 };
 
@@ -121,7 +121,7 @@ const GetInvolvedPage = () => {
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
               className="max-w-2xl mb-8 md:mb-12 text-center mx-auto"
             >
               <p className="text-xs md:text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-2 md:mb-3">
@@ -151,7 +151,7 @@ const GetInvolvedPage = () => {
                 >
                   <motion.div
                     variants={cardVariants}
-                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                    whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
                     className="relative aspect-square p-4 md:p-8 rounded-lg bg-card border-2 border-border hover:border-primary transition-colors duration-300 cursor-pointer group flex flex-col items-center justify-center text-center"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}

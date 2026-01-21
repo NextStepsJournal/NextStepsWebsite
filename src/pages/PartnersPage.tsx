@@ -55,12 +55,13 @@ const PartnersPage = () => {
           <div className="container relative z-20 mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
-            y: 20
+            y: 30
           }} animate={{
             opacity: 1,
             y: 0
           }} transition={{
-            duration: 0.6
+            duration: 0.7,
+            delay: 0.1
           }} className="text-center max-w-3xl mx-auto">
               
               <h1 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4 md:mb-6 md:text-7xl">
@@ -81,12 +82,15 @@ const PartnersPage = () => {
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
-            y: 20
+            y: 30
           }} whileInView={{
             opacity: 1,
             y: 0
           }} viewport={{
-            once: true
+            once: true,
+            margin: "-100px"
+          }} transition={{
+            duration: 0.7
           }} className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4">Partnership Opportunities</h2>
               <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
@@ -124,12 +128,15 @@ const PartnersPage = () => {
           <div className="container mx-auto px-4">
             <motion.div initial={{
             opacity: 0,
-            y: 20
+            y: 30
           }} whileInView={{
             opacity: 1,
             y: 0
           }} viewport={{
-            once: true
+            once: true,
+            margin: "-100px"
+          }} transition={{
+            duration: 0.7
           }} className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4">Our Partners</h2>
               <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
@@ -140,16 +147,19 @@ const PartnersPage = () => {
             <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-6">
               {currentPartners.map((partner, index) => <motion.div key={partner.name} initial={{
               opacity: 0,
-              scale: 0.9
+              y: 30
             }} whileInView={{
               opacity: 1,
-              scale: 1
+              y: 0
             }} viewport={{
-              once: true
+              once: true,
+              margin: "-100px"
             }} transition={{
-              delay: index * 0.05
+              duration: 0.5,
+              delay: index * 0.1
             }} whileHover={{
-              scale: 1.05
+              y: -8,
+              scale: 1.02
             }} className="bg-card rounded-xl border border-border p-6 flex flex-col items-center justify-center aspect-square cursor-pointer hover:border-primary/30 transition-colors">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 mb-3" />
                   <span className="text-xs text-muted-foreground text-center">{partner.type}</span>
@@ -164,12 +174,15 @@ const PartnersPage = () => {
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <motion.div initial={{
               opacity: 0,
-              x: -20
+              y: 30
             }} whileInView={{
               opacity: 1,
-              x: 0
+              y: 0
             }} viewport={{
-              once: true
+              once: true,
+              margin: "-100px"
+            }} transition={{
+              duration: 0.7
             }}>
                 <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 md:mb-4">Why Partner With Us?</h2>
                 <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8">
@@ -178,14 +191,16 @@ const PartnersPage = () => {
                 <ul className="space-y-4">
                   {benefits.map((benefit, index) => <motion.li key={benefit} initial={{
                   opacity: 0,
-                  x: -10
+                  y: 20
                 }} whileInView={{
                   opacity: 1,
-                  x: 0
+                  y: 0
                 }} viewport={{
-                  once: true
+                  once: true,
+                  margin: "-100px"
                 }} transition={{
-                  delay: index * 0.05
+                  duration: 0.5,
+                  delay: index * 0.1
                 }} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <div className="w-2 h-2 rounded-full bg-primary" />
@@ -197,12 +212,16 @@ const PartnersPage = () => {
 
               <motion.div initial={{
               opacity: 0,
-              x: 20
+              y: 30
             }} whileInView={{
               opacity: 1,
-              x: 0
+              y: 0
             }} viewport={{
-              once: true
+              once: true,
+              margin: "-100px"
+            }} transition={{
+              duration: 0.7,
+              delay: 0.2
             }} className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 md:p-12">
                 <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Make an Impact?</h3>
                 <p className="text-muted-foreground mb-6">
@@ -239,13 +258,15 @@ const PartnersPage = () => {
               label: "Workshops Hosted"
             }].map((stat, index) => <motion.div key={stat.label} initial={{
               opacity: 0,
-              y: 20
+              y: 30
             }} whileInView={{
               opacity: 1,
               y: 0
             }} viewport={{
-              once: true
+              once: true,
+              margin: "-100px"
             }} transition={{
+              duration: 0.5,
               delay: index * 0.1
             }}>
                   <div className="text-2xl sm:text-4xl md:text-5xl font-bold mb-1 md:mb-2">{stat.value}</div>
