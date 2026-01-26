@@ -8,14 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 type ContactFormState = {
   name: string;
   email: string;
@@ -113,22 +105,6 @@ const ContactPage = () => {
         <Header />
         <main className="flex-1 hero-overlay pt-24 md:pt-32 pb-12 md:pb-20">
           <div className="container mx-auto px-4">
-            <Breadcrumb className="mb-8">
-              <BreadcrumbList className="text-primary-foreground/70">
-                <BreadcrumbItem>
-                  <BreadcrumbLink
-                    href="/"
-                    className="text-primary-foreground/80 hover:text-primary-foreground"
-                  >
-                    Home
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-primary-foreground/50" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage className="text-primary-foreground">Contact</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-8 md:gap-12 lg:grid-cols-2 items-start">
               <motion.div variants={itemVariants} className="space-y-4 md:space-y-6 max-w-xl">
                 <p className="text-xs md:text-sm font-medium text-primary-foreground/80 tracking-wide uppercase">Contact</p>

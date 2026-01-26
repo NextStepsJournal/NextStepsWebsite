@@ -5,14 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 const JournalPage = () => {
   const [email, setEmail] = useState("");
@@ -80,22 +72,6 @@ const JournalPage = () => {
 
           <div className="container mx-auto relative z-10">
             <div className="text-center max-w-3xl mx-auto">
-              <Breadcrumb className="mb-6 md:mb-8">
-                <BreadcrumbList className="justify-center text-primary-foreground/70">
-                  <BreadcrumbItem>
-                    <BreadcrumbLink
-                      href="/"
-                      className="text-primary-foreground/80 hover:text-primary-foreground"
-                    >
-                      Home
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="text-primary-foreground/50" />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage className="text-primary-foreground">Journal</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
               {/* Text Conveyor Belt - above title */}
               <motion.div
                 initial={{ opacity: 0 }}

@@ -143,7 +143,7 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-primary-foreground/50">
-            (c) {currentYear} NextSteps Journal. All rights reserved.
+            © {currentYear} NextSteps Journal. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="/" className="text-xs text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors">
