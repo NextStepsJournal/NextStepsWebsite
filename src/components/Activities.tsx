@@ -59,7 +59,7 @@ const ActivityCard = ({ activity, isActive }: ActivityCardProps) => {
   return (
     <motion.div
       ref={cardRef}
-      className="relative h-[500px] md:h-[550px] rounded-2xl overflow-hidden cursor-pointer group"
+      className="relative h-[380px] w-[320px] rounded-2xl overflow-hidden cursor-pointer group"
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
@@ -181,7 +181,7 @@ const Activities = () => {
                 return (
                   <CarouselItem
                     key={activity.title}
-                    className="pl-4 md:pl-6 basis-[80%] md:basis-[50%] lg:basis-[40%]"
+                    className="pl-4 md:pl-6 flex-none"
                   >
                     <motion.div
                       animate={{
