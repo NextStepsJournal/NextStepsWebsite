@@ -59,7 +59,7 @@ const ActivityCard = ({ activity, isActive }: ActivityCardProps) => {
   return (
     <motion.div
       ref={cardRef}
-      className="relative h-[450px] rounded-2xl overflow-hidden cursor-pointer group"
+      className="relative h-[500px] md:h-[550px] rounded-2xl overflow-hidden cursor-pointer group"
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
@@ -162,8 +162,8 @@ const Activities = () => {
       </div>
 
       {/* Full-width white container for carousel */}
-      <div className="bg-card py-8 md:py-12 shadow-xl">
-        <div className="container mx-auto px-4 relative">
+      <div className="w-full bg-card py-10 md:py-16 shadow-xl">
+        <div className="max-w-[1600px] mx-auto px-16 md:px-24 lg:px-32 relative">
           <Carousel
             setApi={setApi}
             opts={{
@@ -200,8 +200,8 @@ const Activities = () => {
               })}
             </CarouselContent>
 
-            <CarouselPrevious className="-left-2 md:-left-4 lg:-left-8 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
-            <CarouselNext className="-right-2 md:-right-4 lg:-right-8 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
+            <CarouselPrevious className="-left-12 md:-left-16 lg:-left-20 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
+            <CarouselNext className="-right-12 md:-right-16 lg:-right-20 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
           </Carousel>
 
           {/* Dots indicator */}
