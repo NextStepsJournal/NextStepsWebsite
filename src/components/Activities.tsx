@@ -129,7 +129,7 @@ const Activities = () => {
   }, [api]);
 
   return (
-    <section ref={sectionRef} className="relative py-28 overflow-hidden">
+    <section ref={sectionRef} className="relative py-28">
       {/* Gradient background */}
       <div className="absolute inset-0 hero-overlay" />
 
@@ -162,8 +162,8 @@ const Activities = () => {
       </div>
 
       {/* Full-width white container for carousel */}
-      <div className="w-full bg-card py-10 md:py-16 shadow-xl">
-        <div className="max-w-[1600px] mx-auto px-16 md:px-24 lg:px-32 relative">
+      <div className="w-full bg-white py-10 md:py-16 shadow-xl relative z-10 overflow-hidden">
+        <div className="w-full px-12 md:px-20 lg:px-28">
           <Carousel
             setApi={setApi}
             opts={{
@@ -200,8 +200,8 @@ const Activities = () => {
               })}
             </CarouselContent>
 
-            <CarouselPrevious className="-left-12 md:-left-16 lg:-left-20 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
-            <CarouselNext className="-right-12 md:-right-16 lg:-right-20 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
+            <CarouselPrevious className="left-4 md:left-8 lg:left-12 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
+            <CarouselNext className="right-4 md:right-8 lg:right-12 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
           </Carousel>
 
           {/* Dots indicator */}
