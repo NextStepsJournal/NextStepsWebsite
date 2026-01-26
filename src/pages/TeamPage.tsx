@@ -5,6 +5,14 @@ import PageTransition from "@/components/PageTransition";
 import { useEffect } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 const leadershipRoles = ["Founder", "Associate Founder & Director of Technology", "Director of Operations", "Director of Outreach", "Director of Marketing", "Director of Finances", "Director of Human Resources", "Director of Editorial & Research"];
 const containerVariants = {
   hidden: {
@@ -43,6 +51,22 @@ const TeamPage = () => {
         <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
           <div className="absolute inset-0 hero-overlay opacity-95 z-0" />
           <div className="container mx-auto px-4 relative z-10">
+            <Breadcrumb className="mb-6 md:mb-8">
+              <BreadcrumbList className="justify-center text-primary-foreground/70">
+                <BreadcrumbItem>
+                  <BreadcrumbLink
+                    href="/"
+                    className="text-primary-foreground/80 hover:text-primary-foreground"
+                  >
+                    Home
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-primary-foreground/50" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-primary-foreground">Leadership</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <motion.div initial={{
             opacity: 0,
             y: 30
@@ -81,7 +105,7 @@ const TeamPage = () => {
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1 min-w-0">
                         {/* Name Placeholder */}
-                        <p className="text-sm font-semibold text-foreground mb-1">​name </p>
+                        <p className="text-sm font-semibold text-foreground mb-1">Name</p>
                         {/* Role */}
                         <p className="text-primary font-medium text-xs leading-tight">
                           {role}

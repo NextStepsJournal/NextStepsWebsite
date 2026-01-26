@@ -5,6 +5,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const partnershipTypes = [
   {
@@ -93,6 +101,22 @@ const PartnersPage = () => {
           <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl z-10" />
           
           <div className="container relative z-20 mx-auto px-4">
+            <Breadcrumb className="mb-6 md:mb-8">
+              <BreadcrumbList className="justify-center text-primary-foreground/70">
+                <BreadcrumbItem>
+                  <BreadcrumbLink
+                    href="/"
+                    className="text-primary-foreground/80 hover:text-primary-foreground"
+                  >
+                    Home
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-primary-foreground/50" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-primary-foreground">Partners</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

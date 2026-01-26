@@ -37,7 +37,7 @@ const stats = [{
   value: "20+",
   label: "Members"
 }, {
-  value: "∞",
+  value: "Unlimited",
   label: "Possibilities"
 }];
 const Hero = () => {

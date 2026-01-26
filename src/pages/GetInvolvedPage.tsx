@@ -4,6 +4,14 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const opportunities = [
   {
@@ -103,7 +111,7 @@ const GetInvolvedPage = () => {
       <main className="flex-1">
         <section className="relative min-h-screen py-16 md:py-24 overflow-hidden flex items-center">
           {/* Gradient sits below the pictures */}
-          <div className="absolute inset-0 hero-overlay z-0 opacity-90" />
+          <div className="absolute inset-0 hero-overlay z-0 opacity-100" />
           
           {/* Background image that fades in/out smoothly */}
           <div 
@@ -117,6 +125,24 @@ const GetInvolvedPage = () => {
           />
 
           <div className="container mx-auto px-4 relative z-20 flex flex-col items-center text-center">
+            <Breadcrumb className="mb-6 md:mb-8">
+              <BreadcrumbList className="justify-center text-primary-foreground/70">
+                <BreadcrumbItem>
+                  <BreadcrumbLink
+                    href="/"
+                    className="text-primary-foreground/80 hover:text-primary-foreground"
+                  >
+                    Home
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-primary-foreground/50" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-primary-foreground">
+                    Get Involved
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             {/* Header */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -125,7 +151,7 @@ const GetInvolvedPage = () => {
               className="max-w-2xl mb-8 md:mb-12 text-center mx-auto"
             >
               <p className="text-xs md:text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-2 md:mb-3">
-                Join Us in Making a Difference
+                
               </p>
               <h1 className="text-3xl sm:text-xl md:text-display-xl font-display font-bold text-primary-foreground">
                 Get Involved
@@ -142,13 +168,21 @@ const GetInvolvedPage = () => {
               animate="visible"
               className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 w-full max-w-5xl"
             >
-              {opportunities.map((opp, index) => (
+              {opportunities.map((opp, index) => {
+                const descriptionId = `get-involved-desc-${index}`;
+                return (
                 <a
                   key={opp.title}
                   href={opp.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onFocus={() => handleMouseEnter(index)}
+                  onBlur={handleMouseLeave}
+                  aria-describedby={descriptionId}
                 >
+                  <span id={descriptionId} className="sr-only">
+                    {opp.description}
+                  </span>
                   <motion.div
                     variants={cardVariants}
                     whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
@@ -173,6 +207,7 @@ const GetInvolvedPage = () => {
                       style={{
                         gridTemplateRows: hoveredIndex === index ? '1fr' : '0fr',
                       }}
+                      aria-hidden="true"
                     >
                       <div className="overflow-hidden">
                         <p className="text-sm md:text-base text-muted-foreground leading-relaxed pt-3 md:pt-4">
@@ -182,7 +217,8 @@ const GetInvolvedPage = () => {
                     </div>
                   </motion.div>
                 </a>
-              ))}
+                );
+              })}
             </motion.div>
           </div>
         </section>

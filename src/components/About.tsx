@@ -48,10 +48,10 @@ const About = () => {
           }} className="relative border-l-4 border-primary pl-8 py-4 mt-10">
               
               <p className="italic text-xl leading-relaxed font-serif font-normal text-primary">
-                "Not about telling students who to become—it's about giving them clarity to decide for themselves."
+                "Not about telling students who to become -- it's about giving them clarity to decide for themselves."
               </p>
               <footer className="mt-4 text-sm font-medium text-primary">
-                — Landon Mahler, <span className="text-primary">Founder</span>
+                - Landon Mahler, <span className="text-primary">Founder</span>
               </footer>
             </motion.blockquote>
           </motion.div>
