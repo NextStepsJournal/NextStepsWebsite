@@ -159,70 +159,64 @@ const Activities = () => {
           </h2>
         </motion.div>
 
-        {/* White box container for carousel */}
-        <div className="bg-card rounded-3xl p-6 md:p-10 shadow-xl">
-          {/* Carousel with fade edges */}
-          <div className="relative">
-            {/* Left fade edge */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-card to-transparent z-20 pointer-events-none rounded-l-2xl" />
-            
-            {/* Right fade edge */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-card to-transparent z-20 pointer-events-none rounded-r-2xl" />
+      </div>
 
-            <Carousel
-              setApi={setApi}
-              opts={{
-                align: "center",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4 md:-ml-8">
-                {activities.map((activity, index) => {
-                  const isActive = current === index;
-                  const distance = Math.abs(current - index);
-                  const opacity = distance === 0 ? 1 : distance === 1 ? 0.7 : 0.4;
+      {/* Full-width white container for carousel */}
+      <div className="bg-card py-8 md:py-12 shadow-xl">
+        <div className="container mx-auto px-4 relative">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "center",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4 md:-ml-6">
+              {activities.map((activity, index) => {
+                const isActive = current === index;
+                const distance = Math.abs(current - index);
+                const opacity = distance === 0 ? 1 : distance === 1 ? 0.7 : 0.4;
 
-                  return (
-                    <CarouselItem
-                      key={activity.title}
-                      className="pl-4 md:pl-8 basis-[85%] md:basis-[45%] lg:basis-[35%]"
+                return (
+                  <CarouselItem
+                    key={activity.title}
+                    className="pl-4 md:pl-6 basis-[80%] md:basis-[50%] lg:basis-[40%]"
+                  >
+                    <motion.div
+                      animate={{
+                        opacity,
+                        scale: isActive ? 1 : 0.92,
+                      }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <motion.div
-                        animate={{
-                          opacity,
-                          scale: isActive ? 1 : 0.92,
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <ActivityCard
-                          activity={activity}
-                          isActive={isActive}
-                        />
-                      </motion.div>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
+                      <ActivityCard
+                        activity={activity}
+                        isActive={isActive}
+                      />
+                    </motion.div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
 
-              <CarouselPrevious className="left-2 md:left-4 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
-              <CarouselNext className="right-2 md:right-4 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
-            </Carousel>
+            <CarouselPrevious className="-left-2 md:-left-4 lg:-left-8 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
+            <CarouselNext className="-right-2 md:-right-4 lg:-right-8 z-30 bg-primary/80 backdrop-blur-sm border-primary text-white hover:bg-primary hover:text-white" />
+          </Carousel>
 
-            {/* Dots indicator */}
-            <div className="flex justify-center gap-2 mt-8">
-              {activities.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    current === index
-                      ? "w-8 bg-primary"
-                      : "bg-muted-foreground/40 hover:bg-muted-foreground/60"
-                  }`}
-                />
-              ))}
-            </div>
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-2 mt-8">
+            {activities.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  current === index
+                    ? "w-8 bg-primary"
+                    : "bg-muted-foreground/40 hover:bg-muted-foreground/60"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
