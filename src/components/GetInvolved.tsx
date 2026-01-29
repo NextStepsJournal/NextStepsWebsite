@@ -33,7 +33,7 @@ const GetInvolved = () => {
       }} className="max-w-2xl text-center">
           {/* Badge */}
           
-          
+        
           {/* Header */}
           <h2 className="text-display-lg md:text-display-xl font-display font-semibold text-primary-foreground mb-6">
             Get Involved

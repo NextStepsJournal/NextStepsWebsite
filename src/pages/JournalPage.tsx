@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const JournalPage = () => {
   const [email, setEmail] = useState("");
@@ -104,6 +105,9 @@ const JournalPage = () => {
                   </motion.div>
                 </div>
               </motion.div>
+              <div className="mb-8 md:mb-10">
+                <Breadcrumbs tone="dark" listClassName="w-full justify-center" />
+              </div>
               {/* Main heading - same animation as home hero */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}

@@ -31,10 +31,10 @@ const Footer = () => {
       href: "https://shortyhub.com/nextstepsjournal"
     }, {
       label: "Be Interviewed",
-      href: "/get-involved"
+      href: "https://forms.gle/Px5PcUdWBRWdDsMRA"
     }, {
       label: "Partner",
-      href: "/get-involved"
+      href: "https://forms.gle/Px5PcUdWBRWdDsMRA"
     }, {
       label: "Donate",
       href: "https://hcb.hackclub.com/donations/start/nextsteps"

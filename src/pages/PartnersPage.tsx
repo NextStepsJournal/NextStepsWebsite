@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const partnershipTypes = [
   {
@@ -93,6 +94,7 @@ const PartnersPage = () => {
           <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl z-10" />
           
           <div className="container relative z-20 mx-auto px-4">
+            <Breadcrumbs tone="dark" className="mb-6" listClassName="w-full justify-center" />
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

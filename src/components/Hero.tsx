@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-students.jpg";
 import ImageWithLoader from "@/components/ImageWithLoader";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // University logos
 import uclaLogo from "@/assets/universities/ucla.png";
@@ -51,6 +52,13 @@ const Hero = () => {
       {/* Decorative elements */}
       <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary-foreground/5 rounded-full blur-3xl z-10" />
       <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl z-10" />
+
+      {/* Breadcrumbs */}
+      <div className="absolute inset-x-0 top-0 z-20">
+        <div className="container mx-auto px-4 pt-20 md:pt-24">
+          <Breadcrumbs tone="dark" hideOnHome />
+        </div>
+      </div>
 
       {/* Main Content */}
       <div className="container relative z-20 mx-auto px-4 py-12 md:py-24 flex-1 flex items-center">

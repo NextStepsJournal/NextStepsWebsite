@@ -12,6 +12,7 @@ import JournalPage from "./pages/JournalPage";
 import PartnersPage from "./pages/PartnersPage";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { defaultTitle, routeMeta } from "@/lib/routes";
 
 const queryClient = new QueryClient();
 
@@ -19,18 +20,8 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const defaultTitle = "NextSteps | Career Exploration & Mentorship for Students";
-    const titleMap: Record<string, string> = {
-      "/": defaultTitle,
-      "/team": "Leadership | NextSteps",
-      "/journal": "Journal | NextSteps",
-      "/partners": "Partners | NextSteps",
-      "/get-involved": "Get Involved | NextSteps",
-      "/contact": "Contact | NextSteps",
-    };
-
     const normalizedPath = location.pathname.replace(/\/+$/, "") || "/";
-    document.title = titleMap[normalizedPath] ?? defaultTitle;
+    document.title = routeMeta[normalizedPath]?.title ?? defaultTitle;
   }, [location.pathname]);
   
   return (

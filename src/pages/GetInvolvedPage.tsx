@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const opportunities = [
   {
@@ -103,7 +104,7 @@ const GetInvolvedPage = () => {
       <main className="flex-1">
         <section className="relative min-h-screen py-16 md:py-24 overflow-hidden flex items-center">
           {/* Gradient sits below the pictures */}
-          <div className="absolute inset-0 hero-overlay z-0 opacity-90" />
+          <div className="absolute inset-0 hero-overlay z-0 opacity-100" />
           
           {/* Background image that fades in/out smoothly */}
           <div 
@@ -117,6 +118,9 @@ const GetInvolvedPage = () => {
           />
 
           <div className="container mx-auto px-4 relative z-20 flex flex-col items-center text-center">
+            <div className="mb-6 md:mb-8">
+              <Breadcrumbs tone="dark" listClassName="w-full justify-center" />
+            </div>
             {/* Header */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -125,7 +129,7 @@ const GetInvolvedPage = () => {
               className="max-w-2xl mb-8 md:mb-12 text-center mx-auto"
             >
               <p className="text-xs md:text-sm font-medium text-primary-foreground/80 uppercase tracking-wide mb-2 md:mb-3">
-                Join Us in Making a Difference
+                
               </p>
               <h1 className="text-3xl sm:text-xl md:text-display-xl font-display font-bold text-primary-foreground">
                 Get Involved
