@@ -120,7 +120,7 @@ const TeamPage = () => {
                 We're always looking for passionate individuals who want to make a difference in young people's lives.
               </p>
               <Button size="lg" variant="hero-primary" asChild>
-                <a href="/get-involved">Take a look at our Careers</a>
+                <a href="https://jobs.talenthr.io/nextstepsjournal" target="_blank" rel="noopener noreferrer">Take a look at our Careers</a>
               </Button>
             </motion.div>
           </div>
