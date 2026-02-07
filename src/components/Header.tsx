@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
 import logoWhite from "@/assets/logo-white.png";
+import hcbLogo from "@/assets/hcb-icon-icon-original.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +26,8 @@ const Header = () => {
     { label: "Journal", href: "/journal" },
     { label: "Partners", href: "/partners" },
   ];
+  const desktopNavBeforeDonate = [navLinks[0]!, navLinks[1]!];
+  const desktopNavAfterDonate = [navLinks[3]!, navLinks[2]!];
 
   // Interpolate values based on scroll progress
   const bgOpacity = scrollProgress;
@@ -47,7 +50,7 @@ const Header = () => {
       />
       
       <div className="container mx-auto px-4 relative">
-        <nav className="flex items-center justify-between h-18">
+        <nav className="relative flex items-center justify-between h-18">
           {/* Logo with crossfade */}
           <motion.a 
             href="/" 
@@ -78,8 +81,70 @@ const Header = () => {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
+          <ul className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+            {desktopNavBeforeDonate.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="text-sm font-medium transition-all duration-200 hover:scale-110"
+                  style={{
+                    color: `hsl(var(--muted-foreground) / ${0.8 + scrollProgress * 0.2})`,
+                    opacity: 0.8 + scrollProgress * 0.2,
+                    transition: 'color 0.1s ease-out, opacity 0.1s ease-out, transform 0.2s ease-out',
+                    ...(scrollProgress < 0.5 && {
+                      color: `hsl(var(--primary-foreground) / ${0.8 + (1 - scrollProgress) * 0.2})`,
+                    }),
+                  }}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <div className="relative group">
+                <span
+                  className="text-sm font-medium cursor-pointer"
+                  style={{
+                    color: `hsl(var(--muted-foreground) / ${0.8 + scrollProgress * 0.2})`,
+                    opacity: 0.8 + scrollProgress * 0.2,
+                    transition: "color 0.1s ease-out, opacity 0.1s ease-out",
+                    ...(scrollProgress < 0.5 && {
+                      color: `hsl(var(--primary-foreground) / ${0.8 + (1 - scrollProgress) * 0.2})`,
+                    }),
+                  }}
+                >
+                  <a
+                    href="https://hcb.hackclub.com/donations/start/nextsteps"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Donate
+                  </a>
+                </span>
+                <div className="pointer-events-none absolute top-full left-1/2 z-50 mt-3 w-[30rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-xl border border-white/25 bg-[#ec3750]/24 px-5 py-4 text-white opacity-0 shadow-[0_18px_50px_-18px_rgba(236,55,80,0.35)] backdrop-blur-xl transition-opacity duration-200 ease-out group-hover:opacity-100">
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="https://hackclub.com/hcb"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="shrink-0 rounded-md p-2"
+                      aria-label="Learn more about Hack Club Bank"
+                    >
+                      <img
+                        src={hcbLogo}
+                        alt="Hack Club Bank logo"
+                        className="h-14 w-14 object-contain"
+                      />
+                    </a>
+                    <p className="text-left text-sm leading-relaxed">
+                      NextSteps is fiscally sponsored by The Hack Foundation (d.b.a.
+                      Hack Club), a 501(c)(3) nonprofit (EIN: 81-2908499).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {desktopNavAfterDonate.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
@@ -101,24 +166,6 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <span
-              className="text-sm font-medium px-4 py-2 cursor-pointer"
-              style={{
-                color: scrollProgress < 0.5 
-                  ? 'hsl(var(--primary-foreground))' 
-                  : 'hsl(var(--foreground))',
-                opacity: 0.9,
-                transition: 'color 0.2s ease-out',
-              }}
-            >
-              <a 
-                href="https://hcb.hackclub.com/donations/start/nextsteps" 
-                target="_blank" 
-                rel="noreferrer"
-              >
-                Donate
-              </a>
-            </span>
             <Button 
               variant={isScrolled ? "default" : "hero-primary"} 
               size="default" 

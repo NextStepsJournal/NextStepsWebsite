@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import partnerLogoA from "@/assets/partners/AnithUncommon Hub (500 x 500 px).png";
+import partnerLogoB from "@/assets/partners/AnithUncommon Hub (500 x 500 px) (1).png";
 
 const partnershipTypes = [
   {
@@ -59,23 +61,19 @@ const partnershipTypes = [
 ];
 
 const currentPartners = [
-  { name: "Partner 1" },
-  { name: "Partner 2" },
-  { name: "Partner 3" },
-  { name: "Partner 4" },
-  { name: "Partner 5" },
-  { name: "Partner 6" },
-  { name: "Partner 7" },
-  { name: "Partner 8" }
+  { name: "Anith Uncommon Hub", logo: partnerLogoA },
+  { name: "Anith Uncommon Hub", logo: partnerLogoB }
 ];
+const partnerBeltBase = [...currentPartners, ...currentPartners, ...currentPartners, ...currentPartners];
+const repeatingPartners = [...partnerBeltBase, ...partnerBeltBase];
 
 const benefits = [
   "Access to a diverse pool of motivated students",
   "Brand visibility across our platforms and events",
   "Opportunities to shape curriculum and content",
-  "Direct engagement with under-resourced communities",
+  "Direct engagement with our communities",
   "Recognition as a leader in educational equity",
-  "Collaborative programming and workshop opportunities"
+  "Collaborative opportunities"
 ];
 
 const PartnersPage = () => {
@@ -170,24 +168,20 @@ const PartnersPage = () => {
 
             {/* Conveyor Belt */}
             <div className="relative overflow-hidden py-8">
-              <motion.div
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{
-                  duration: 30,
-                  ease: "linear",
-                  repeat: Infinity
-                }}
-                className="flex gap-8 items-center"
-              >
-                {[...currentPartners, ...currentPartners].map((_, index) => (
+              <div className="marquee-track marquee-left [--marquee-duration:30s] flex gap-8 items-center">
+                {repeatingPartners.map((partner, index) => (
                   <div
-                    key={index}
-                    className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 bg-muted rounded-2xl flex items-center justify-center border border-border"
+                    key={`${partner.name}-${index}`}
+                    className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 flex items-center justify-center"
                   >
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-muted-foreground/20" />
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      className="h-full w-full object-contain"
+                    />
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -256,8 +250,8 @@ const PartnersPage = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
               {[
-                { value: "5+", label: "Partner Organizations" },
-                { value: "33K+", label: "Students Reached" },
+                { value: "2", label: "Partner Organizations" },
+                { value: "55K+", label: "Students Reached" },
                 { value: "25+", label: "Countries Covered" },
                 { value: "50+", label: "Team Members" }
               ].map((stat, index) => (

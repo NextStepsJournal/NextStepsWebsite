@@ -256,6 +256,39 @@
 }
 
 @layer utilities {
+  @keyframes marquee-left {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  .marquee-track {
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .marquee-left {
+    animation: marquee-left var(--marquee-duration, 30s) linear infinite;
+  }
+
+  .marquee-right {
+    animation: marquee-right var(--marquee-duration, 30s) linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-left,
+    .marquee-right {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+    }
+  }
+
   .shadow-sm { box-shadow: var(--shadow-sm); }
   .shadow-md { box-shadow: var(--shadow-md); }
   .shadow-lg { box-shadow: var(--shadow-lg); }
