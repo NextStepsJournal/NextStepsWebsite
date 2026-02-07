@@ -163,17 +163,11 @@ const Hero = () => {
         
         <div className="bg-card/95 backdrop-blur-sm py-8 border-y border-border/50">
           <div className="relative flex overflow-hidden fade-edges">
-            <motion.div className="flex gap-20 items-center px-10" animate={{
-            x: ["0%", "-50%"]
-          }} transition={{
-            duration: 40,
-            ease: "linear",
-            repeat: Infinity
-          }}>
-              {[...universities, ...universities, ...universities, ...universities].map((uni, index) => <div key={index} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
+            <div className="marquee-track marquee-left [--marquee-duration:40s] flex gap-20 items-center px-10">
+              {[...universities, ...universities].map((uni, index) => <div key={`${uni.name}-${index}`} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
                   <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 </div>)}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

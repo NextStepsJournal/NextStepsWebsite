@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Breadcrumb,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -121,30 +122,72 @@ const Breadcrumbs = ({
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <Breadcrumb className={className}>
-        <BreadcrumbList className={cn(toneStyles.list, listClassName)}>
-          {breadcrumbs.map((crumb, index) => {
-            const isLast = index === breadcrumbs.length - 1;
-
-            return (
-              <Fragment key={`${crumb.href}-${crumb.label}`}>
-                {index > 0 && (
-                  <BreadcrumbSeparator className={cn(toneStyles.separator, separatorClassName)} />
-                )}
+        <div className="sm:hidden">
+          <BreadcrumbList
+            className={cn(
+              toneStyles.list,
+              "w-full max-w-full flex-nowrap overflow-x-auto whitespace-nowrap text-xs font-medium",
+              listClassName,
+            )}
+          >
+            {breadcrumbs.length === 1 ? (
+              <BreadcrumbItem>
+                <BreadcrumbPage className={cn(toneStyles.page, pageClassName)}>
+                  {breadcrumbs[0].label}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            ) : (
+              <>
                 <BreadcrumbItem>
-                  {isLast ? (
-                    <BreadcrumbPage className={cn(toneStyles.page, pageClassName)}>
-                      {crumb.label}
-                    </BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink className={cn(toneStyles.link, linkClassName)} href={crumb.href}>
-                      {crumb.label}
-                    </BreadcrumbLink>
-                  )}
+                  <BreadcrumbLink asChild className={cn(toneStyles.link, linkClassName)}>
+                    <Link to={breadcrumbs[0].href}>{breadcrumbs[0].label}</Link>
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
-              </Fragment>
-            );
-          })}
-        </BreadcrumbList>
+                {breadcrumbs.length > 2 && (
+                  <>
+                    <BreadcrumbSeparator className={cn(toneStyles.separator, separatorClassName)} />
+                    <BreadcrumbItem>
+                      <BreadcrumbEllipsis />
+                    </BreadcrumbItem>
+                  </>
+                )}
+                <BreadcrumbSeparator className={cn(toneStyles.separator, separatorClassName)} />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className={cn(toneStyles.page, pageClassName)}>
+                    {breadcrumbs[breadcrumbs.length - 1].label}
+                  </BreadcrumbPage>
+                </BreadcrumbItem>
+              </>
+            )}
+          </BreadcrumbList>
+        </div>
+
+        <div className="hidden sm:block">
+          <BreadcrumbList className={cn(toneStyles.list, "w-full max-w-full", listClassName)}>
+            {breadcrumbs.map((crumb, index) => {
+              const isLast = index === breadcrumbs.length - 1;
+
+              return (
+                <Fragment key={`${crumb.href}-${crumb.label}`}>
+                  {index > 0 && (
+                    <BreadcrumbSeparator className={cn(toneStyles.separator, separatorClassName)} />
+                  )}
+                  <BreadcrumbItem>
+                    {isLast ? (
+                      <BreadcrumbPage className={cn(toneStyles.page, pageClassName)}>
+                        {crumb.label}
+                      </BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink asChild className={cn(toneStyles.link, linkClassName)}>
+                        <Link to={crumb.href}>{crumb.label}</Link>
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                </Fragment>
+              );
+            })}
+          </BreadcrumbList>
+        </div>
       </Breadcrumb>
     </motion.div>
   );
