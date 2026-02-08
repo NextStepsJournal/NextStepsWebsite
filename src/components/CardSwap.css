@@ -11,7 +11,7 @@
   left: 50%;
   border-radius: 1rem;
   border: 1px solid hsl(var(--border));
-  background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--accent)) 100%);
+  background: hsl(var(--card));
   color: hsl(var(--card-foreground));
   box-shadow: none;
   transform-style: preserve-3d;
@@ -39,19 +39,19 @@
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(circle at top right, hsl(var(--primary) / 0.14), transparent 48%);
+  background: none;
 }
 
 .card-theme-1 {
-  border-top: 4px solid hsl(var(--primary));
+  border-top: 4px solid #e66ebc;
 }
 
 .card-theme-2 {
-  border-top: 4px solid hsl(var(--secondary));
+  border-top: 4px solid hsl(var(--primary));
 }
 
 .card-theme-3 {
-  border-top: 4px solid hsl(var(--violet-dark));
+  border-top: 4px solid hsl(var(--secondary));
 }
 
 @media (max-width: 1024px) {

@@ -29,6 +29,7 @@ type CardSwapProps = {
   delay?: number;
   pauseOnHover?: boolean;
   onCardClick?: (index: number) => void;
+  onActiveIndexChange?: (index: number) => void;
   skewAmount?: number;
   easing?: EasingMode;
   children: ReactNode;
@@ -79,6 +80,7 @@ const CardSwap = ({
   delay = 5000,
   pauseOnHover = false,
   onCardClick,
+  onActiveIndexChange,
   skewAmount = 6,
   easing = "elastic",
   children,
@@ -185,10 +187,13 @@ const CardSwap = ({
       );
 
       tl.call(() => {
-        order.current = [...rest, front];
+        const nextOrder = [...rest, front];
+        order.current = nextOrder;
+        onActiveIndexChange?.(nextOrder[0] ?? 0);
       });
     };
 
+    onActiveIndexChange?.(order.current[0] ?? 0);
     swap();
     intervalRef.current = window.setInterval(swap, delay);
 
@@ -219,7 +224,7 @@ const CardSwap = ({
       }
       tlRef.current?.kill();
     };
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, config, refs]);
+  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, config, refs, onActiveIndexChange]);
 
   const rendered = childArr.map((child, i) => {
     if (!isValidElement(child)) {

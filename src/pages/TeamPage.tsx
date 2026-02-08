@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -19,26 +19,39 @@ const itemVariants = {
 };
 
 const staffMembers = [
-  { name: "Anusha Seth", role: "Operations Executive Assistant" },
-  { name: "Arnav Deshmukh", role: "Finance Staff" },
-  { name: "Arun Buttey", role: "Operations Staff" },
-  { name: "Atharvaa Velliyangiri", role: "Tech Support" },
-  { name: "Farida Abbas", role: "Operations Executive Assistant" },
-  { name: "Harry Honig", role: "Ops Executive Assistant" },
-  { name: "Juliana Cuyubamba", role: "Marketing Staff" },
-  { name: "Kabya Naik", role: "Asia Chapter Head" },
-  { name: "Neel Nabar", role: "Finance Staff" },
-  { name: "Nevish Uppala", role: "Outreach Staff" },
-  { name: "Raghav Khandelia", role: "HR Executive Assistant" },
-  { name: "Rizky Febriyanto", role: "Graphic Designer" },
-  { name: "Ryan Rawal", role: "Tech Executive Assistant" },
-  { name: "Vivakar Kumar", role: "E&R Executive Assistant" },
-  { name: "Tahlia Smith", role: "Operations Staff" },
-  { name: "Achyutam Bhaskar", role: "Tech Staff" },
-  { name: "Chloe", role: "North America Chapter Head" },
+  { name: "Anusha Seth", role: "Operations Executive Assistant", department: "Operations" },
+  { name: "Arnav Deshmukh", role: "Finance Staff", department: "Finance" },
+  { name: "Arun Buttey", role: "Operations Staff", department: "Operations" },
+  { name: "Atharvaa Velliyangiri", role: "Tech Support", department: "Technology" },
+  { name: "Farida Abbas", role: "Operations Executive Assistant", department: "Operations" },
+  { name: "Harry Honig", role: "Ops Executive Assistant", department: "Operations" },
+  { name: "Juliana Cuyubamba", role: "Marketing Staff", department: "Marketing" },
+  { name: "Kabya Naik", role: "Asia Chapter Head", department: "Chapters" },
+  { name: "Neel Nabar", role: "Finance Staff", department: "Finance" },
+  { name: "Nevish Uppala", role: "Outreach Staff", department: "Outreach" },
+  { name: "Raghav Khandelia", role: "HR Executive Assistant", department: "Human Resources" },
+  { name: "Rizky Febriyanto", role: "Graphic Designer", department: "Marketing" },
+  { name: "Ryan Rawal", role: "Tech Executive Assistant", department: "Technology" },
+  { name: "Vivakar Kumar", role: "E&R Executive Assistant", department: "Education & Research" },
+  { name: "Tahlia Smith", role: "Operations Staff", department: "Operations" },
+  { name: "Achyutam Bhaskar", role: "Tech Staff", department: "Technology" },
+  { name: "Chloe", role: "North America Chapter Head", department: "Chapters" },
 ];
 
 const TeamPage = () => {
+  const staffByDepartment = useMemo(() => {
+    const grouped = new Map<string, typeof staffMembers>();
+    staffMembers.forEach((member) => {
+      const existing = grouped.get(member.department) ?? [];
+      existing.push(member);
+      grouped.set(member.department, existing);
+    });
+    return Array.from(grouped.entries()).map(([department, members]) => ({
+      department,
+      members,
+    }));
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -72,7 +85,7 @@ const TeamPage = () => {
         {/* Executives + Staff */}
         <section className="py-12 md:py-20">
           <div className="mx-auto w-full max-w-[1700px] px-4 md:px-6">
-            <div className="max-w-4xl mb-8 md:mb-12">
+            <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
               <h2 className="text-display-lg font-display font-semibold text-foreground leading-tight">
                 Executives
               </h2>
@@ -92,8 +105,6 @@ const TeamPage = () => {
                 <motion.div
                   key={person.name}
                   variants={itemVariants}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
                   className="group self-start min-h-[230px] md:min-h-[270px] bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300"
                 >
                   {/* Photo */}
@@ -107,7 +118,7 @@ const TeamPage = () => {
                     </div>
                   </div>
 
-                  {/* Name, role, LinkedIn, expandable bio */}
+                  {/* Name, role, LinkedIn, bio */}
                   <div className="p-4 md:p-5">
                     <div className="flex items-start justify-between gap-2 min-h-[80px] md:min-h-[88px]">
                       <div className="flex-1 min-w-0">
@@ -128,8 +139,8 @@ const TeamPage = () => {
                         <FaLinkedinIn className="w-4 h-4" />
                       </motion.a>
                     </div>
-                    <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:mt-3 group-hover:max-h-56 group-hover:opacity-100">
-                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed pr-1 max-h-52 overflow-y-auto">
+                    <div className="mt-3">
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed pr-1 max-h-[7.5rem] md:max-h-[8.5rem] overflow-y-auto">
                         {person.bio}
                       </p>
                     </div>
@@ -139,24 +150,41 @@ const TeamPage = () => {
             </motion.div>
 
             <div className="mt-14 md:mt-20">
-              <div className="max-w-4xl mb-6 md:mb-8">
+              <div className="max-w-4xl mx-auto text-center mb-6 md:mb-8">
                 <h2 className="text-display-lg font-display font-semibold text-foreground leading-tight">
                   Staff
                 </h2>
                 <p className="mt-4 text-muted-foreground leading-relaxed text-body-lg">
-                  Our staff supports day-to-day execution across operations, outreach, finance, design, and technology.
+                  Our staff supports day-to-day execution across operations, outreach, finance, marketing, and technology.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card">
-                <ul className="max-h-80 overflow-y-auto overscroll-contain divide-y divide-border/60">
-                  {staffMembers.map((member) => (
-                    <li key={`${member.name}-${member.role}`} className="px-5 py-3 md:px-6 md:py-4">
-                      <p className="text-sm md:text-base font-medium text-foreground">{member.name}</p>
-                      <p className="text-xs md:text-sm text-primary">{member.role}</p>
-                    </li>
+              <div className="rounded-2xl border border-border bg-card p-4 md:p-5">
+                <div
+                  className="max-h-80 overflow-y-auto overscroll-contain rounded-xl border border-border/60 bg-background"
+                >
+                  {staffByDepartment.map((departmentSection) => (
+                    <div
+                      key={departmentSection.department}
+                      className="border-b border-border/60 last:border-b-0"
+                    >
+                      <div className="px-5 py-2 md:px-6 bg-primary/10">
+                        <p className="text-[11px] md:text-xs font-semibold uppercase tracking-wide text-primary">
+                          {departmentSection.department}
+                        </p>
+                      </div>
+
+                      <ul className="divide-y divide-border/60">
+                        {departmentSection.members.map((member) => (
+                          <li key={`${member.name}-${member.role}`} className="px-5 py-3 md:px-6 md:py-4">
+                            <p className="text-sm md:text-base font-medium text-foreground">{member.name}</p>
+                            <p className="text-xs md:text-sm text-primary">{member.role}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>

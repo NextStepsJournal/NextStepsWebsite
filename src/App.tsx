@@ -23,6 +23,10 @@ const AnimatedRoutes = () => {
     const normalizedPath = location.pathname.replace(/\/+$/, "") || "/";
     document.title = routeMeta[normalizedPath]?.title ?? defaultTitle;
   }, [location.pathname]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   
   return (
     <AnimatePresence mode="wait">
