@@ -12,8 +12,8 @@ export const routeMeta: Record<
     label: "Home",
   },
   "/team": {
-    title: "Leadership | NextSteps",
-    label: "Leadership",
+    title: "Team | NextSteps",
+    label: "Team",
   },
   "/journal": {
     title: "Journal | NextSteps",

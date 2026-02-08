@@ -11,7 +11,7 @@ const Footer = () => {
     Organization: [
       { label: "About", href: "/#about" },
       { label: "Journal", href: "/journal" },
-      { label: "Leadership", href: "/team" },
+      { label: "Team", href: "/team" },
       { label: "Partners", href: "/partners" },
       { label: "Contact", href: "/contact" },
     ],

@@ -2,7 +2,6 @@
 import landon from "@/assets/people/landon-mahler.jpg";
 import ananya from "@/assets/people/ananya-suresh.png";
 import mukil from "@/assets/people/mukil-siva.png";
-import marisa from "@/assets/people/marissa-martignon.png";
 import lucia from "@/assets/people/lucia-adams.png";
 import adelaide from "@/assets/people/adelaide-tao.png";
 
@@ -38,12 +37,6 @@ export const leadership: TeamMember[] = [
     role: "Director of Outreach",
     photo: adelaide,
     bio: "Hi! My name is Adelaide and I am an outreach director at Next Steps. I have a strong passion for creating meaningful connections between people while providing access to educationally related career and life changing opportunities to students around the world. Working at Next Steps, I develop partnerships, increase community engagement, and create more access to mentors, research opportunities, and career opportunities for students who are interested in pursuing careers in STEM or other fields.",
-  },
-  {
-    name: "Marisa Martignon",
-    role: "Director of Marketing",
-    photo: marisa,
-    bio: "I'm Marisa \"Risa\" Martignon, a junior from Italy. At NextSteps Journal, I'm the voice behind the videos. I script, plan and edit the marketing videos, as well as manage the Instagram. I've fenced since I was 7, I'm an energy drink connoisseur, and I'm passionate about cognitive science and maths.",
   },
   {
     name: "Ananya Suresh",

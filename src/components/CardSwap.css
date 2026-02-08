@@ -1,0 +1,73 @@
+.card-swap-container {
+  position: relative;
+  margin-inline: auto;
+  perspective: 900px;
+  overflow: visible;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 1rem;
+  border: 1px solid hsl(var(--border));
+  background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--accent)) 100%);
+  color: hsl(var(--card-foreground));
+  box-shadow: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-swap-themed {
+  transform: translate(16%, 8%);
+  transform-origin: center right;
+}
+
+.card-theme {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.15rem;
+  padding: 1.5rem;
+}
+
+.card-theme::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at top right, hsl(var(--primary) / 0.14), transparent 48%);
+}
+
+.card-theme-1 {
+  border-top: 4px solid hsl(var(--primary));
+}
+
+.card-theme-2 {
+  border-top: 4px solid hsl(var(--secondary));
+}
+
+.card-theme-3 {
+  border-top: 4px solid hsl(var(--violet-dark));
+}
+
+@media (max-width: 1024px) {
+  .card-swap-themed {
+    transform: scale(0.88) translate(8%, 6%);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-swap-themed {
+    transform: scale(0.76) translate(4%, 8%);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-swap-themed {
+    transform: scale(0.68) translate(0, 10%);
+  }
+}

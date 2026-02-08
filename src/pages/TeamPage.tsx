@@ -18,6 +18,26 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
 };
 
+const staffMembers = [
+  { name: "Anusha Seth", role: "Operations Executive Assistant" },
+  { name: "Arnav Deshmukh", role: "Finance Staff" },
+  { name: "Arun Buttey", role: "Operations Staff" },
+  { name: "Atharvaa Velliyangiri", role: "Tech Support" },
+  { name: "Farida Abbas", role: "Operations Executive Assistant" },
+  { name: "Harry Honig", role: "Ops Executive Assistant" },
+  { name: "Juliana Cuyubamba", role: "Marketing Staff" },
+  { name: "Kabya Naik", role: "Asia Chapter Head" },
+  { name: "Neel Nabar", role: "Finance Staff" },
+  { name: "Nevish Uppala", role: "Outreach Staff" },
+  { name: "Raghav Khandelia", role: "HR Executive Assistant" },
+  { name: "Rizky Febriyanto", role: "Graphic Designer" },
+  { name: "Ryan Rawal", role: "Tech Executive Assistant" },
+  { name: "Vivakar Kumar", role: "E&R Executive Assistant" },
+  { name: "Tahlia Smith", role: "Operations Staff" },
+  { name: "Achyutam Bhaskar", role: "Tech Staff" },
+  { name: "Chloe", role: "North America Chapter Head" },
+];
+
 const TeamPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,15 +69,24 @@ const TeamPage = () => {
           </div>
         </section>
 
-        {/* Leadership Grid */}
+        {/* Executives + Staff */}
         <section className="py-12 md:py-20">
-          <div className="container mx-auto px-4">
+          <div className="mx-auto w-full max-w-[1700px] px-4 md:px-6">
+            <div className="max-w-4xl mb-8 md:mb-12">
+              <h2 className="text-display-lg font-display font-semibold text-foreground leading-tight">
+                Executives
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed text-body-lg">
+                Meet the leadership team driving NextSteps strategy, programs, and impact across regions and disciplines.
+              </p>
+            </div>
+
             <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6"
+              className="grid grid-cols-2 lg:grid-cols-5 items-start gap-4 md:gap-6 xl:gap-8"
             >
               {leadership.map((person) => (
                 <motion.div
@@ -65,23 +94,29 @@ const TeamPage = () => {
                   variants={itemVariants}
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300"
+                  className="group self-start min-h-[230px] md:min-h-[270px] bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-shadow duration-300"
                 >
                   {/* Photo */}
-                  <div className="aspect-square bg-muted flex items-center justify-center">
-                    <img
-                      src={person.photo}
-                      alt={person.name}
-                      className="w-full h-full object-cover rounded-full"
-                    />
+                  <div className="px-4 pt-5 md:pt-6 flex items-center justify-center">
+                    <div className="relative h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36">
+                      <img
+                        src={person.photo}
+                        alt={person.name}
+                        className="h-full w-full rounded-full object-cover border border-border/60"
+                      />
+                    </div>
                   </div>
 
-                  {/* Name, role, LinkedIn, bio */}
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-2">
+                  {/* Name, role, LinkedIn, expandable bio */}
+                  <div className="p-4 md:p-5">
+                    <div className="flex items-start justify-between gap-2 min-h-[80px] md:min-h-[88px]">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-foreground mb-1">{person.name}</p>
-                        <p className="text-primary font-medium text-xs leading-tight">{person.role}</p>
+                        <p className="text-base md:text-lg font-semibold text-foreground mb-0.5 leading-tight [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
+                          {person.name}
+                        </p>
+                        <p className="text-primary font-medium text-sm md:text-[15px] leading-tight [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
+                          {person.role}
+                        </p>
                       </div>
                       <motion.a
                         href={person.linkedin ?? "#"}
@@ -93,12 +128,37 @@ const TeamPage = () => {
                         <FaLinkedinIn className="w-4 h-4" />
                       </motion.a>
                     </div>
-
-                    <p className="mt-3 text-xs text-muted-foreground">{person.bio}</p>
+                    <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:mt-3 group-hover:max-h-56 group-hover:opacity-100">
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed pr-1 max-h-52 overflow-y-auto">
+                        {person.bio}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
+
+            <div className="mt-14 md:mt-20">
+              <div className="max-w-4xl mb-6 md:mb-8">
+                <h2 className="text-display-lg font-display font-semibold text-foreground leading-tight">
+                  Staff
+                </h2>
+                <p className="mt-4 text-muted-foreground leading-relaxed text-body-lg">
+                  Our staff supports day-to-day execution across operations, outreach, finance, design, and technology.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card">
+                <ul className="max-h-80 overflow-y-auto overscroll-contain divide-y divide-border/60">
+                  {staffMembers.map((member) => (
+                    <li key={`${member.name}-${member.role}`} className="px-5 py-3 md:px-6 md:py-4">
+                      <p className="text-sm md:text-base font-medium text-foreground">{member.name}</p>
+                      <p className="text-xs md:text-sm text-primary">{member.role}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 

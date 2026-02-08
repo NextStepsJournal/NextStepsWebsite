@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-students.jpg";
 import ImageWithLoader from "@/components/ImageWithLoader";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -113,9 +114,11 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-            <Button variant="hero-secondary" size="xl" className="group">
-              <BookOpen className="w-4 h-4" />
-              Read The Journal
+            <Button variant="hero-secondary" size="xl" className="group" asChild>
+              <Link to="/journal" className="inline-flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Read The Journal
+              </Link>
             </Button>
           </motion.div>
 
@@ -163,9 +166,11 @@ const Hero = () => {
         
         <div className="bg-card/95 backdrop-blur-sm py-8 border-y border-border/50">
           <div className="relative flex overflow-hidden fade-edges">
-            <div className="marquee-track marquee-left [--marquee-duration:40s] flex gap-20 items-center px-10">
-              {[...universities, ...universities].map((uni, index) => <div key={`${uni.name}-${index}`} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
-                  <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+            <div className="marquee-track marquee-left [--marquee-duration:40s] flex items-center px-10">
+              {[0, 1].map(copyIndex => <div key={`universities-copy-${copyIndex}`} className="flex shrink-0 items-center gap-20 pr-20">
+                  {universities.map(uni => <div key={`${uni.name}-${copyIndex}`} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
+                      <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                    </div>)}
                 </div>)}
             </div>
           </div>
