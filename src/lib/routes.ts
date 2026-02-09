@@ -1,4 +1,4 @@
-export const defaultTitle = "NextSteps | Career Exploration & Mentorship for Students";
+export const defaultTitle = "NextSteps Journal | Career Exploration & Mentorship for Students";
 
 export const routeMeta: Record<
   string,
@@ -12,23 +12,23 @@ export const routeMeta: Record<
     label: "Home",
   },
   "/team": {
-    title: "Team | NextSteps",
+    title: "Team | NextSteps Journal",
     label: "Team",
   },
   "/journal": {
-    title: "Journal | NextSteps",
+    title: "Journal | NextSteps Journal",
     label: "Journal",
   },
   "/partners": {
-    title: "Partners | NextSteps",
+    title: "Partners | NextSteps Journal",
     label: "Partners",
   },
   "/get-involved": {
-    title: "Get Involved | NextSteps",
+    title: "Get Involved | NextSteps Journal",
     label: "Get Involved",
   },
   "/contact": {
-    title: "Contact | NextSteps",
+    title: "Contact | NextSteps Journal",
     label: "Contact",
   },
 };

@@ -7,9 +7,20 @@ interface ImageWithLoaderProps {
   alt: string;
   className?: string;
   containerClassName?: string;
+  loading?: "eager" | "lazy";
+  decoding?: "sync" | "async" | "auto";
+  fetchPriority?: "high" | "low" | "auto";
 }
 
-const ImageWithLoader = ({ src, alt, className, containerClassName }: ImageWithLoaderProps) => {
+const ImageWithLoader = ({
+  src,
+  alt,
+  className,
+  containerClassName,
+  loading = "lazy",
+  decoding = "async",
+  fetchPriority = "auto",
+}: ImageWithLoaderProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -23,6 +34,9 @@ const ImageWithLoader = ({ src, alt, className, containerClassName }: ImageWithL
       <motion.img
         src={src}
         alt={alt}
+        loading={loading}
+        decoding={decoding}
+        fetchPriority={fetchPriority}
         className={cn(className, "transition-opacity duration-500")}
         style={{ opacity: isLoaded ? undefined : 0 }}
         onLoad={() => setIsLoaded(true)}

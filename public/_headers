@@ -5,3 +5,9 @@
   X-Frame-Options: DENY
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), geolocation=(), microphone=()
+
+/index.html
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+
+/images/get-involved/NEXTSTEPSEMBED.png
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0

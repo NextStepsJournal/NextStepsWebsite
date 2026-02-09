@@ -112,7 +112,7 @@ const TeamPage = () => {
                     <div className="relative h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36">
                       <img
                         src={person.photo}
-                        alt={person.name}
+                        alt={`${person.name}, ${person.role} at NextSteps Journal`}
                         className="h-full w-full rounded-full object-cover border border-border/60"
                       />
                     </div>

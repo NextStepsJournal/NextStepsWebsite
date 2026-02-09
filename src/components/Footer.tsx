@@ -134,7 +134,7 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   target={social.external ? "_blank" : undefined}
-                  rel={social.external ? "noopener noreferrer" : undefined}
+                  rel={social.external ? "me noopener noreferrer" : undefined}
                   aria-label={`Follow NextSteps Journal on ${social.label}`}
                   whileHover={{
                     y: -4,

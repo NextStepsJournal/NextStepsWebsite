@@ -119,7 +119,14 @@ const Hero = () => {
       {/* Background layers */}
       <div className="absolute inset-0 hero-overlay z-0" />
       <div className="absolute inset-0 z-10">
-        <ImageWithLoader src={heroImage} alt="Diverse students collaborating on career exploration projects" className="w-full h-full object-cover opacity-15" containerClassName="w-full h-full" />
+        <ImageWithLoader
+          src={heroImage}
+          alt="Diverse students collaborating on career exploration projects"
+          className="w-full h-full object-cover opacity-15"
+          containerClassName="w-full h-full"
+          loading="eager"
+          fetchPriority="high"
+        />
       </div>
       
       {/* Decorative elements */}
@@ -241,7 +248,13 @@ const Hero = () => {
             <div ref={conveyorTrackRef} className="flex w-max items-center will-change-transform">
               {repeatedSets.map(copyIndex => <div key={`universities-copy-${copyIndex}`} ref={copyIndex === 0 ? conveyorSetRef : undefined} className="flex shrink-0 items-center gap-20 px-10">
                   {universities.map(uni => <div key={`${uni.name}-${copyIndex}`} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
-                      <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" loading="eager" decoding="async" />
+                      <img
+                        src={uni.logo}
+                        alt={`${uni.name} logo`}
+                        className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>)}
                 </div>)}
             </div>

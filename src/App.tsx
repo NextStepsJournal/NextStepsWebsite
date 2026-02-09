@@ -12,7 +12,7 @@ import JournalPage from "./pages/JournalPage";
 import PartnersPage from "./pages/PartnersPage";
 import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import { defaultTitle, routeMeta } from "@/lib/routes";
+import { applyRouteSeo } from "@/lib/seo";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +20,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const normalizedPath = location.pathname.replace(/\/+$/, "") || "/";
-    document.title = routeMeta[normalizedPath]?.title ?? defaultTitle;
+    applyRouteSeo(location.pathname);
   }, [location.pathname]);
 
   useEffect(() => {
