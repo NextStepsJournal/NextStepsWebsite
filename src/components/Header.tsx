@@ -6,6 +6,8 @@ import logo from "@/assets/logo.png";
 import logoWhite from "@/assets/logo-white.png";
 import hcbLogo from "@/assets/hcb-icon-icon-original.png";
 
+const HOME_URL = "https://www.nextstepsjournal.com";
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -21,7 +23,7 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: "Home", href: "/" },
+    { label: "Home", href: HOME_URL },
     { label: "Team", href: "/team" },
     { label: "Journal", href: "/journal" },
     { label: "Partners", href: "/partners" },
@@ -53,7 +55,7 @@ const Header = () => {
         <nav className="relative flex items-center justify-between h-18">
           {/* Logo with crossfade */}
           <motion.a 
-            href="/" 
+            href={HOME_URL}
             className="flex items-center relative"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

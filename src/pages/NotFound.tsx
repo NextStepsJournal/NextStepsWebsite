@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+const HOME_URL = "https://www.nextstepsjournal.com";
+
 const NotFound = () => {
   return (
     <div className="relative flex min-h-screen items-center justify-center hero-overlay">
@@ -16,7 +18,7 @@ const NotFound = () => {
           Page not found
         </p>
         <Button variant="hero-secondary" asChild>
-          <a href="/" className="inline-flex items-center gap-2">
+          <a href={HOME_URL} className="inline-flex items-center gap-2">
             <Home className="w-4 h-4" />
             Home
           </a>
