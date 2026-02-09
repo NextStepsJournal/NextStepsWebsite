@@ -109,13 +109,12 @@ const ContactPage = () => {
             <Breadcrumbs tone="dark" className="mb-6" />
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid gap-8 md:gap-12 lg:grid-cols-2 items-start">
               <motion.div variants={itemVariants} className="space-y-4 md:space-y-6 max-w-xl">
-                <p className="text-xs md:text-sm font-medium text-primary-foreground/80 tracking-wide uppercase">Contact</p>
+                <p className="text-xs md:text-sm font-medium text-primary-foreground/80 tracking-wide uppercase"></p>
                 <h1 className="text-3xl sm:text-4xl font-display text-primary-foreground leading-tight font-bold md:text-6xl">
                   Let&apos;s talk
                 </h1>
                 <p className="text-primary-foreground/80 leading-relaxed text-base md:text-lg">
-                  Share a few details and our team will follow up. Messages stay within this app and are processed
-                  without exposing email addresses in the client code.
+                  We'd love to hear from you! Whether you're interested in starting a chapter, exploring partnership opportunities, or have questions about our mission, our team is here to help.
                 </p>
                 <ul className="space-y-3 text-primary-foreground/70">
                   <li className="flex items-center gap-2">

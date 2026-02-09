@@ -1,11 +1,16 @@
 ﻿import { FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
+import privacyPolicyPdf from "@/assets/importantdocuments/NextSteps Journal PRIVACY POLICY.pdf";
+import termsPdf from "@/assets/importantdocuments/NextSteps Journal GENERAL TERMS & CONDITIONS.pdf";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isNewsletterSubmitted, setIsNewsletterSubmitted] = useState(false);
 
   const links = {
     Organization: [
@@ -15,10 +20,10 @@ const Footer = () => {
       { label: "Partners", href: "/partners" },
       { label: "Contact", href: "/contact" },
     ],
-    Resources: [{ label: "Chapter Toolkit", href: "/" }],
+
     Contribute: [
       {
-        label: "Volunteer",
+        label: "Become a Volunteer",
         href: "https://shortyhub.com/nextstepsjournal",
         external: true,
       },
@@ -28,7 +33,7 @@ const Footer = () => {
         external: true,
       },
       {
-        label: "Partner",
+        label: "Partner with Us",
         href: "https://forms.gle/Px5PcUdWBRWdDsMRA",
         external: true,
       },
@@ -43,6 +48,15 @@ const Footer = () => {
         external: true,
       },
     ],
+  };
+
+  const handleNewsletterSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) {
+      return;
+    }
+    setIsNewsletterSubmitted(true);
+    setNewsletterEmail("");
   };
 
   const socials = [
@@ -93,8 +107,8 @@ const Footer = () => {
   return (
     <footer className="bg-foreground text-primary-foreground">
       <div className="container mx-auto px-4 py-20">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
-          <div className="col-span-2">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-12 md:gap-8 items-center justify-items-center">
+          <div className="col-span-2 w-full max-w-sm mx-auto">
             <motion.img
               initial={{
                 opacity: 0,
@@ -151,6 +165,7 @@ const Footer = () => {
           {Object.entries(links).map(([title, items]) => (
             <motion.div
               key={title}
+              className="w-full max-w-[230px] mx-auto"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -176,6 +191,63 @@ const Footer = () => {
               </ul>
             </motion.div>
           ))}
+
+          <motion.div
+            className="col-span-2 w-full max-w-2xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+            }}
+          >
+            {!isNewsletterSubmitted ? (
+              <div className="w-full rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 p-4 text-center">
+                <h4 className="text-xl md:text-2xl font-display font-semibold text-primary-foreground">
+                  Newsletter waitlist
+                </h4>
+                <p className="text-sm text-primary-foreground/85 leading-relaxed mt-1.5 max-w-lg mx-auto">
+                  Join our waitlist for launch updates, featured interviews, and new career resources.
+                </p>
+                <form onSubmit={handleNewsletterSubmit} className="mt-3 w-full max-w-md mx-auto flex flex-col gap-2">
+                  <label htmlFor="newsletter-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="newsletter-email"
+                    type="email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    required
+                    className="w-full px-3 py-2.5 rounded-lg bg-background/95 border border-primary-foreground/25 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full rounded-lg px-4 py-2.5 bg-ring text-primary-foreground text-sm font-semibold hover:bg-ring/90 transition-colors"
+                  >
+                    Join the Waitlist
+                  </button>
+                </form>
+                <p className="text-xs text-primary-foreground/60 mt-2 leading-relaxed max-w-lg mx-auto">
+                  We send occasional updates only. No spam.
+                </p>
+              </div>
+            ) : (
+              <div className="w-full rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 p-4 text-center">
+                <h4 className="text-xl md:text-2xl font-display font-semibold text-primary-foreground">
+                  Newsletter Waitlist
+                </h4>
+                <p className="text-sm text-primary-foreground/85 leading-relaxed flex items-center justify-center gap-2 mt-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
+                  You&apos;re on the waitlist.
+                </p>
+                <p className="text-xs text-primary-foreground/60 mt-2">
+                  We&apos;ll notify you when new newsletter updates are available.
+                </p>
+              </div>
+            )}
+          </motion.div>
         </div>
       </div>
 
@@ -186,13 +258,17 @@ const Footer = () => {
           </p>
           <div className="flex gap-6">
             <a
-              href="/"
+              href={privacyPolicyPdf}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors"
             >
               Privacy Policy
             </a>
             <a
-              href="/"
+              href={termsPdf}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors"
             >
               Terms of Service

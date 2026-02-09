@@ -157,6 +157,10 @@ const Activities = () => {
           <h2 className="text-display-lg font-display font-semibold text-primary-foreground">
             Our Activities
           </h2>
+          <p className="mt-4 text-body-lg text-primary-foreground/80 max-w-xl mx-auto leading-relaxed">
+            These are the core activities we offer to help students explore careers, build practical
+            skills, and connect with real opportunities.
+          </p>
         </motion.div>
 
         {/* White box container for carousel */}
