@@ -6,11 +6,14 @@ import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
 import privacyPolicyPdf from "@/assets/importantdocuments/NextSteps Journal PRIVACY POLICY.pdf";
 import termsPdf from "@/assets/importantdocuments/NextSteps Journal GENERAL TERMS & CONDITIONS.pdf";
+import { submitFormTarget } from "@/lib/formSubmission";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isNewsletterSubmitted, setIsNewsletterSubmitted] = useState(false);
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
+  const [newsletterError, setNewsletterError] = useState<string | null>(null);
 
   const links = {
     Organization: [
@@ -50,13 +53,31 @@ const Footer = () => {
     ],
   };
 
-  const handleNewsletterSubmit = (e: FormEvent) => {
+  const handleNewsletterSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!newsletterEmail.trim()) {
+    const normalizedEmail = newsletterEmail.trim();
+    if (!normalizedEmail) {
       return;
     }
-    setIsNewsletterSubmitted(true);
-    setNewsletterEmail("");
+
+    setNewsletterError(null);
+    setIsNewsletterSubmitting(true);
+
+    try {
+      await submitFormTarget("signup", {
+        email: normalizedEmail,
+        plan: "newsletter_waitlist",
+        referrer: typeof window !== "undefined" ? window.location.pathname : "/",
+      });
+      setIsNewsletterSubmitted(true);
+      setNewsletterEmail("");
+    } catch (error) {
+      setNewsletterError(
+        error instanceof Error ? error.message : "Unable to join the waitlist right now.",
+      );
+    } finally {
+      setIsNewsletterSubmitting(false);
+    }
   };
 
   const socials = [
@@ -217,17 +238,28 @@ const Footer = () => {
                     id="newsletter-email"
                     type="email"
                     value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    onChange={(e) => {
+                      setNewsletterEmail(e.target.value);
+                      if (newsletterError) {
+                        setNewsletterError(null);
+                      }
+                    }}
                     placeholder="you@example.com"
                     required
                     className="w-full px-3 py-2.5 rounded-lg bg-background/95 border border-primary-foreground/25 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                   />
                   <button
                     type="submit"
+                    disabled={isNewsletterSubmitting}
                     className="w-full rounded-lg px-4 py-2.5 bg-ring text-primary-foreground text-sm font-semibold hover:bg-ring/90 transition-colors"
                   >
-                    Join the Waitlist
+                    {isNewsletterSubmitting ? "Joining..." : "Join the Waitlist"}
                   </button>
+                  {newsletterError ? (
+                    <p className="text-xs text-destructive mt-1" role="alert">
+                      {newsletterError}
+                    </p>
+                  ) : null}
                 </form>
                 <p className="text-xs text-primary-foreground/60 mt-2 leading-relaxed max-w-lg mx-auto">
                   We send occasional updates only. No spam.

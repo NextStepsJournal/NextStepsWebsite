@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { submitFormTarget } from "@/lib/formSubmission";
 type ContactFormState = {
   name: string;
   email: string;
@@ -16,8 +17,6 @@ type ContactFormState = {
   website: string;
 };
 const ContactPage = () => {
-  const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-  const [formStartedAt] = useState(() => Date.now());
   const [formState, setFormState] = useState<ContactFormState>({
     name: "",
     email: "",
@@ -28,36 +27,16 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const submitContactForm = async () => {
-    if (!supabaseAnonKey) {
-      throw new Error("Missing VITE_SUPABASE_ANON_KEY for function authorization.");
+    if (formState.website.trim()) {
+      throw new Error("Invalid form submission.");
     }
-    const res = await fetch("https://agyctztnurqndhewqzjc.supabase.co/functions/v1/resend-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${supabaseAnonKey}`,
-        apikey: supabaseAnonKey
-      },
-      body: JSON.stringify({
-        name: formState.name.trim(),
-        email: formState.email.trim(),
-        message: formState.message.trim(),
-        website: formState.website.trim(),
-        startedAt: formStartedAt,
-      })
+
+    await submitFormTarget("contact", {
+      name: formState.name.trim(),
+      email: formState.email.trim(),
+      message: formState.message.trim(),
+      source: typeof window !== "undefined" ? window.location.pathname : "/contact",
     });
-    if (!res.ok) {
-      if (res.status === 429) {
-        throw new Error("Too many attempts. Please wait a few minutes and try again.");
-      }
-      if (res.status === 413) {
-        throw new Error("Your message is too large. Please shorten it and try again.");
-      }
-      if (res.status === 400) {
-        throw new Error("Please review your details and try again.");
-      }
-      throw new Error("Unable to send your message right now. Please try again later.");
-    }
   };
   const handleChange = (field: keyof ContactFormState) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState(prev => ({
@@ -151,8 +130,8 @@ const ContactPage = () => {
                   <CardHeader>
                     <CardTitle className="font-display text-2xl">Send a message</CardTitle>
                     <CardDescription>
-                      Provide contact details and a short note. Connect this form to your backend or service of choice to
-                      deliver messages securely.
+                      Provide contact details and a short note. Submissions are securely saved to
+                      our database for follow-up.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -163,11 +142,11 @@ const ContactPage = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" name="email" type="email" value={formState.email} onChange={handleChange("email")} required autoComplete="email" maxLength={320} className="bg-background" />
+                        <Input id="email" name="email" type="email" value={formState.email} onChange={handleChange("email")} required autoComplete="email" maxLength={200} className="bg-background" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message">Message</Label>
-                        <Textarea id="message" name="message" value={formState.message} onChange={handleChange("message")} required minLength={10} maxLength={5000} rows={5} className="bg-background" />
+                        <Textarea id="message" name="message" value={formState.message} onChange={handleChange("message")} required minLength={10} maxLength={2000} rows={5} className="bg-background" />
                       </div>
                       <div className="hidden" aria-hidden="true">
                         <Label htmlFor="website">Website</Label>

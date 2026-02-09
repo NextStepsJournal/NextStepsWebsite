@@ -6,20 +6,42 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { submitFormTarget } from "@/lib/formSubmission";
 
 const JournalPage = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    const normalizedEmail = email.trim();
+    if (!normalizedEmail) {
+      return;
+    }
+
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      await submitFormTarget("signup", {
+        email: normalizedEmail,
+        plan: "journal_waitlist",
+        referrer: typeof window !== "undefined" ? window.location.pathname : "/journal",
+      });
       setIsSubmitted(true);
       setEmail("");
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error ? error.message : "Unable to join the waitlist right now.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -137,7 +159,12 @@ const JournalPage = () => {
                       <input
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (submitError) {
+                            setSubmitError(null);
+                          }
+                        }}
                         placeholder="Enter your email"
                         required
                         className="flex-1 px-5 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
@@ -145,12 +172,18 @@ const JournalPage = () => {
                       <Button
                         type="submit"
                         size="lg"
+                        disabled={isSubmitting}
                         className="bg-white text-primary hover:bg-white/90 rounded-xl px-4 font-semibold shadow-lg shadow-black/20"
                       >
                         <Bell className="w-4 h-4 mr-2" />
-                        Notify Me
+                        {isSubmitting ? "Submitting..." : "Notify Me"}
                       </Button>
                     </div>
+                    {submitError ? (
+                      <p className="text-sm text-destructive" role="alert">
+                        {submitError}
+                      </p>
+                    ) : null}
                     <p className="text-sm text-white/60">
                       Join the waitlist - no spam, ever.
                     </p>
