@@ -13,13 +13,16 @@ type ContactFormState = {
   name: string;
   email: string;
   message: string;
+  website: string;
 };
 const ContactPage = () => {
   const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  const [formStartedAt] = useState(() => Date.now());
   const [formState, setFormState] = useState<ContactFormState>({
     name: "",
     email: "",
-    message: ""
+    message: "",
+    website: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,12 +41,22 @@ const ContactPage = () => {
       body: JSON.stringify({
         name: formState.name.trim(),
         email: formState.email.trim(),
-        message: formState.message.trim()
+        message: formState.message.trim(),
+        website: formState.website.trim(),
+        startedAt: formStartedAt,
       })
     });
     if (!res.ok) {
-      const text = await res.text();
-      throw new Error(text || "Unable to send your message.");
+      if (res.status === 429) {
+        throw new Error("Too many attempts. Please wait a few minutes and try again.");
+      }
+      if (res.status === 413) {
+        throw new Error("Your message is too large. Please shorten it and try again.");
+      }
+      if (res.status === 400) {
+        throw new Error("Please review your details and try again.");
+      }
+      throw new Error("Unable to send your message right now. Please try again later.");
     }
   };
   const handleChange = (field: keyof ContactFormState) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -69,7 +82,8 @@ const ContactPage = () => {
       setFormState({
         name: "",
         email: "",
-        message: ""
+        message: "",
+        website: "",
       });
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Unable to send your message.");
@@ -145,15 +159,27 @@ const ContactPage = () => {
                     <form className="space-y-5" onSubmit={handleSubmit}>
                       <div className="space-y-2">
                         <Label htmlFor="name">Name</Label>
-                        <Input id="name" name="name" value={formState.name} onChange={handleChange("name")} required autoComplete="name" className="bg-background" />
+                        <Input id="name" name="name" value={formState.name} onChange={handleChange("name")} required autoComplete="name" maxLength={120} className="bg-background" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" name="email" type="email" value={formState.email} onChange={handleChange("email")} required autoComplete="email" className="bg-background" />
+                        <Input id="email" name="email" type="email" value={formState.email} onChange={handleChange("email")} required autoComplete="email" maxLength={320} className="bg-background" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message">Message</Label>
-                        <Textarea id="message" name="message" value={formState.message} onChange={handleChange("message")} required minLength={10} rows={5} className="bg-background" />
+                        <Textarea id="message" name="message" value={formState.message} onChange={handleChange("message")} required minLength={10} maxLength={5000} rows={5} className="bg-background" />
+                      </div>
+                      <div className="hidden" aria-hidden="true">
+                        <Label htmlFor="website">Website</Label>
+                        <Input
+                          id="website"
+                          name="website"
+                          value={formState.website}
+                          onChange={handleChange("website")}
+                          autoComplete="off"
+                          tabIndex={-1}
+                          className="bg-background"
+                        />
                       </div>
                       <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
                         {isSubmitting ? "Sending..." : "Send Message"}
