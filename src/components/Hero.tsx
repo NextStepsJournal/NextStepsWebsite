@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-students.jpg";
 import ImageWithLoader from "@/components/ImageWithLoader";
@@ -33,16 +34,87 @@ const universities = [{
   logo: uopeopleLogo
 }];
 const stats = [{
-  value: "8+",
-  label: "Countries"
-}, {
-  value: "20+",
-  label: "Members"
-}, {
-  value: "∞",
-  label: "Possibilities"
 }];
+const LOGO_SCROLL_SPEED = 72;
 const Hero = () => {
+  const conveyorViewportRef = useRef<HTMLDivElement | null>(null);
+  const conveyorTrackRef = useRef<HTMLDivElement | null>(null);
+  const conveyorSetRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const lastTimeRef = useRef<number | null>(null);
+  const xOffsetRef = useRef(0);
+  const setWidthRef = useRef(0);
+  const [repeatCount, setRepeatCount] = useState(4);
+  const repeatedSets = useMemo(() => Array.from({
+    length: repeatCount
+  }, (_, i) => i), [repeatCount]);
+
+  useEffect(() => {
+    const viewport = conveyorViewportRef.current;
+    const track = conveyorTrackRef.current;
+    const set = conveyorSetRef.current;
+    if (!viewport || !track || !set) {
+      return;
+    }
+
+    const measure = () => {
+      const viewportWidth = viewport.getBoundingClientRect().width;
+      const setWidth = set.getBoundingClientRect().width;
+      if (!viewportWidth || !setWidth) {
+        return;
+      }
+      setWidthRef.current = setWidth;
+
+      const neededSets = Math.max(4, Math.ceil(viewportWidth * 2 / setWidth) + 2);
+      setRepeatCount(neededSets);
+
+      while (xOffsetRef.current <= -setWidth) {
+        xOffsetRef.current += setWidth;
+      }
+      while (xOffsetRef.current > 0) {
+        xOffsetRef.current -= setWidth;
+      }
+      track.style.transform = `translate3d(${xOffsetRef.current}px, 0, 0)`;
+    };
+
+    const animate = (time: number) => {
+      if (lastTimeRef.current === null) {
+        lastTimeRef.current = time;
+      }
+      const dt = Math.min((time - lastTimeRef.current) / 1000, 0.05);
+      lastTimeRef.current = time;
+
+      const setWidth = setWidthRef.current;
+      if (setWidth > 0) {
+        xOffsetRef.current -= LOGO_SCROLL_SPEED * dt;
+        while (xOffsetRef.current <= -setWidth) {
+          xOffsetRef.current += setWidth;
+        }
+        track.style.transform = `translate3d(${xOffsetRef.current}px, 0, 0)`;
+      }
+
+      rafRef.current = window.requestAnimationFrame(animate);
+    };
+
+    const resizeObserver = new ResizeObserver(() => {
+      measure();
+    });
+    resizeObserver.observe(viewport);
+    resizeObserver.observe(set);
+
+    measure();
+    rafRef.current = window.requestAnimationFrame(animate);
+
+    return () => {
+      resizeObserver.disconnect();
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+      rafRef.current = null;
+      lastTimeRef.current = null;
+    };
+  }, []);
+
   return <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16">
       {/* Background layers */}
       <div className="absolute inset-0 hero-overlay z-0" />
@@ -165,11 +237,11 @@ const Hero = () => {
         </motion.p>
         
         <div className="bg-card/95 backdrop-blur-sm py-8 border-y border-border/50">
-          <div className="relative flex overflow-hidden fade-edges">
-            <div className="marquee-track marquee-left [--marquee-duration:40s] flex items-center px-10">
-              {[0, 1].map(copyIndex => <div key={`universities-copy-${copyIndex}`} className="flex shrink-0 items-center gap-20 pr-20">
+          <div ref={conveyorViewportRef} className="relative flex overflow-hidden fade-edges">
+            <div ref={conveyorTrackRef} className="flex w-max items-center will-change-transform">
+              {repeatedSets.map(copyIndex => <div key={`universities-copy-${copyIndex}`} ref={copyIndex === 0 ? conveyorSetRef : undefined} className="flex shrink-0 items-center gap-20 px-10">
                   {universities.map(uni => <div key={`${uni.name}-${copyIndex}`} className="flex-shrink-0 flex items-center justify-center h-16 w-36">
-                      <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                      <img src={uni.logo} alt={`${uni.name} logo`} className="max-h-14 max-w-[130px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" loading="eager" decoding="async" />
                     </div>)}
                 </div>)}
             </div>
