@@ -108,7 +108,7 @@ const About = () => {
               <Card customClass="card-theme card-theme-1">
                 <img src={researchImage} alt="Students collaborating on career research" className="relative z-10 h-40 w-full rounded-xl object-cover border border-border/60" />
                 <div className="flex items-center gap-3 relative z-10">
-                  <Users className="h-8 w-8 text-primary shrink-0" />
+                  <Users className="h-8 w-8 text-[#e66ebc] shrink-0" />
                   <h3 className="text-[1.8rem] md:text-3xl font-display font-semibold text-foreground">Career Research</h3>
                 </div>
                 <p className="text-base text-muted-foreground relative z-10 leading-relaxed">
@@ -119,7 +119,7 @@ const About = () => {
               <Card customClass="card-theme card-theme-2">
                 <img src={guideImage} alt="Career planning guide and mentorship support" className="relative z-10 h-40 w-full rounded-xl object-cover border border-border/60" />
                 <div className="flex items-center gap-3 relative z-10">
-                  <Compass className="h-8 w-8 text-secondary shrink-0" />
+                  <Compass className="h-8 w-8 text-primary shrink-0" />
                   <h3 className="text-[1.8rem] md:text-3xl font-display font-semibold text-foreground">Clear Direction</h3>
                 </div>
                 <p className="text-base text-muted-foreground relative z-10 leading-relaxed">
@@ -130,7 +130,7 @@ const About = () => {
               <Card customClass="card-theme card-theme-3">
                 <img src={workshopsImage} alt="Students in a workshop accessing new opportunities" className="relative z-10 h-40 w-full rounded-xl object-cover border border-border/60" />
                 <div className="flex items-center gap-3 relative z-10">
-                  <Lightbulb className="h-8 w-8 text-[#e66ebc] shrink-0" />
+                  <Lightbulb className="h-8 w-8 text-secondary shrink-0" />
                   <h3 className="text-[1.8rem] md:text-3xl font-display font-semibold text-foreground">Opportunity Access</h3>
                 </div>
                 <p className="text-base text-muted-foreground relative z-10 leading-relaxed">
