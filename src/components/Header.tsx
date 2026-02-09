@@ -6,7 +6,7 @@ import logo from "@/assets/logo.png";
 import logoWhite from "@/assets/logo-white.png";
 import hcbLogo from "@/assets/hcb-icon-icon-original.png";
 
-const HOME_URL = "https://www.nextstepsjournal.com";
+const HOME_URL = "https://www.nextstepsjournal.org";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

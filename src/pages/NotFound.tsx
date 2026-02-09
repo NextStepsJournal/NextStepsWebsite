@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
-const HOME_URL = "https://www.nextstepsjournal.com";
+const HOME_URL = "https://www.nextstepsjournal.org";
 
 const NotFound = () => {
   return (
