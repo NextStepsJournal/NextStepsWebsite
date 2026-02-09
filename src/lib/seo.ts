@@ -1,5 +1,5 @@
 const SITE_NAME = "NextSteps Journal";
-const SITE_URL = "https://nextstepsjournal.org";
+const SITE_URL = "https://www.nextstepsjournal.org";
 const EMBED_IMAGE_PATH = "/images/get-involved/NEXTSTEPSEMBED.png";
 const EMBED_IMAGE_VERSION = "20260209";
 const DEFAULT_IMAGE_PATH = `${EMBED_IMAGE_PATH}?v=${EMBED_IMAGE_VERSION}`;

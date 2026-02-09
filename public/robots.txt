@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nextstepsjournal.org/sitemap.xml
-Host: nextstepsjournal.org
+Sitemap: https://www.nextstepsjournal.org/sitemap.xml
+Host: www.nextstepsjournal.org

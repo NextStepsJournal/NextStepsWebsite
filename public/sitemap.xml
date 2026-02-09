@@ -4,49 +4,49 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 >
   <url>
-    <loc>https://nextstepsjournal.org/</loc>
+    <loc>https://www.nextstepsjournal.org/</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://nextstepsjournal.org/images/get-involved/NEXTSTEPSEMBED.png</image:loc>
+      <image:loc>https://www.nextstepsjournal.org/images/get-involved/NEXTSTEPSEMBED.png</image:loc>
       <image:title>NextSteps Journal white logo</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://nextstepsjournal.org/get-involved</loc>
+    <loc>https://www.nextstepsjournal.org/get-involved</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://nextstepsjournal.org/images/get-involved/volunteer.jpg</image:loc>
+      <image:loc>https://www.nextstepsjournal.org/images/get-involved/volunteer.jpg</image:loc>
       <image:title>Volunteer opportunities with NextSteps Journal</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://nextstepsjournal.org/journal</loc>
+    <loc>https://www.nextstepsjournal.org/journal</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://nextstepsjournal.org/images/get-involved/NEXTSTEPSEMBED.png</image:loc>
+      <image:loc>https://www.nextstepsjournal.org/images/get-involved/NEXTSTEPSEMBED.png</image:loc>
       <image:title>NextSteps Journal white logo</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://nextstepsjournal.org/team</loc>
+    <loc>https://www.nextstepsjournal.org/team</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nextstepsjournal.org/partners</loc>
+    <loc>https://www.nextstepsjournal.org/partners</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nextstepsjournal.org/contact</loc>
+    <loc>https://www.nextstepsjournal.org/contact</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
