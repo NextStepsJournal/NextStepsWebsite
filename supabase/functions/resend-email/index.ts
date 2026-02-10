@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.201.0/http/server.ts";
 
 const normalizeOrigin = (value: string) => value.trim().replace(/\/+$/, "");
 const allowedOriginRaw = Deno.env.get("ALLOWED_ORIGIN") ?? "";
+const contactFunctionSecret = Deno.env.get("CONTACT_FUNCTION_SECRET") ?? "";
 const allowedOrigins = allowedOriginRaw
   .split(",")
   .map((item) => normalizeOrigin(item))
@@ -152,6 +153,16 @@ serve(async req => {
 
   if (!isAllowedOrigin) {
     return new Response("Forbidden.", { status: 403, headers: corsHeaders });
+  }
+
+  if (!contactFunctionSecret) {
+    console.error("Missing CONTACT_FUNCTION_SECRET configuration.");
+    return new Response("Server is not configured.", { status: 500, headers: corsHeaders });
+  }
+
+  const providedSecret = req.headers.get("x-contact-function-secret")?.trim() ?? "";
+  if (providedSecret !== contactFunctionSecret) {
+    return new Response("Unauthorized.", { status: 401, headers: corsHeaders });
   }
 
   const contentType = req.headers.get("content-type") ?? "";

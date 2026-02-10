@@ -1,4 +1,4 @@
-type SubmitTarget = "contact" | "signup" | "feedback";
+type SubmitTarget = "contact" | "signup";
 
 const DEFAULT_SUBMIT_ENDPOINT = "/.netlify/functions/submitContact";
 const submitEndpoint =

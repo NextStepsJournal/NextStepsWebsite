@@ -10,6 +10,8 @@ import { submitFormTarget } from "@/lib/formSubmission";
 
 const JournalPage = () => {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
+  const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -33,9 +35,13 @@ const JournalPage = () => {
         email: normalizedEmail,
         plan: "journal_waitlist",
         referrer: typeof window !== "undefined" ? window.location.pathname : "/journal",
+        website: website.trim(),
+        startedAt: formStartedAt,
       });
       setIsSubmitted(true);
       setEmail("");
+      setWebsite("");
+      setFormStartedAt(Date.now());
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : "Unable to join the waitlist right now.",
@@ -168,6 +174,15 @@ const JournalPage = () => {
                         placeholder="Enter your email"
                         required
                         className="flex-1 px-5 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
+                      />
+                      <input
+                        type="text"
+                        value={website}
+                        onChange={(e) => setWebsite(e.target.value)}
+                        autoComplete="off"
+                        tabIndex={-1}
+                        aria-hidden="true"
+                        className="hidden"
                       />
                       <Button
                         type="submit"

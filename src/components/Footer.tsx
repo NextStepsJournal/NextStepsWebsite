@@ -11,6 +11,8 @@ import { submitFormTarget } from "@/lib/formSubmission";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterWebsite, setNewsletterWebsite] = useState("");
+  const [newsletterStartedAt, setNewsletterStartedAt] = useState(() => Date.now());
   const [isNewsletterSubmitted, setIsNewsletterSubmitted] = useState(false);
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
   const [newsletterError, setNewsletterError] = useState<string | null>(null);
@@ -68,9 +70,13 @@ const Footer = () => {
         email: normalizedEmail,
         plan: "newsletter_waitlist",
         referrer: typeof window !== "undefined" ? window.location.pathname : "/",
+        website: newsletterWebsite.trim(),
+        startedAt: newsletterStartedAt,
       });
       setIsNewsletterSubmitted(true);
       setNewsletterEmail("");
+      setNewsletterWebsite("");
+      setNewsletterStartedAt(Date.now());
     } catch (error) {
       setNewsletterError(
         error instanceof Error ? error.message : "Unable to join the waitlist right now.",
@@ -247,6 +253,15 @@ const Footer = () => {
                     placeholder="you@example.com"
                     required
                     className="w-full px-3 py-2.5 rounded-lg bg-background/95 border border-primary-foreground/25 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                  <input
+                    type="text"
+                    value={newsletterWebsite}
+                    onChange={(e) => setNewsletterWebsite(e.target.value)}
+                    autoComplete="off"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="hidden"
                   />
                   <button
                     type="submit"

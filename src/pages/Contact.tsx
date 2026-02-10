@@ -17,6 +17,7 @@ type ContactFormState = {
   website: string;
 };
 const ContactPage = () => {
+  const [formStartedAt, setFormStartedAt] = useState(() => Date.now());
   const [formState, setFormState] = useState<ContactFormState>({
     name: "",
     email: "",
@@ -36,6 +37,8 @@ const ContactPage = () => {
       email: formState.email.trim(),
       message: formState.message.trim(),
       source: typeof window !== "undefined" ? window.location.pathname : "/contact",
+      website: formState.website.trim(),
+      startedAt: formStartedAt,
     });
   };
   const handleChange = (field: keyof ContactFormState) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -64,6 +67,7 @@ const ContactPage = () => {
         message: "",
         website: "",
       });
+      setFormStartedAt(Date.now());
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Unable to send your message.");
     } finally {
